@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using WebHybridClient;
 
 namespace WebMVCClient
 {
@@ -29,6 +30,8 @@ namespace WebMVCClient
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ApiService>();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;

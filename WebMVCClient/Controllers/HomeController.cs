@@ -9,10 +9,16 @@ namespace WebMVCClient.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private readonly ApiService _apiService;
+
+        public HomeController(ApiService apiService)
+        {
+            _apiService = apiService;
+        }
+
         public async System.Threading.Tasks.Task<IActionResult> Index()
         {
-            var apiService = new ApiService();
-            var result = await apiService.GetApiDataAsync();
+            var result = await _apiService.GetApiDataAsync();
 
             ViewData["data"] = result.ToString();
             return View();
