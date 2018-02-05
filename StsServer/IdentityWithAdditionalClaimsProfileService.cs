@@ -7,13 +7,11 @@ using IdentityModel;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
-using IdentityServerWithAspNetIdentity.Models;
+using StsServer.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace IdentityServerWithAspNetIdentitySqlite
+namespace StsServer
 {
-    using IdentityServer4;
-
     public class IdentityWithAdditionalClaimsProfileService : IProfileService
     {
         private readonly IUserClaimsPrincipalFactory<ApplicationUser> _claimsFactory;

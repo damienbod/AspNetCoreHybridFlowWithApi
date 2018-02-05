@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityServerWithAspNetIdentity.Models.AccountViewModels
+namespace StsServer.Models.AccountViewModels
 {
     public class VerifyCodeViewModel
     {

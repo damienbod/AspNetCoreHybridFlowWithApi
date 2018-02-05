@@ -4,14 +4,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using IdentityServerWithAspNetIdentity.Models;
-using IdentityServerWithAspNetIdentity.Models.ManageViewModels;
-using IdentityServerWithAspNetIdentity.Services;
+using StsServer.Models;
+using StsServer.Models.ManageViewModels;
+using StsServer.Services;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http.Authentication;
 using IdentityServer4.Quickstart.UI;
+using StsServer.Filters;
 
-namespace IdentityServerWithAspNetIdentity.Controllers
+namespace StsServer.Controllers
 {
     [SecurityHeaders]
     [Authorize]
