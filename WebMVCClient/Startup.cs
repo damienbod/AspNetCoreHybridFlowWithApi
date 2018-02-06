@@ -32,6 +32,11 @@ namespace WebMVCClient
         {
             services.AddTransient<ApiService>();
 
+            services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
+
+            var authConfigurations = Configuration.GetSection("AuthConfigurations");
+            var stsServer = authConfigurations["StsServer"];
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -41,7 +46,7 @@ namespace WebMVCClient
             .AddOpenIdConnect(options =>
             {
                 options.SignInScheme = "Cookies";
-                options.Authority = "https://localhost:44352";
+                options.Authority = stsServer;
                 options.RequireHttpsMetadata = true;
                 options.ClientId = "hybridclient";
                 options.ClientSecret = "hybrid_flow_secret";
