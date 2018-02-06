@@ -1,22 +1,27 @@
-﻿using IdentityModel;
-using IdentityModel.Client;
-using Microsoft.AspNetCore.Authentication;
+﻿using IdentityModel.Client;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using WebMVCClient;
 
 namespace WebHybridClient
 {
     public class ApiService
     {
+        private readonly IOptions<AuthConfigurations> _authConfigurations;
+
+        public ApiService(IOptions<AuthConfigurations> authConfigurations)
+        {
+            _authConfigurations = authConfigurations;
+        }
 
         public async Task<JArray> GetApiDataAsync()
         {
             try
             {
-                var discoClient = new DiscoveryClient("https://localhost:44352");
+                var discoClient = new DiscoveryClient(_authConfigurations.Value.StsServer);
                 var disco = await discoClient.GetAsync();
                 if (disco.IsError)
                 {
@@ -33,7 +38,7 @@ namespace WebHybridClient
 
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44342");
+                    client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
                     client.SetBearerToken(tokenResponse.AccessToken);
 
                     var response = await client.GetAsync("/api/values");
