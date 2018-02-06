@@ -22,13 +22,13 @@ namespace StsServer
 
         public Startup(IHostingEnvironment env)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
-                .Enrich.WithProperty("App", "StsServer")
-                .Enrich.FromLogContext()
-                .WriteTo.Seq("http://localhost:5341")
-                .WriteTo.RollingFile("../Logs/StsServer")
-                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Verbose()
+            //    .Enrich.WithProperty("App", "StsServer")
+            //    .Enrich.FromLogContext()
+            //    .WriteTo.Seq("http://localhost:5341")
+            //    .WriteTo.RollingFile("../Logs/StsServer")
+            //    .CreateLogger();
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -45,7 +45,7 @@ namespace StsServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "damienbodserver.pfx"), "");
+            //var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "damienbodserver.pfx"), "");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -65,7 +65,7 @@ namespace StsServer
             var authConfigurations = Configuration.GetSection("AuthConfigurations");
 
             services.AddIdentityServer()
-                .AddSigningCredential(cert)
+                .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApiResources())
                 .AddInMemoryClients(Config.GetClients(authConfigurations))

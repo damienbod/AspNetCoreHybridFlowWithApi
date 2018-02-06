@@ -41,7 +41,7 @@ namespace WebHybridClient
                     client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
                     client.SetBearerToken(tokenResponse.AccessToken);
 
-                    var response = await client.GetAsync("/api/values");
+                    var response = await client.GetAsync("api/values");
                     if (response.IsSuccessStatusCode)
                     {
                         var responseContent = await response.Content.ReadAsStringAsync();

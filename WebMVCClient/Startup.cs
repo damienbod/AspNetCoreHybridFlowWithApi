@@ -15,13 +15,13 @@ namespace WebMVCClient
     {
         public Startup(IConfiguration configuration)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
-                .Enrich.WithProperty("App", "WebHybridClient")
-                .Enrich.FromLogContext()
-                .WriteTo.Seq("http://localhost:5341")
-                .WriteTo.RollingFile("../Logs/WebHybridClient")
-                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Verbose()
+            //    .Enrich.WithProperty("App", "WebHybridClient")
+            //    .Enrich.FromLogContext()
+            //    .WriteTo.Seq("http://localhost:5341")
+            //    .WriteTo.RollingFile("../Logs/WebHybridClient")
+            //    .CreateLogger();
 
             Configuration = configuration;
         }
