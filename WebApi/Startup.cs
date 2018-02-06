@@ -35,10 +35,11 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var stsServer = Configuration["StsServer"];
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
               .AddIdentityServerAuthentication(options =>
               {
-                  options.Authority = "https://localhost:44352";
+                  options.Authority = stsServer;
                   options.ApiName = "ProtectedApi";
                   options.ApiSecret = "api_in_protected_zone_secret";
                   options.RequireHttpsMetadata = true;
