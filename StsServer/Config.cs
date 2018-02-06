@@ -3,6 +3,7 @@
 
 using IdentityServer4;
 using IdentityServer4.Models;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 
 namespace QuickstartIdentityServer
@@ -60,8 +61,10 @@ namespace QuickstartIdentityServer
             };
         }
 
-        public static IEnumerable<Client> GetClients()
+        public static IEnumerable<Client> GetClients(IConfigurationSection authConfigurations)
         {
+            var hybridClientUrl = authConfigurations["HybridClientUrl"];
+
             return new List<Client>
             {
                 new Client
@@ -71,11 +74,18 @@ namespace QuickstartIdentityServer
                     ClientSecrets = {new Secret("hybrid_flow_secret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
-                    RedirectUris = { "https://localhost:44329/signin-oidc" },
-                    PostLogoutRedirectUris = { "https://localhost:44329/signout-callback-oidc" },
+                    RedirectUris = {
+                        "https://localhost:44329/signin-oidc",
+                        $"{hybridClientUrl}/signin-oidc"
+                    },
+                    PostLogoutRedirectUris = {
+                        "https://localhost:44329/signout-callback-oidc",
+                        $"{hybridClientUrl}/signout-callback-oidc"
+                    },
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:44329/"
+                        "https://localhost:44329/",
+                        $"{hybridClientUrl}/"
                     },
                     AllowedScopes = new List<string>
                     {
