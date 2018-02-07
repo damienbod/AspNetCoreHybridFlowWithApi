@@ -13,6 +13,7 @@ namespace WebMVCClient
 {
     public class Startup
     {
+        private string stsServer = "";
         public Startup(IConfiguration configuration)
         {
             //Log.Logger = new LoggerConfiguration()
@@ -35,7 +36,7 @@ namespace WebMVCClient
             services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
 
             var authConfigurations = Configuration.GetSection("AuthConfigurations");
-            var stsServer = authConfigurations["StsServer"];
+            stsServer = authConfigurations["StsServer"];
 
             services.AddAuthentication(options =>
             {
@@ -78,6 +79,22 @@ namespace WebMVCClient
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            //Registered before static files to always set header
+            app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
+            app.UseXContentTypeOptions();
+            app.UseReferrerPolicy(opts => opts.NoReferrer());
+            app.UseXXssProtection(options => options.EnabledWithBlockMode());
+            app.UseXfo(options => options.Deny());
+
+            app.UseCsp(opts => opts
+                .BlockAllMixedContent()
+                .StyleSources(s => s.Self())
+                .StyleSources(s => s.UnsafeInline())
+                .FontSources(s => s.Self())
+                .ImageSources(s => s.Self())
+                .ScriptSources(s => s.Self())
+            );
 
             app.UseStaticFiles();
 
