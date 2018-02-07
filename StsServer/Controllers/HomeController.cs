@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using IdentityServer4.Services;
 using IdentityServer4.Quickstart.UI.Models;
 using IdentityServer4.Quickstart.UI;
-using StsServer.Filters;
 
 namespace StsServer.Controllers
 {

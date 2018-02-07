@@ -10,7 +10,6 @@ using StsServer.Services;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http.Authentication;
 using IdentityServer4.Quickstart.UI;
-using StsServer.Filters;
 
 namespace StsServer.Controllers
 {

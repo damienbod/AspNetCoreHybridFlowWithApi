@@ -16,10 +16,8 @@ using StsServer.Models;
 using StsServer.Services;
 using IdentityModel;
 using IdentityServer4;
-using Microsoft.AspNetCore.Http.Authentication;
 using IdentityServer4.Extensions;
 using IdentityServer4.Quickstart.UI;
-using StsServer.Filters;
 
 namespace StsServer.Controllers
 {

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using IdentityServer4.Quickstart.UI.Models;
-using StsServer.Filters;
 
 namespace IdentityServer4.Quickstart.UI.Controllers
 {
