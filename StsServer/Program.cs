@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace IdentityServerWithAspNetIdentitySqlite
+namespace StsServer
 {
     public class Program
     {
@@ -19,6 +19,7 @@ namespace IdentityServerWithAspNetIdentitySqlite
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseApplicationInsights()
                 .UseStartup<Startup>()
                 .Build();
     }

@@ -13,15 +13,16 @@ namespace WebMVCClient
 {
     public class Startup
     {
+        private string stsServer = "";
         public Startup(IConfiguration configuration)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
-                .Enrich.WithProperty("App", "WebHybridClient")
-                .Enrich.FromLogContext()
-                .WriteTo.Seq("http://localhost:5341")
-                .WriteTo.RollingFile("../Logs/WebHybridClient")
-                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Verbose()
+            //    .Enrich.WithProperty("App", "WebHybridClient")
+            //    .Enrich.FromLogContext()
+            //    .WriteTo.Seq("http://localhost:5341")
+            //    .WriteTo.RollingFile("../Logs/WebHybridClient")
+            //    .CreateLogger();
 
             Configuration = configuration;
         }
@@ -32,6 +33,11 @@ namespace WebMVCClient
         {
             services.AddTransient<ApiService>();
 
+            services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
+
+            var authConfigurations = Configuration.GetSection("AuthConfigurations");
+            stsServer = authConfigurations["StsServer"];
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -41,7 +47,7 @@ namespace WebMVCClient
             .AddOpenIdConnect(options =>
             {
                 options.SignInScheme = "Cookies";
-                options.Authority = "https://localhost:44352";
+                options.Authority = stsServer;
                 options.RequireHttpsMetadata = true;
                 options.ClientId = "hybridclient";
                 options.ClientSecret = "hybrid_flow_secret";
@@ -73,6 +79,22 @@ namespace WebMVCClient
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            //Registered before static files to always set header
+            app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
+            app.UseXContentTypeOptions();
+            app.UseReferrerPolicy(opts => opts.NoReferrer());
+            app.UseXXssProtection(options => options.EnabledWithBlockMode());
+            app.UseXfo(options => options.Deny());
+
+            app.UseCsp(opts => opts
+                .BlockAllMixedContent()
+                .StyleSources(s => s.Self())
+                .StyleSources(s => s.UnsafeInline())
+                .FontSources(s => s.Self())
+                .ImageSources(s => s.Self())
+                .ScriptSources(s => s.Self())
+            );
 
             app.UseStaticFiles();
 

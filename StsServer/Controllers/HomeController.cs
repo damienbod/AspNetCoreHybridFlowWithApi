@@ -7,7 +7,7 @@ using IdentityServer4.Services;
 using IdentityServer4.Quickstart.UI.Models;
 using IdentityServer4.Quickstart.UI;
 
-namespace IdentityServerWithAspNetIdentity.Controllers
+namespace StsServer.Controllers
 {
     [SecurityHeaders]
     public class HomeController : Controller

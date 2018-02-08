@@ -35,10 +35,11 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var stsServer = Configuration["StsServer"];
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
               .AddIdentityServerAuthentication(options =>
               {
-                  options.Authority = "https://localhost:44352";
+                  options.Authority = stsServer;
                   options.ApiName = "ProtectedApi";
                   options.ApiSecret = "api_in_protected_zone_secret";
                   options.RequireHttpsMetadata = true;
@@ -67,6 +68,22 @@ namespace WebApi
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
+
+            //Registered before static files to always set header
+            app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
+            app.UseXContentTypeOptions();
+            app.UseReferrerPolicy(opts => opts.NoReferrer());
+            app.UseXXssProtection(options => options.EnabledWithBlockMode());
+            app.UseXfo(options => options.Deny());
+
+            app.UseCsp(opts => opts
+                .BlockAllMixedContent()
+                .StyleSources(s => s.Self())
+                .StyleSources(s => s.UnsafeInline())
+                .FontSources(s => s.Self())
+                .ImageSources(s => s.Self())
+                .ScriptSources(s => s.Self())
+            );
 
             app.UseStaticFiles();
 

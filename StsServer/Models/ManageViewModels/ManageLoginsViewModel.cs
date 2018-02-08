@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Identity;
 
-namespace IdentityServerWithAspNetIdentity.Models.ManageViewModels
+namespace StsServer.Models.ManageViewModels
 {
     public class ManageLoginsViewModel
     {

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using IdentityServerWithAspNetIdentity.Data;
-using IdentityServerWithAspNetIdentity.Models;
-using IdentityServerWithAspNetIdentity.Services;
+using StsServer.Data;
+using StsServer.Models;
+using StsServer.Services;
 using QuickstartIdentityServer;
 using IdentityServer4.Services;
 using System.Security.Cryptography.X509Certificates;
@@ -14,7 +14,7 @@ using System.IO;
 using Microsoft.AspNetCore.Identity;
 using Serilog;
 
-namespace IdentityServerWithAspNetIdentitySqlite
+namespace StsServer
 {
     public class Startup
     {
@@ -22,13 +22,13 @@ namespace IdentityServerWithAspNetIdentitySqlite
 
         public Startup(IHostingEnvironment env)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
-                .Enrich.WithProperty("App", "StsServer")
-                .Enrich.FromLogContext()
-                .WriteTo.Seq("http://localhost:5341")
-                .WriteTo.RollingFile("../Logs/StsServer")
-                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Verbose()
+            //    .Enrich.WithProperty("App", "StsServer")
+            //    .Enrich.FromLogContext()
+            //    .WriteTo.Seq("http://localhost:5341")
+            //    .WriteTo.RollingFile("../Logs/StsServer")
+            //    .CreateLogger();
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
@@ -45,10 +45,10 @@ namespace IdentityServerWithAspNetIdentitySqlite
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "damienbodserver.pfx"), "");
+            //var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "damienbodserver.pfx"), "");
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAuthentication();
 
@@ -62,11 +62,13 @@ namespace IdentityServerWithAspNetIdentitySqlite
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
+            var authConfigurations = Configuration.GetSection("AuthConfigurations");
+
             services.AddIdentityServer()
-                .AddSigningCredential(cert)
+                .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryClients(Config.GetClients())
+                .AddInMemoryClients(Config.GetClients(authConfigurations))
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddProfileService<IdentityWithAdditionalClaimsProfileService>();
         }
@@ -87,6 +89,20 @@ namespace IdentityServerWithAspNetIdentitySqlite
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
+            app.UseXContentTypeOptions();
+            app.UseReferrerPolicy(opts => opts.NoReferrer());
+            app.UseXXssProtection(options => options.EnabledWithBlockMode());
+
+            app.UseCsp(opts => opts
+                .BlockAllMixedContent()
+                .StyleSources(s => s.Self())
+                .StyleSources(s => s.UnsafeInline())
+                .FontSources(s => s.Self())
+                .ImageSources(s => s.Self())
+                .ScriptSources(s => s.Self())
+            );
 
             app.UseStaticFiles();
 
