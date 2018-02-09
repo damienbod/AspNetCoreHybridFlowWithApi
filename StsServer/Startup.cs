@@ -100,8 +100,10 @@ namespace StsServer
                 .StyleSources(s => s.Self())
                 .StyleSources(s => s.UnsafeInline())
                 .FontSources(s => s.Self())
+                .FrameAncestors(s => s.Self())
                 .ImageSources(s => s.Self())
                 .ScriptSources(s => s.Self())
+                .ScriptSources(s => s.UnsafeInline())
             );
 
             app.UseStaticFiles();

@@ -81,6 +81,8 @@ namespace WebApi
                 .StyleSources(s => s.Self())
                 .StyleSources(s => s.UnsafeInline())
                 .FontSources(s => s.Self())
+                .FormActions(s => s.Self())
+                .FrameAncestors(s => s.Self())
                 .ImageSources(s => s.Self())
                 .ScriptSources(s => s.Self())
             );

@@ -14,12 +14,6 @@ namespace IdentityServer4.Quickstart.UI
             var result = context.Result;
             if (result is ViewResult)
             {
-                // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
-                if (!context.HttpContext.Response.Headers.ContainsKey("X-Content-Type-Options"))
-                {
-                    context.HttpContext.Response.Headers.Add("X-Content-Type-Options", "nosniff");
-                }
-
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
                 if (!context.HttpContext.Response.Headers.ContainsKey("X-Frame-Options"))
                 {
@@ -42,13 +36,6 @@ namespace IdentityServer4.Quickstart.UI
                 if (!context.HttpContext.Response.Headers.ContainsKey("X-Content-Security-Policy"))
                 {
                     context.HttpContext.Response.Headers.Add("X-Content-Security-Policy", csp);
-                }
-
-                // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-                var referrer_policy = "no-referrer";
-                if (!context.HttpContext.Response.Headers.ContainsKey("Referrer-Policy"))
-                {
-                    context.HttpContext.Response.Headers.Add("Referrer-Policy", referrer_policy);
                 }
             }
         }
