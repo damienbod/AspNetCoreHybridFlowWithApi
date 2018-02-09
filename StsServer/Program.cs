@@ -20,6 +20,7 @@ namespace StsServer
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseKestrel(c => c.AddServerHeader = false)
                 .Build();
     }
 }
