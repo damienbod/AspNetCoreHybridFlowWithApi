@@ -11,10 +11,13 @@ namespace WebHybridClient
     public class ApiService
     {
         private readonly IOptions<AuthConfigurations> _authConfigurations;
+        private readonly IHttpClientFactory _clientFactory;
 
-        public ApiService(IOptions<AuthConfigurations> authConfigurations)
+
+        public ApiService(IOptions<AuthConfigurations> authConfigurations, IHttpClientFactory clientFactory)
         {
             _authConfigurations = authConfigurations;
+            _clientFactory = clientFactory;
         }
 
         public async Task<JArray> GetApiDataAsync()
@@ -36,22 +39,21 @@ namespace WebHybridClient
                     throw new ApplicationException($"Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
                 }
 
-                using (var client = new HttpClient())
+                var client = _clientFactory.CreateClient();
+
+                client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
+                client.SetBearerToken(tokenResponse.AccessToken);
+
+                var response = await client.GetAsync("api/values");
+                if (response.IsSuccessStatusCode)
                 {
-                    client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
-                    client.SetBearerToken(tokenResponse.AccessToken);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var data = JArray.Parse(responseContent);
 
-                    var response = await client.GetAsync("api/values");
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var responseContent = await response.Content.ReadAsStringAsync();
-                        var data = JArray.Parse(responseContent);
-
-                        return data;
-                    }
-
-                    throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
+                    return data;
                 }
+
+                throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
             }
             catch (Exception e)
             {
