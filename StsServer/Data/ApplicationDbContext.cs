@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using IdentityServerWithAspNetIdentity.Models;
+using StsServer.Models;
 
-namespace IdentityServerWithAspNetIdentity.Data
+namespace StsServer.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

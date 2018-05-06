@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using IdentityServerWithAspNetIdentity.Services;
+using StsServer.Services;
 
-namespace IdentityServerWithAspNetIdentity.Services
+namespace StsServer.Services
 {
     public static class EmailSenderExtensions
     {

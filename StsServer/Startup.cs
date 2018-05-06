@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using IdentityServerWithAspNetIdentity.Data;
-using IdentityServerWithAspNetIdentity.Services;
+using StsServer.Data;
+using StsServer.Services;
 using IdentityServer4.Services;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using Microsoft.AspNetCore.Identity;
+using StsServer.Models;
+using Serilog;
 
 namespace StsServer
 {
@@ -66,14 +68,14 @@ namespace StsServer
             services.AddMvc();
 
             services.AddTransient<IProfileService, IdentityWithAdditionalClaimsProfileService>();
-
             services.AddTransient<IEmailSender, AuthMessageSender>();
+            var authConfigurations = Configuration.GetSection("AuthConfigurations");
 
             services.AddIdentityServer()
                 .AddSigningCredential(cert)
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryClients(Config.GetClients())
+                .AddInMemoryClients(Config.GetClients(authConfigurations))
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddProfileService<IdentityWithAdditionalClaimsProfileService>();
         }

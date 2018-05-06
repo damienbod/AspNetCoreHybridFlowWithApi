@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using IdentityServerWithAspNetIdentity.Models;
-using IdentityServerWithAspNetIdentity.Models.AccountViewModels;
-using IdentityServerWithAspNetIdentity.Services;
+using StsServer.Models;
+using StsServer.Models.AccountViewModels;
+using StsServer.Services;
 using IdentityModel;
 using IdentityServer4.Extensions;
 using IdentityServer4;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 
-namespace IdentityServerWithAspNetIdentity.Controllers
+namespace StsServer.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
