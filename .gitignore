@@ -3,3 +3,4 @@
 **/bin
 /Logs
 /WebApi/WebApi.csproj.user
+/old.StsServer

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using IdentityServer4.Services;
-using IdentityServer4.Quickstart.UI.Models;
-using IdentityServer4.Quickstart.UI;
+using StsServer.Models;
 
 namespace StsServer.Controllers
 {
-    [SecurityHeaders]
     public class HomeController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;
@@ -27,13 +22,6 @@ namespace StsServer.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
             return View();
         }

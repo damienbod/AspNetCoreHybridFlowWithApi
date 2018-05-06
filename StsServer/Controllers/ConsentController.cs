@@ -5,10 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
-using IdentityServer4.Quickstart.UI.Models;
+using StsServer.Models;
 
-namespace IdentityServer4.Quickstart.UI.Controllers
+namespace StsServer.Controllers
 {
+    /// <summary>
+    /// This controller implements the consent logic
+    /// </summary>
     [SecurityHeaders]
     public class ConsentController : Controller
     {
