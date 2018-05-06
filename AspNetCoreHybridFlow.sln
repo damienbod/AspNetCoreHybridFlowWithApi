@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHybridClient", "WebMVCClient\WebHybridClient.csproj", "{5A1E5B5D-4CE7-439E-938A-DA9937091586}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tesrtt", "tesrtt\tesrtt.csproj", "{3399D082-458D-41E0-915E-ECFEF2025BAE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{5A1E5B5D-4CE7-439E-938A-DA9937091586}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A1E5B5D-4CE7-439E-938A-DA9937091586}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A1E5B5D-4CE7-439E-938A-DA9937091586}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3399D082-458D-41E0-915E-ECFEF2025BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3399D082-458D-41E0-915E-ECFEF2025BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3399D082-458D-41E0-915E-ECFEF2025BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3399D082-458D-41E0-915E-ECFEF2025BAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
