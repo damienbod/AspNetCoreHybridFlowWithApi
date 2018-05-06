@@ -32,7 +32,7 @@ namespace WebMVCClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ApiService>();
-
+            services.AddHttpClient();
             services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
 
             var authConfigurations = Configuration.GetSection("AuthConfigurations");
