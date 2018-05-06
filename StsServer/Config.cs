@@ -31,14 +31,6 @@ namespace StsServer
                     {
                         new Secret("hybrid_flow_secret".Sha256())
                     },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "scope_used_for_hybrid_flow",
-                            DisplayName = "Scope for the scope_used_for_hybrid_flow ApiResource"
-                        }
-                    },
                     UserClaims = { "role", "admin", "user", "some_api" }
                 },
                 new ApiResource("ProtectedApi")
