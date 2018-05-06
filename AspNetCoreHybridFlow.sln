@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StsServer", "StsServer\StsServer.csproj", "{718607C6-2D56-47F3-BDDE-356522EE286E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{AB31E1B1-F103-4A8B-BE79-1966C57C319A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{AB31E1B1-F103-4A8B-BE79-1966C57C319A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebHybridClient", "WebMVCClient\WebHybridClient.csproj", "{5A1E5B5D-4CE7-439E-938A-DA9937091586}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHybridClient", "WebMVCClient\WebHybridClient.csproj", "{5A1E5B5D-4CE7-439E-938A-DA9937091586}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
