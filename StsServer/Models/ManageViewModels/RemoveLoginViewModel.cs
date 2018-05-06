@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StsServer.Models.ManageViewModels
+namespace IdentityServerWithAspNetIdentity.Models.ManageViewModels
 {
     public class RemoveLoginViewModel
     {

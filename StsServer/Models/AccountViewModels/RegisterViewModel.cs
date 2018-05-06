@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StsServer.Models.AccountViewModels
+namespace IdentityServerWithAspNetIdentity.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
@@ -23,8 +23,5 @@ namespace StsServer.Models.AccountViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-        [Display(Name = "IsAdmin")]
-        public bool IsAdmin { get; set; }
     }
 }
