@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace QuickstartIdentityServer
+namespace StsServer
 {
     public class Program
     {

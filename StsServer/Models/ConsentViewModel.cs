@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IdentityServer4.Models;
 
-namespace IdentityServer4.Quickstart.UI.Models
+namespace StsServer.Models
 {
     public class ConsentViewModel : ConsentInputModel
     {
