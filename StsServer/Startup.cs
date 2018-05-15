@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.AspNetCore.Identity;
 using StsServer.Models;
 using Serilog;
+using Microsoft.AspNetCore.Mvc;
 
 namespace StsServer
 {
@@ -65,7 +66,7 @@ namespace StsServer
                      options.ClientSecret = _clientSecret;
                  });
 
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddTransient<IProfileService, IdentityWithAdditionalClaimsProfileService>();
             services.AddTransient<IEmailSender, AuthMessageSender>();
