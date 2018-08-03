@@ -58,13 +58,20 @@ namespace StsServer
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddAuthentication()
-                 .AddMicrosoftAccount(options =>
-                 {
-                     options.ClientId = _clientId;
-                     options.SignInScheme = "Identity.External";
-                     options.ClientSecret = _clientSecret;
-                 });
+            if(_clientId != null)
+            {
+                services.AddAuthentication()
+                .AddMicrosoftAccount(options =>
+                {
+                    options.ClientId = _clientId;
+                    options.SignInScheme = "Identity.External";
+                    options.ClientSecret = _clientSecret;
+                });
+            }
+            else
+            {
+                services.AddAuthentication();
+            }
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
