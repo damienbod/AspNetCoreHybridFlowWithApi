@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-
-namespace StsServer.Models
+namespace StsServerIdentity.Models
 {
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
@@ -10,11 +9,3 @@ namespace StsServer.Models
         public string SecuredFilesRole { get; set; }
     }
 }
-
-//new Claim(JwtClaimTypes.Role, "admin"),
-//new Claim(JwtClaimTypes.Role, "dataEventRecords.admin"),
-//new Claim(JwtClaimTypes.Role, "dataEventRecords.user"),
-//new Claim(JwtClaimTypes.Role, "dataEventRecords"),
-//new Claim(JwtClaimTypes.Role, "securedFiles.user"),
-//new Claim(JwtClaimTypes.Role, "securedFiles.admin"),
-//new Claim(JwtClaimTypes.Role, "securedFiles")

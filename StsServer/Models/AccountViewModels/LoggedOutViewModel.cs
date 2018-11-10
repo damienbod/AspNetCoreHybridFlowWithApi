@@ -1,6 +1,5 @@
-﻿namespace StsServer.Models.AccountViewModels
+﻿namespace StsServerIdentity.Models
 {
-
     public class LoggedOutViewModel
     {
         public string PostLogoutRedirectUri { get; set; }

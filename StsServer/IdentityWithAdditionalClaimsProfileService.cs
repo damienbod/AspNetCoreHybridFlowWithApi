@@ -7,10 +7,10 @@ using IdentityModel;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
-using StsServer.Models;
+using StsServerIdentity.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace StsServer
+namespace StsServerIdentity
 {
     public class IdentityWithAdditionalClaimsProfileService : IProfileService
     {

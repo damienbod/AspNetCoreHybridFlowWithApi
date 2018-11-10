@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StsServer", "StsServer\StsServer.csproj", "{718607C6-2D56-47F3-BDDE-356522EE286E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StsServerIdentity", "StsServer\StsServerIdentity.csproj", "{718607C6-2D56-47F3-BDDE-356522EE286E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{AB31E1B1-F103-4A8B-BE79-1966C57C319A}"
 EndProject

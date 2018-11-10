@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 
-namespace StsServer.Models.ManageViewModels
+namespace StsServerIdentity.Models.ManageViewModels
 {
     public class ExternalLoginsViewModel
     {

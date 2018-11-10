@@ -1,17 +1,13 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using IdentityServer4;
 using IdentityServer4.Models;
 
-namespace StsServer.Models
+namespace StsServerIdentity.Models
 {
     public class ConsentViewModel : ConsentInputModel
     {
-        public ConsentViewModel(ConsentInputModel model, string returnUrl, AuthorizationRequest request, Client client, Resources resources)
+        public ConsentViewModel(ConsentInputModel model, string returnUrl, AuthorizationRequest request, Client client, IdentityServer4.Models.Resources resources)
         {
             RememberConsent = model?.RememberConsent ?? true;
             ScopesConsented = model?.ScopesConsented ?? Enumerable.Empty<string>();
