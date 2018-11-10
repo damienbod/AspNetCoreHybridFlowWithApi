@@ -42,7 +42,7 @@ namespace StsServerIdentity
 
             if (env.IsDevelopment())
             {
-                builder.AddUserSecrets("AspNetCoreID4External-c23d2237a4-eb8832a1-452ac7");
+                builder.AddUserSecrets<Startup>();
             }
             _environment = env;
 
