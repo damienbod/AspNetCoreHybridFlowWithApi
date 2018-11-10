@@ -30,9 +30,9 @@ namespace StsServerIdentity
     {
         private readonly IHostingEnvironment _environment;
 
-		private string _clientId = "xxxxxx";
+        private string _clientId = "xxxxxx";
         private string _clientSecret = "xxxxx";
-		
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -40,7 +40,7 @@ namespace StsServerIdentity
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
-			if (env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 builder.AddUserSecrets("AspNetCoreID4External-c23d2237a4-eb8832a1-452ac7");
             }
@@ -54,13 +54,13 @@ namespace StsServerIdentity
 
         public void ConfigureServices(IServiceCollection services)
         {
-			_clientId = Configuration["MicrosoftClientId"];
+            _clientId = Configuration["MicrosoftClientId"];
             _clientSecret = Configuration["MircosoftClientSecret"];
             var stsConfig = Configuration.GetSection("StsConfig");
             var useLocalCertStore = Convert.ToBoolean(Configuration["UseLocalCertStore"]);
             var certificateThumbprint = Configuration["CertificateThumbprint"];
 
-            var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "damienbodserver.pfx"), "");
+            var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "sts_dev_cert.pfx"), "");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -71,14 +71,20 @@ namespace StsServerIdentity
             services.AddSingleton<LocService>();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddAuthentication()
-                 .AddOpenIdConnect("aad", "Login with Azure AD", options =>
-                 {
-                     options.Authority = $"https://login.microsoftonline.com/common";
-                     options.TokenValidationParameters = new TokenValidationParameters { ValidateIssuer = false };
-                     options.ClientId = "99eb0b9d-ca40-476e-b5ac-6f4c32bfb530";
-                     options.CallbackPath = "/signin-oidc";
-                 });
+            if (_clientId != null)
+            {
+                services.AddAuthentication()
+                .AddMicrosoftAccount(options =>
+                {
+                    options.ClientId = _clientId;
+                    options.SignInScheme = "Identity.External";
+                    options.ClientSecret = _clientSecret;
+                });
+            }
+            else
+            {
+                services.AddAuthentication();
+            }
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -134,15 +140,15 @@ namespace StsServerIdentity
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddProfileService<IdentityWithAdditionalClaimsProfileService>()
                 .AddOperationalStore(options =>
-                 {
-                     options.ConfigureDbContext = builder =>
-                         builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                             sql => sql.MigrationsAssembly(migrationsAssembly));
+                {
+                    options.ConfigureDbContext = builder =>
+                        builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                            sql => sql.MigrationsAssembly(migrationsAssembly));
 
-                     // this enables automatic token cleanup. this is optional.
-                     options.EnableTokenCleanup = true;
-                     options.TokenCleanupInterval = 30; // interval in seconds
-                 });
+                    // this enables automatic token cleanup. this is optional.
+                    options.EnableTokenCleanup = true;
+                    options.TokenCleanupInterval = 30; // interval in seconds
+                });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
