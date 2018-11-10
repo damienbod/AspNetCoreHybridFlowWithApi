@@ -4,3 +4,4 @@
 /Logs
 /WebApi/WebApi.csproj.user
 /old.StsServer
+/StsServer/node_modules

@@ -1,4 +1,4 @@
-﻿namespace StsServer.Models.ManageViewModels
+﻿namespace StsServerIdentity.Models.ManageViewModels
 {
     public class RemoveLoginViewModel
     {

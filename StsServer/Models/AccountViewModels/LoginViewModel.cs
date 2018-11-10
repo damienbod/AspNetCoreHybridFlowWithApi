@@ -1,18 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 
-namespace StsServer.Models.AccountViewModels
+namespace StsServerIdentity.Models
 {
-    public class LoginViewModel
+    public class LoginViewModel : LoginInputModel
     {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        public bool EnableLocalLogin { get; set; }
+        public IEnumerable<ExternalProvider> ExternalProviders { get; set; }
+    }
 
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
+    public class ExternalProvider
+    {
+        public string DisplayName { get; set; }
+        public string AuthenticationScheme { get; set; }
     }
 }
