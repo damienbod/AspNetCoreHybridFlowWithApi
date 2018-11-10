@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StsServerIdentity.Migrations
 {
-    public partial class initSts : Migration
+    public partial class init_sts : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,7 +41,9 @@ namespace StsServerIdentity.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    IsAdmin = table.Column<bool>(nullable: false)
+                    IsAdmin = table.Column<bool>(nullable: false),
+                    DataEventRecordsRole = table.Column<string>(nullable: true),
+                    SecuredFilesRole = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -60,7 +60,7 @@ namespace StsServerIdentity
             var useLocalCertStore = Convert.ToBoolean(Configuration["UseLocalCertStore"]);
             var certificateThumbprint = Configuration["CertificateThumbprint"];
 
-            var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "sts_dev_cert.pfx"), "");
+            var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "sts_dev_cert.pfx"), "1234");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -138,17 +138,17 @@ namespace StsServerIdentity
                 .AddInMemoryApiResources(Config.GetApiResources())
                 .AddInMemoryClients(Config.GetClients(stsConfig))
                 .AddAspNetIdentity<ApplicationUser>()
-                .AddProfileService<IdentityWithAdditionalClaimsProfileService>()
-                .AddOperationalStore(options =>
-                {
-                    options.ConfigureDbContext = builder =>
-                        builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                            sql => sql.MigrationsAssembly(migrationsAssembly));
+                .AddProfileService<IdentityWithAdditionalClaimsProfileService>();
+                //.AddOperationalStore(options =>
+                //{
+                //    options.ConfigureDbContext = builder =>
+                //        builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                //            sql => sql.MigrationsAssembly(migrationsAssembly));
 
-                    // this enables automatic token cleanup. this is optional.
-                    options.EnableTokenCleanup = true;
-                    options.TokenCleanupInterval = 30; // interval in seconds
-                });
+                //    // this enables automatic token cleanup. this is optional.
+                //    options.EnableTokenCleanup = true;
+                //    options.TokenCleanupInterval = 30; // interval in seconds
+                //});
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

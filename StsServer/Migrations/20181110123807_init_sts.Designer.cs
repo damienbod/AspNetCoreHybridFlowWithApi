@@ -10,14 +10,14 @@ using StsServerIdentity.Data;
 namespace StsServerIdentity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181019184222_initSts")]
-    partial class initSts
+    [Migration("20181110123807_init_sts")]
+    partial class init_sts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.2.0-preview3-35497")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -141,6 +141,8 @@ namespace StsServerIdentity.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("DataEventRecordsRole");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -163,6 +165,8 @@ namespace StsServerIdentity.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecuredFilesRole");
 
                     b.Property<string>("SecurityStamp");
 
