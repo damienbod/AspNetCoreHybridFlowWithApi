@@ -180,6 +180,7 @@ namespace StsServerIdentity
                 .ImageSources(imageSrc => imageSrc.Self())
                 .ImageSources(imageSrc => imageSrc.CustomSources("data:"))
                 .ScriptSources(s => s.Self())
+                .ScriptSources(s => s.UnsafeInline())
             );
             var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(locOptions.Value);
