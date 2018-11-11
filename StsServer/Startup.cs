@@ -23,6 +23,7 @@ using StsServerIdentity.Services;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
+using StsServerIdentity.Filters;
 
 namespace StsServerIdentity
 {
@@ -116,7 +117,10 @@ namespace StsServerIdentity
                     options.RequestCultureProviders.Insert(0, providerQuery);
                 });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new SecurityHeadersAttribute());
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization(options =>
                 {

@@ -20,7 +20,6 @@ using StsServerIdentity.Filters;
 
 namespace StsServerIdentity.Controllers
 {
-    [SecurityHeaders]
     [Authorize]
     [Route("[controller]/[action]")]
     public class ManageController : Controller

@@ -6,7 +6,6 @@ using StsServerIdentity.Filters;
 
 namespace StsServerIdentity.Controllers
 {
-    [SecurityHeaders]
     public class HomeController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;

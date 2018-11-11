@@ -24,7 +24,6 @@ using StsServerIdentity.Filters;
 
 namespace StsServerIdentity.Controllers
 {
-    [SecurityHeaders]
     [Authorize]
     public class AccountController : Controller
     {
