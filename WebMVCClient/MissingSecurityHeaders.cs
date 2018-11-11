@@ -17,7 +17,7 @@ namespace WebHybridClient
                     context.HttpContext.Response.Headers.Add("feature-policy", featurePolicy);
                 }
 
-                var csp = "script-src 'self';style-src 'self' 'unsafe-inline';img-src 'self' data:;font-src 'self';form-action 'self';frame-ancestors 'self';block-all-mixed-content";
+                var csp = "script-src 'self';style-src 'self';img-src 'self' data:;font-src 'self';form-action 'self';frame-ancestors 'self';block-all-mixed-content";
                 // IE
                 if (!context.HttpContext.Response.Headers.ContainsKey("X-Content-Security-Policy"))
                 {
