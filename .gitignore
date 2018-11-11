@@ -5,3 +5,6 @@
 /WebApi/WebApi.csproj.user
 /old.StsServer
 /StsServer/node_modules
+/StsServer/Properties/PublishProfiles/security-headers-sts - Web Deploy.pubxml.user
+/WebApi/Properties/PublishProfiles/security-headers-web-api - Web Deploy.pubxml.user
+/WebMVCClient/Properties/PublishProfiles/security-headers-sts-webhybridclient - Web Deploy.pubxml.user
