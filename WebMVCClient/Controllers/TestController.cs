@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebMVCClient.Controllers
+namespace WebHybridClient.Controllers
 {
     [Route("[controller]")]
     public class StatusController : Controller

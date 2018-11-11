@@ -1,4 +1,4 @@
-﻿namespace WebMVCClient
+﻿namespace WebHybridClient
 {
     public class AuthConfigurations
     {

@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WebMVCClient": {
+    "WebHybridClient": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

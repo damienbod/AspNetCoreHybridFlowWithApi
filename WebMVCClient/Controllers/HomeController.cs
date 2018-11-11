@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebHybridClient;
-using WebMVCClient.Models;
+using WebHybridClient.Models;
 
-namespace WebMVCClient.Controllers
+namespace WebHybridClient.Controllers
 {
     [Authorize]
     public class HomeController : Controller

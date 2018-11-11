@@ -8,23 +8,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using WebHybridClient;
 
-namespace WebMVCClient
+namespace WebHybridClient
 {
     public class Startup
     {
         private string stsServer = "";
         public Startup(IConfiguration configuration)
         {
-            //Log.Logger = new LoggerConfiguration()
-            //    .MinimumLevel.Verbose()
-            //    .Enrich.WithProperty("App", "WebHybridClient")
-            //    .Enrich.FromLogContext()
-            //    .WriteTo.Seq("http://localhost:5341")
-            //    .WriteTo.RollingFile("../Logs/WebHybridClient")
-            //    .CreateLogger();
-
             Configuration = configuration;
         }
 
@@ -66,12 +57,8 @@ namespace WebMVCClient
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
         
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-            loggerFactory.AddSerilog();
-
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             if (env.IsDevelopment())

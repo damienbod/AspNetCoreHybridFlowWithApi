@@ -1,6 +1,6 @@
 using System;
 
-namespace WebMVCClient.Models
+namespace WebHybridClient.Models
 {
     public class ErrorViewModel
     {

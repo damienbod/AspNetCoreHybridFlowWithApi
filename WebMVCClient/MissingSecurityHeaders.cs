@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace WebMVCClient
+namespace WebHybridClient
 {
     public class MissingSecurityHeaders : ActionFilterAttribute
     {
