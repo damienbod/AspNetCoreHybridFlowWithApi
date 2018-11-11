@@ -8,3 +8,4 @@
 /StsServer/Properties/PublishProfiles/security-headers-sts - Web Deploy.pubxml.user
 /WebApi/Properties/PublishProfiles/security-headers-web-api - Web Deploy.pubxml.user
 /WebMVCClient/Properties/PublishProfiles/security-headers-sts-webhybridclient - Web Deploy.pubxml.user
+/StsServer/StsServerIdentity.csproj.user
