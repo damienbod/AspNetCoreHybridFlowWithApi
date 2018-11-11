@@ -6,9 +6,9 @@
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.8.391" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="IdentityServer4" Version="2.3.0-preview1-update2" />
-    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.3.0-preview1-update2" />
-    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.3.0-preview1-update1" />
+    <PackageReference Include="IdentityServer4" Version="2.3.0-preview2" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.3.0-preview2" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.3.0-preview2" />
     
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0-preview3-35497">
       <PrivateAssets>all</PrivateAssets>
