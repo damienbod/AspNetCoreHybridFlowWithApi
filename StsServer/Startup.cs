@@ -174,7 +174,8 @@ namespace StsServerIdentity
                 .StyleSources(s => s.UnsafeInline())
                 .FontSources(s => s.Self())
                 .FrameAncestors(s => s.Self())
-                .ImageSources(s => s.Self())
+                .ImageSources(imageSrc => imageSrc.Self())
+                .ImageSources(imageSrc => imageSrc.CustomSources("data:"))
                 .ScriptSources(s => s.Self())
                 .ScriptSources(s => s.UnsafeInline())
             );

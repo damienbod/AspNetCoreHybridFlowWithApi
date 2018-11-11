@@ -60,7 +60,10 @@ namespace WebMVCClient
 
             services.AddAuthorization();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new MissingSecurityHeaders());
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -94,7 +97,8 @@ namespace WebMVCClient
                 .FontSources(s => s.Self())
                 .FormActions(s => s.Self())
                 .FrameAncestors(s => s.Self())
-                .ImageSources(s => s.Self())
+                .ImageSources(imageSrc => imageSrc.Self())
+                .ImageSources(imageSrc => imageSrc.CustomSources("data:"))
                 .ScriptSources(s => s.Self())
             );
 
