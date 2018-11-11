@@ -56,7 +56,7 @@ namespace StsServerIdentity
         {
             _clientId = Configuration["MicrosoftClientId"];
             _clientSecret = Configuration["MircosoftClientSecret"];
-            var stsConfig = Configuration.GetSection("StsConfig");
+            var authConfigurations = Configuration.GetSection("AuthConfigurations");
             var useLocalCertStore = Convert.ToBoolean(Configuration["UseLocalCertStore"]);
             var certificateThumbprint = Configuration["CertificateThumbprint"];
 
@@ -133,12 +133,13 @@ namespace StsServerIdentity
 
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
+
             services.AddIdentityServer()
                 //.AddSigningCredential(cert)
                 .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryClients(Config.GetClients(stsConfig))
+                .AddInMemoryClients(Config.GetClients(authConfigurations))
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddProfileService<IdentityWithAdditionalClaimsProfileService>();
                 //.AddOperationalStore(options =>
