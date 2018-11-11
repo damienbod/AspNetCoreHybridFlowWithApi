@@ -16,9 +16,11 @@ using StsServerIdentity.Resources;
 using System.Reflection;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using StsServerIdentity.Filters;
 
 namespace StsServerIdentity.Controllers
 {
+    [SecurityHeaders]
     [Authorize]
     [Route("[controller]/[action]")]
     public class ManageController : Controller

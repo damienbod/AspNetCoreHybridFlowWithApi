@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using IdentityServer4.Services;
 using StsServerIdentity.Models;
+using StsServerIdentity.Filters;
 
 namespace StsServerIdentity.Controllers
 {
+    [SecurityHeaders]
     public class HomeController : Controller
     {
         private readonly IIdentityServerInteractionService _interaction;
