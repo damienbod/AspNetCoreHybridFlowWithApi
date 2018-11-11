@@ -71,7 +71,6 @@ namespace WebApi
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
             }
 
             //Registered before static files to always set header
