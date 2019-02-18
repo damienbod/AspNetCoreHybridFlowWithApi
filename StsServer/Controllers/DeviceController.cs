@@ -228,7 +228,7 @@ namespace StsServerIdentity.Controllers
             {
                 Name = IdentityServerConstants.StandardScopes.OfflineAccess,
                 DisplayName = ConsentOptions.OfflineAccessDisplayName,
-                Description = "Access to your applications and resources, even when you are offline",
+                Description = ConsentOptions.OfflineAccessDescription,
                 Emphasize = true,
                 Checked = check
             };
