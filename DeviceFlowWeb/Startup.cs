@@ -99,8 +99,6 @@ namespace DeviceFlowWeb
 
             app.UseAuthentication();
 
-
-            app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseMvc();
