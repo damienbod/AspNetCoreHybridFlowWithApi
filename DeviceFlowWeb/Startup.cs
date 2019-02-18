@@ -21,15 +21,16 @@ namespace DeviceFlowWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<DeviceFlowService>();
+            services.AddHttpClient();
+            services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-            services.AddHttpClient();
-            services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
 
             var authConfigurations = Configuration.GetSection("AuthConfigurations");
             stsServer = authConfigurations["StsServer"];

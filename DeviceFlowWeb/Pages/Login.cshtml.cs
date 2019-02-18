@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DeviceFlowWeb.Pages
 {
     public class LoginModel : PageModel
     {
-        public void OnGet()
+        private readonly DeviceFlowService _deviceFlowService;
+
+        public LoginModel(DeviceFlowService deviceFlowService)
         {
-            string test = "";
+            _deviceFlowService = deviceFlowService;
+        }
+
+        public async Task OnGetAsync()
+        {
+            var codes = await _deviceFlowService.BeginLogin();
         }
     }
 }
