@@ -8,7 +8,7 @@ https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-a
 
 # History
 
-- 2019-02-18 Updating STS
+- 2019-02-18 Updating STS, adding Device Flow
 
 - 2018-11-11 Updating Nuget packages, added feauture-policy
 
