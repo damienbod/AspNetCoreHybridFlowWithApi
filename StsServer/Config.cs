@@ -110,8 +110,7 @@ namespace StsServerIdentity
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email,
-                        "scope_used_for_api_in_protected_zone"
+                        IdentityServerConstants.StandardScopes.Email
                     }
                 }
             };
