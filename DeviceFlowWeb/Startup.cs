@@ -39,19 +39,19 @@ namespace DeviceFlowWeb
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddCookie()
-            .AddOpenIdConnect(options =>
-            {
-                options.SignInScheme = "Cookies";
-                options.Authority = stsServer;
-                options.RequireHttpsMetadata = true;
-                options.ClientId = "deviceFlowWebClient";
-                options.ClientSecret = "device_flow_secret";
-                options.ResponseType = "code id_token";
-                options.Scope.Add("scope_used_for_hybrid_flow");
-                options.Scope.Add("profile");
-                options.SaveTokens = true;
-            });
+            .AddCookie();
+            //.AddOpenIdConnect(options =>
+            //{
+            //    options.SignInScheme = "Cookies";
+            //    options.Authority = stsServer;
+            //    options.RequireHttpsMetadata = true;
+            //    options.ClientId = "deviceFlowWebClient";
+            //    options.ClientSecret = "device_flow_secret";
+            //    options.ResponseType = "code id_token";
+            //    options.Scope.Add("scope_used_for_hybrid_flow");
+            //    options.Scope.Add("profile");
+            //    options.SaveTokens = true;
+            //});
 
             services.AddAuthorization();
 
@@ -83,17 +83,17 @@ namespace DeviceFlowWeb
             app.UseXXssProtection(options => options.EnabledWithBlockMode());
             app.UseXfo(options => options.Deny());
 
-            app.UseCsp(opts => opts
-                .BlockAllMixedContent()
-                .StyleSources(s => s.Self())
-                .StyleSources(s => s.UnsafeInline())
-                .FontSources(s => s.Self())
-                .FormActions(s => s.Self())
-                .FrameAncestors(s => s.Self())
-                .ImageSources(imageSrc => imageSrc.Self())
-                .ImageSources(imageSrc => imageSrc.CustomSources("data:"))
-                .ScriptSources(s => s.Self())
-            );
+            //app.UseCsp(opts => opts
+            //    .BlockAllMixedContent()
+            //    .StyleSources(s => s.Self())
+            //    .StyleSources(s => s.UnsafeInline())
+            //    .FontSources(s => s.Self())
+            //    .FormActions(s => s.Self())
+            //    .FrameAncestors(s => s.Self())
+            //    .ImageSources(imageSrc => imageSrc.Self())
+            //    .ImageSources(imageSrc => imageSrc.CustomSources("data:"))
+            //    .ScriptSources(s => s.Self())
+            //);
 
             app.UseStaticFiles();
 
