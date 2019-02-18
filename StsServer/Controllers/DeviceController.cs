@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StsServerIdentity.Filters;
 using StsServerIdentity.Models;
-using StsServerIdentity.Models.DeviceViewModels;
 
 namespace StsServerIdentity.Controllers
 {
@@ -170,7 +169,7 @@ namespace StsServerIdentity.Controllers
             return null;
         }
 
-        private DeviceAuthorizationViewModel CreateConsentViewModel(string userCode, DeviceAuthorizationInputModel model, Client client, Resources resources)
+        private DeviceAuthorizationViewModel CreateConsentViewModel(string userCode, DeviceAuthorizationInputModel model, Client client, IdentityServer4.Models.Resources resources)
         {
             var vm = new DeviceAuthorizationViewModel
             {

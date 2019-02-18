@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+
 using IdentityServer4;
 using IdentityServer4.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StsServerIdentity.Models
 {
@@ -23,7 +26,7 @@ namespace StsServerIdentity.Models
             AllowRememberConsent = client.AllowRememberConsent;
 
             IdentityScopes = resources.IdentityResources.Select(x => new ScopeViewModel(x, ScopesConsented.Contains(x.Name) || model == null)).ToArray();
-            ResourceScopes = resources.ApiResources.SelectMany(x=>x.Scopes).Select(x => new ScopeViewModel(x, ScopesConsented.Contains(x.Name) || model == null)).ToArray();
+            ResourceScopes = resources.ApiResources.SelectMany(x => x.Scopes).Select(x => new ScopeViewModel(x, ScopesConsented.Contains(x.Name) || model == null)).ToArray();
             if (resources.OfflineAccess)
             {
                 ResourceScopes = ResourceScopes.Union(new ScopeViewModel[] {
@@ -40,5 +43,4 @@ namespace StsServerIdentity.Models
         public IEnumerable<ScopeViewModel> IdentityScopes { get; set; }
         public IEnumerable<ScopeViewModel> ResourceScopes { get; set; }
     }
-
 }
