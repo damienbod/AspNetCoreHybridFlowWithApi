@@ -5,5 +5,24 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Login</h1>
 
+Login: <p>@Model.AuthenticatorUri</p>
+
+<br />
+
+User Code: <p>@Model.UserCode</p>
+<br />
+<br />
+
+<div id="qrCode"></div>
+<div id="qrCodeData" data-url="@Html.Raw(Model.AuthenticatorUri)"></div>
+
+<script src="~/js/qrcode.min.js"></script>
+<script type="text/javascript">
+        new QRCode(document.getElementById("qrCode"),
+            {
+                text: "@Html.Raw(Model.AuthenticatorUri)",
+                width: 150,
+                height: 150
+            });
+</script>

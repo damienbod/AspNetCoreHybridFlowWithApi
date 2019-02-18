@@ -7,6 +7,10 @@ namespace DeviceFlowWeb.Pages
     {
         private readonly DeviceFlowService _deviceFlowService;
 
+        public string AuthenticatorUri { get; set; }
+
+        public string UserCode { get; set; }
+
         public LoginModel(DeviceFlowService deviceFlowService)
         {
             _deviceFlowService = deviceFlowService;
@@ -15,6 +19,8 @@ namespace DeviceFlowWeb.Pages
         public async Task OnGetAsync()
         {
             var codes = await _deviceFlowService.BeginLogin();
+            AuthenticatorUri = codes.VerificationUri;
+            UserCode = codes.UserCode;
         }
     }
 }
