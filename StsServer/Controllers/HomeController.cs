@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using IdentityServer4.Services;
 using StsServerIdentity.Models;
-using StsServerIdentity.Filters;
 
 namespace StsServerIdentity.Controllers
 {
