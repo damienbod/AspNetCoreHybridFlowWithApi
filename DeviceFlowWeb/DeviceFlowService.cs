@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DeviceFlowWeb
@@ -38,15 +39,46 @@ namespace DeviceFlowWeb
                 throw new Exception(response.Error);
             }
 
-            //Console.WriteLine($"user code   : {response.UserCode}");
-            //Console.WriteLine($"device code : {response.DeviceCode}");
-            //Console.WriteLine($"URL         : {response.VerificationUri}");
-            //Console.WriteLine($"Complete URL: {response.VerificationUriComplete}");
-
-            //Console.WriteLine($"\nPress enter to launch browser ({response.VerificationUri})");
-            //Console.ReadLine();
-
             return response;
+        }
+
+        public async Task<TokenResponse> RequestTokenAsync(DeviceAuthorizationResponse authorizeResponse)
+        {
+            var discoClient = new DiscoveryClient(_authConfigurations.Value.StsServer);
+            var disco = await discoClient.GetAsync();
+            if (disco.IsError)
+            {
+                throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
+            }
+
+            var client = _clientFactory.CreateClient();
+
+            while (true)
+            {
+                var response = await client.RequestDeviceTokenAsync(new DeviceTokenRequest
+                {
+                    Address = disco.TokenEndpoint,
+                    ClientId = "device",
+                    DeviceCode = authorizeResponse.DeviceCode
+                });
+
+                if (response.IsError)
+                {
+                    if (response.Error == "authorization_pending" || response.Error == "slow_down")
+                    {
+                        Console.WriteLine($"{response.Error}...waiting.");
+                        Thread.Sleep(authorizeResponse.Interval * 1000);
+                    }
+                    else
+                    {
+                        throw new Exception(response.Error);
+                    }
+                }
+                else
+                {
+                    return response;
+                }
+            }
         }
 
     }

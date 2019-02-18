@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using IdentityModel.Client;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DeviceFlowWeb.Pages
@@ -6,6 +8,8 @@ namespace DeviceFlowWeb.Pages
     public class LoginModel : PageModel
     {
         private readonly DeviceFlowService _deviceFlowService;
+
+        private DeviceAuthorizationResponse _deviceAuthorizationResponse;
 
         public string AuthenticatorUri { get; set; }
 
@@ -18,9 +22,17 @@ namespace DeviceFlowWeb.Pages
 
         public async Task OnGetAsync()
         {
-            var codes = await _deviceFlowService.BeginLogin();
-            AuthenticatorUri = codes.VerificationUri;
-            UserCode = codes.UserCode;
+            _deviceAuthorizationResponse = await _deviceFlowService.BeginLogin();
+            AuthenticatorUri = _deviceAuthorizationResponse.VerificationUri;
+            UserCode = _deviceAuthorizationResponse.UserCode;
+
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var tokenresponse = await _deviceFlowService.RequestTokenAsync(_deviceAuthorizationResponse);
+
+            return Page();
         }
     }
 }

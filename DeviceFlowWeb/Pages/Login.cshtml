@@ -17,6 +17,10 @@ User Code: <p>@Model.UserCode</p>
 <div id="qrCode"></div>
 <div id="qrCodeData" data-url="@Html.Raw(Model.AuthenticatorUri)"></div>
 
+<form method="post">
+<button class="btn" type="submit">Get token</button>
+</form>
+
 <script src="~/js/qrcode.min.js"></script>
 <script type="text/javascript">
         new QRCode(document.getElementById("qrCode"),
