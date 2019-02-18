@@ -95,6 +95,24 @@ namespace StsServerIdentity
                     ClientSecrets = new List<Secret> { new Secret { Value = "api_in_protected_zone_secret".Sha256() } },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     AllowedScopes = new List<string> { "scope_used_for_api_in_protected_zone" }
+                },
+                new Client
+                {
+                    ClientId = "deviceFlowWebClient",
+                    ClientName = "Device Flow Client",
+
+                    AllowedGrantTypes = GrantTypes.DeviceFlow,
+                    RequireClientSecret = false,
+
+                    AllowOfflineAccess = true,
+
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "scope_used_for_api_in_protected_zone"
+                    }
                 }
             };
         }

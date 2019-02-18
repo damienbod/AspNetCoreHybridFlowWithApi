@@ -45,7 +45,7 @@ namespace DeviceFlowWeb
                 options.SignInScheme = "Cookies";
                 options.Authority = stsServer;
                 options.RequireHttpsMetadata = true;
-                options.ClientId = "deviceflow";
+                options.ClientId = "deviceFlowWebClient";
                 options.ClientSecret = "device_flow_secret";
                 options.ResponseType = "code id_token";
                 options.Scope.Add("scope_used_for_hybrid_flow");
