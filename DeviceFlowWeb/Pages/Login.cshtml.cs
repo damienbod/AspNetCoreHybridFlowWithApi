@@ -45,7 +45,7 @@ namespace DeviceFlowWeb.Pages
 
             if(interval.GetValueOrDefault() <= 0)
             {
-                interval = 1;
+                interval = 5;
             }
 
             var tokenresponse = await _deviceFlowService.RequestTokenAsync(deviceCode, interval.Value);
@@ -61,8 +61,8 @@ namespace DeviceFlowWeb.Pages
             var claimsIdentity = new ClaimsIdentity(
                 claims, 
                 CookieAuthenticationDefaults.AuthenticationScheme, 
-                "name", "user");
-
+                "name", 
+                "user");
 
             var authProperties = new AuthenticationProperties();
 
@@ -89,7 +89,7 @@ namespace DeviceFlowWeb.Pages
             return Redirect("/Index");
         }
 
-        public IEnumerable<Claim> GetClaims(string token)
+        private IEnumerable<Claim> GetClaims(string token)
         {
             var validJwt = new JwtSecurityToken(token);
             return validJwt.Claims;
