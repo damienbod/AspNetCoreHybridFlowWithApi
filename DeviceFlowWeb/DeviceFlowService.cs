@@ -57,29 +57,38 @@ namespace DeviceFlowWeb
 
             while (true)
             {
-                var response = await client.RequestDeviceTokenAsync(new DeviceTokenRequest
+                if(!string.IsNullOrWhiteSpace(deviceCode))
                 {
-                    Address = disco.TokenEndpoint, 
-                    ClientId = "deviceFlowWebClient",
-                    DeviceCode = deviceCode
-                });
-
-                if (response.IsError)
-                {
-                    if (response.Error == "authorization_pending" || response.Error == "slow_down")
+                    var response = await client.RequestDeviceTokenAsync(new DeviceTokenRequest
                     {
-                        Console.WriteLine($"{response.Error}...waiting.");
-                        Thread.Sleep(interval * 1000);
+                        Address = disco.TokenEndpoint,
+                        ClientId = "deviceFlowWebClient",
+                        DeviceCode = deviceCode
+                    });
+
+                    if (response.IsError)
+                    {
+                        if (response.Error == "authorization_pending" || response.Error == "slow_down")
+                        {
+                            Console.WriteLine($"{response.Error}...waiting.");
+                            Thread.Sleep(interval * 1000);
+                        }
+                        else
+                        {
+                            throw new Exception(response.Error);
+                        }
                     }
                     else
                     {
-                        throw new Exception(response.Error);
+                        return response;
                     }
                 }
                 else
                 {
-                    return response;
+                    // lets wait
+                    Thread.Sleep(interval * 1000);
                 }
+                
             }
         }
 

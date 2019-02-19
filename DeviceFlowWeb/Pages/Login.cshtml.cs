@@ -25,6 +25,8 @@ namespace DeviceFlowWeb.Pages
 
         public async Task OnGetAsync()
         {
+            HttpContext.Session.SetString("DeviceCode", string.Empty);
+
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             var deviceAuthorizationResponse = await _deviceFlowService.BeginLogin();

@@ -20,10 +20,11 @@ User Code: <p>@Model.UserCode</p>
 <br />
 <br />
 
-<form method="post">
-<button class="btn btn-secondary" type="submit">Get token</button>
+<form data-ajax="true"  method="post" data-ajax-method="POST">
+    <button class="btn btn-secondary" name="begin_token_check" id="begin_token_check" type="submit">Get token</button>
 </form>
 
+@section scripts {
 <script src="~/js/qrcode.min.js"></script>
 <script type="text/javascript">
         new QRCode(document.getElementById("qrCode"),
@@ -32,4 +33,10 @@ User Code: <p>@Model.UserCode</p>
                 width: 150,
                 height: 150
             });
+
+    $(document).ready(() => {
+        document.getElementById('begin_token_check').click();
+    });
+
 </script>
+}
