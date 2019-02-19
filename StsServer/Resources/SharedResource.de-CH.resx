@@ -848,7 +848,19 @@
   <data name="Recovery codes" xml:space="preserve">
     <value>Wiederherstellungscodes</value>
   </data>
+  <data name="User profile" xml:space="preserve">
+    <value>Benutzerprofil</value>
+  </data>
   <data name="You must pick at least one permission" xml:space="preserve">
     <value>Sie müssen mindestens eine Erlaubnis auswählen</value>
+  </data>
+  <data name="Your email address" xml:space="preserve">
+    <value>deine Emailadresse</value>
+  </data>
+  <data name="Your user identifier" xml:space="preserve">
+    <value>Ihre Benutzerkennung</value>
+  </data>
+  <data name="Your user profile information (first name, last name, etc.)" xml:space="preserve">
+    <value>Ihre Benutzerprofilinformationen (Vorname, Nachname usw.)</value>
   </data>
 </root>
