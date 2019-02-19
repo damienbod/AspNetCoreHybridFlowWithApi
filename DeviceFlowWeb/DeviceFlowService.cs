@@ -28,11 +28,13 @@ namespace DeviceFlowWeb
             }
 
             var client = _clientFactory.CreateClient();
-            var response = await client.RequestDeviceAuthorizationAsync(new DeviceAuthorizationRequest
+            var deviceAuthorizationRequest = new DeviceAuthorizationRequest
             {
                 Address = disco.DeviceAuthorizationEndpoint,
                 ClientId = "deviceFlowWebClient"
-            });
+            };
+            deviceAuthorizationRequest.Scope = "email profile openid";
+            var response = await client.RequestDeviceAuthorizationAsync(deviceAuthorizationRequest);
 
             if (response.IsError)
             {
@@ -57,7 +59,7 @@ namespace DeviceFlowWeb
             {
                 var response = await client.RequestDeviceTokenAsync(new DeviceTokenRequest
                 {
-                    Address = disco.TokenEndpoint,
+                    Address = disco.TokenEndpoint, 
                     ClientId = "deviceFlowWebClient",
                     DeviceCode = deviceCode
                 });

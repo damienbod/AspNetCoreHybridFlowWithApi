@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
@@ -51,6 +50,8 @@ namespace DeviceFlowWeb.Pages
 
             var tokenresponse = await _deviceFlowService.RequestTokenAsync(deviceCode, interval.Value);
 
+            /// TODO Add the cliams from the token to the cookie
+            /// 
             if (tokenresponse.IsError)
             {
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");

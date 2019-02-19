@@ -104,6 +104,7 @@ namespace StsServerIdentity
                     AllowedGrantTypes = GrantTypes.DeviceFlow,
                     RequireClientSecret = false,
 
+                    AlwaysIncludeUserClaimsInIdToken = true,
                     AllowOfflineAccess = true,
 
                     AllowedScopes =
