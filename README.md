@@ -27,3 +27,9 @@ https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-a
 https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/cookie/samples/2.x/CookieSample
 
 https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-2.2
+
+https://leastprivilege.com/2019/02/08/try-device-flow-with-identityserver4/
+
+https://tools.ietf.org/wg/oauth/draft-ietf-oauth-device-flow/
+
+https://github.com/leastprivilege/AspNetCoreSecuritySamples/tree/aspnetcore21/DeviceFlow
