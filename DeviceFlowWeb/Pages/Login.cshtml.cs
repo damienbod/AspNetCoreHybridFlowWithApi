@@ -92,6 +92,22 @@ namespace DeviceFlowWeb.Pages
                 // The full path or absolute URI to be used as an http 
                 // redirect response value.
             };
+            var accessToken = new AuthenticationToken
+            {
+                Name = "access_token",
+                Value = tokenresponse.AccessToken
+            };
+
+            var idToken = new AuthenticationToken
+            {
+                Name = "id_token",
+                Value = tokenresponse.IdentityToken
+            };
+
+            authProperties.StoreTokens(new List<AuthenticationToken>
+            {
+                accessToken, idToken
+            });
 
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
