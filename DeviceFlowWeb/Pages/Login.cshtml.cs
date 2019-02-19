@@ -65,22 +65,20 @@ namespace DeviceFlowWeb.Pages
 
 
             var authProperties = new AuthenticationProperties();
-            var accessToken = new AuthenticationToken
-            {
-                Name = "access_token",
-                Value = tokenresponse.AccessToken
-            };
-
-            var idToken = new AuthenticationToken
-            {
-                Name = "id_token",
-                Value = tokenresponse.IdentityToken
-            };
 
             // save the tokens in the cookie
             authProperties.StoreTokens(new List<AuthenticationToken>
             {
-                accessToken, idToken
+                new AuthenticationToken
+                {
+                    Name = "access_token",
+                    Value = tokenresponse.AccessToken
+                },
+                new AuthenticationToken
+                {
+                    Name = "id_token",
+                    Value = tokenresponse.IdentityToken
+                }
             });
 
             await HttpContext.SignInAsync(
