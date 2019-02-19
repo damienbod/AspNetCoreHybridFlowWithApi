@@ -44,7 +44,7 @@ namespace DeviceFlowWeb
             return response;
         }
 
-        public async Task<TokenResponse> RequestTokenAsync(string deviceCode, int interval)
+        internal async Task<TokenResponse> RequestTokenAsync(string deviceCode, int interval)
         {
             var discoClient = new DiscoveryClient(_authConfigurations.Value.StsServer);
             var disco = await discoClient.GetAsync();
