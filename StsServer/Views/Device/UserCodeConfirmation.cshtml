@@ -29,8 +29,8 @@
         <div class="col-sm-8">
             @await Html.PartialAsync("_ValidationSummary")
 
-            <form asp-action="Index" class="consent-form">
-                <input type="hidden" asp-for="ReturnUrl" />
+            <form asp-action="Callback" class="consent-form">
+                <input asp-for="UserCode" type="hidden" value="@Model.UserCode" />
 
                 <div>@SharedLocalizer.GetLocalizedHtmlString("CONSENT_IS_CHECK_UNREQUIRED")</div>
 
