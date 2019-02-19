@@ -830,6 +830,9 @@
   <data name="Offline Access" xml:space="preserve">
     <value>Offline Access</value>
   </data>
+  <data name="Recovery codes" xml:space="preserve">
+    <value>Recovery codes</value>
+  </data>
   <data name="You must pick at least one permission" xml:space="preserve">
     <value>You must pick at least one permission</value>
   </data>
