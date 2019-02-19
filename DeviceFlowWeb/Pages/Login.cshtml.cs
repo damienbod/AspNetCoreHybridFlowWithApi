@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.IdentityModel.Tokens;
 
 namespace DeviceFlowWeb.Pages
 {
@@ -32,7 +31,6 @@ namespace DeviceFlowWeb.Pages
             AuthenticatorUri = deviceAuthorizationResponse.VerificationUri;
             UserCode = deviceAuthorizationResponse.UserCode;
 
-            // Requires: using Microsoft.AspNetCore.Http;
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("DeviceCode")))
             {
                 HttpContext.Session.SetString("DeviceCode", deviceAuthorizationResponse.DeviceCode);
@@ -63,30 +61,7 @@ namespace DeviceFlowWeb.Pages
             var claimsIdentity = new ClaimsIdentity(
                 claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var authProperties = new AuthenticationProperties
-            {
-                //AllowRefresh = <bool>,
-                // Refreshing the authentication session should be allowed.
-
-                //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                // The time at which the authentication ticket expires. A 
-                // value set here overrides the ExpireTimeSpan option of 
-                // CookieAuthenticationOptions set with AddCookie.
-
-                //IsPersistent = true,
-                // Whether the authentication session is persisted across 
-                // multiple requests. Required when setting the 
-                // ExpireTimeSpan option of CookieAuthenticationOptions 
-                // set with AddCookie. Also required when setting 
-                // ExpiresUtc.
-
-                //IssuedUtc = <DateTimeOffset>,
-                // The time at which the authentication ticket was issued.
-
-                //RedirectUri = <string>
-                // The full path or absolute URI to be used as an http 
-                // redirect response value.
-            };
+            var authProperties = new AuthenticationProperties();
             var accessToken = new AuthenticationToken
             {
                 Name = "access_token",
