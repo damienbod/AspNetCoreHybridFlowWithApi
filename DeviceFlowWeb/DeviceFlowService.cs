@@ -42,7 +42,7 @@ namespace DeviceFlowWeb
             return response;
         }
 
-        public async Task<TokenResponse> RequestTokenAsync(DeviceAuthorizationResponse authorizeResponse)
+        public async Task<TokenResponse> RequestTokenAsync(string deviceCode, int interval)
         {
             var discoClient = new DiscoveryClient(_authConfigurations.Value.StsServer);
             var disco = await discoClient.GetAsync();
@@ -58,8 +58,8 @@ namespace DeviceFlowWeb
                 var response = await client.RequestDeviceTokenAsync(new DeviceTokenRequest
                 {
                     Address = disco.TokenEndpoint,
-                    ClientId = "device",
-                    DeviceCode = authorizeResponse.DeviceCode
+                    ClientId = "deviceFlowWebClient",
+                    DeviceCode = deviceCode
                 });
 
                 if (response.IsError)
@@ -67,7 +67,7 @@ namespace DeviceFlowWeb
                     if (response.Error == "authorization_pending" || response.Error == "slow_down")
                     {
                         Console.WriteLine($"{response.Error}...waiting.");
-                        Thread.Sleep(authorizeResponse.Interval * 1000);
+                        Thread.Sleep(interval * 1000);
                     }
                     else
                     {

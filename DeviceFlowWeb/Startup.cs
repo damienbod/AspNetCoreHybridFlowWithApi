@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace DeviceFlowWeb
 {
@@ -24,6 +25,15 @@ namespace DeviceFlowWeb
             services.AddScoped<DeviceFlowService>();
             services.AddHttpClient();
             services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(60);
+                options.Cookie.HttpOnly = true;
+            });
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -101,6 +111,8 @@ namespace DeviceFlowWeb
             app.UseAuthentication();
 
             app.UseCookiePolicy();
+
+            app.UseSession();
 
             app.UseMvc();
         }

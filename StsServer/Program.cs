@@ -42,6 +42,7 @@ namespace StsServerIdentity
                 .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
                     .ReadFrom.Configuration(hostingContext.Configuration)
                     .Enrich.FromLogContext()
+                    .WriteTo.File("../StsLogs.txt")
                     .WriteTo.Console(theme: AnsiConsoleTheme.Code)
                 );
     }

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using IdentityModel.Client;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -8,8 +9,6 @@ namespace DeviceFlowWeb.Pages
     public class LoginModel : PageModel
     {
         private readonly DeviceFlowService _deviceFlowService;
-
-        private DeviceAuthorizationResponse _deviceAuthorizationResponse;
 
         public string AuthenticatorUri { get; set; }
 
@@ -22,15 +21,29 @@ namespace DeviceFlowWeb.Pages
 
         public async Task OnGetAsync()
         {
-            _deviceAuthorizationResponse = await _deviceFlowService.BeginLogin();
-            AuthenticatorUri = _deviceAuthorizationResponse.VerificationUri;
-            UserCode = _deviceAuthorizationResponse.UserCode;
+            var deviceAuthorizationResponse = await _deviceFlowService.BeginLogin();
+            AuthenticatorUri = deviceAuthorizationResponse.VerificationUri;
+            UserCode = deviceAuthorizationResponse.UserCode;
 
+            // Requires: using Microsoft.AspNetCore.Http;
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("DeviceCode")))
+            {
+                HttpContext.Session.SetString("DeviceCode", deviceAuthorizationResponse.DeviceCode);
+                HttpContext.Session.SetInt32("Interval", deviceAuthorizationResponse.Interval);
+            }
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var tokenresponse = await _deviceFlowService.RequestTokenAsync(_deviceAuthorizationResponse);
+            var deviceCode = HttpContext.Session.GetString("DeviceCode");
+            var interval = HttpContext.Session.GetInt32("Interval");
+
+            if(interval.GetValueOrDefault() <= 0)
+            {
+                interval = 1;
+            }
+
+            var tokenresponse = await _deviceFlowService.RequestTokenAsync(deviceCode, interval.Value);
 
             return Page();
         }
