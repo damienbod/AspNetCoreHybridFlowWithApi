@@ -1010,3 +1010,299 @@ FROM [AspNetUserRoles] AS [userRole]
 INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
 WHERE [userRole].[UserId] = @__userId_0
 2019-02-19 12:28:56.947 +01:00 [INF] Request finished in 333.5217ms 200 application/json; charset=UTF-8
+2019-02-19 12:34:56.354 +01:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-19 12:34:56.732 +01:00 [INF] Starting IdentityServer4 version 2.3.2.0
+2019-02-19 12:34:56.758 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-02-19 12:34:56.781 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-02-19 12:34:58.792 +01:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:44352/  0
+2019-02-19 12:34:58.792 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/  
+2019-02-19 12:34:58.827 +01:00 [INF] Request finished in 36.2729ms 200 
+2019-02-19 12:34:59.587 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration  
+2019-02-19 12:34:59.665 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-02-19 12:34:59.730 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)'
+2019-02-19 12:34:59.790 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing action StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)
+2019-02-19 12:34:59.987 +01:00 [INF] Executing action method StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity) - Validation state: "Valid"
+2019-02-19 12:34:59.999 +01:00 [INF] Executed action method StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.3212000000000002ms.
+2019-02-19 12:35:00.034 +01:00 [INF] Request finished in 447.4921ms 200 application/json; charset=UTF-8
+2019-02-19 12:35:00.081 +01:00 [INF] Executing ViewResult, running view Index.
+2019-02-19 12:35:00.174 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration/jwks  
+2019-02-19 12:35:00.175 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-02-19 12:35:00.242 +01:00 [INF] Request finished in 67.917ms 200 application/jwk-set+json; charset=UTF-8
+2019-02-19 12:35:00.329 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/connect/authorize?client_id=hybridclient&redirect_uri=https%3A%2F%2Flocalhost%3A44329%2Fsignin-oidc&response_type=code%20id_token&scope=openid%20profile%20scope_used_for_hybrid_flow%20offline_access&response_mode=form_post&nonce=636861729002690414.MDhmZDU5N2MtYjQ3OS00NzgxLWEwM2YtZjAwNjdkZDFkNGJlMjdkZmE5M2YtYWQwMi00OWI4LWFhYTAtYjA4ZDVjMTQ3ZDQ2&state=CfDJ8CGpEylrt0pIt6txpyTWMbSGdkDhlh_6jUROz1rkapKHMF7kcObKArg1iD6eFeB0_a66rft3vVufMgOBoVCLo3AAGmhttv4EwEDbqugngZL-J5wuJ4MJOEDlKG6Olzf67RPbY1h2OFOEUWJBoREgyXP3M1KmgT07vBoPq7xeD3pU8bPRntqhsDbAIumzkWpZCAhzwqx6d4_diB8x4-yYtEh2BLrJscXmRuplv_Rtvj0ZhFprSAhTryhsX5ddfVz_3u0j8zh2U6OHgMBAU6dSurvAqV0yGRImfCierR2dpSpZKXQgRqd_uIDvXYxiNznwGWAyTtrVYmhEX7w3Hpd-0sA&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0  
+2019-02-19 12:35:00.412 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-02-19 12:35:00.608 +01:00 [INF] Executed ViewResult - view Index executed in 576.8739ms.
+2019-02-19 12:35:00.609 +01:00 [INF] Executed action StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity) in 817.82260000000008ms
+2019-02-19 12:35:00.609 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)'
+2019-02-19 12:35:00.613 +01:00 [INF] Request finished in 1824.9077ms 200 text/html; charset=utf-8
+2019-02-19 12:35:00.628 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/css/vendor.min.css?v=RtIwopEx0osLqdXB1F1QPDFWzutpmmdukcoICaRWUFI  
+2019-02-19 12:35:00.631 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/css/site.min.css?v=9n42HB2zuqXKDsr8sMaXB5eFvO87SuAf1CjiV4cv1Fg  
+2019-02-19 12:35:00.637 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2019-02-19 12:35:00.638 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/js/vendor.min.js?v=yg3700ylkpEbw8o9sR1SsYLHNI0v7pw6lI42YH1q40o  
+2019-02-19 12:35:00.652 +01:00 [INF] Sending file. Request path: '/js/site.min.js'. Physical path: 'C:\git\damienbod\AspNetCoreHybridFlowWithApi\StsServer\wwwroot\js\site.min.js'
+2019-02-19 12:35:00.652 +01:00 [INF] Request finished in 15.2683ms 200 application/javascript
+2019-02-19 12:35:00.677 +01:00 [INF] Sending file. Request path: '/css/site.min.css'. Physical path: 'C:\git\damienbod\AspNetCoreHybridFlowWithApi\StsServer\wwwroot\css\site.min.css'
+2019-02-19 12:35:00.683 +01:00 [INF] Sending file. Request path: '/js/vendor.min.js'. Physical path: 'C:\git\damienbod\AspNetCoreHybridFlowWithApi\StsServer\wwwroot\js\vendor.min.js'
+2019-02-19 12:35:00.683 +01:00 [INF] Sending file. Request path: '/css/vendor.min.css'. Physical path: 'C:\git\damienbod\AspNetCoreHybridFlowWithApi\StsServer\wwwroot\css\vendor.min.css'
+2019-02-19 12:35:00.696 +01:00 [INF] Request finished in 65.4457ms 200 text/css
+2019-02-19 12:35:00.696 +01:00 [INF] Request finished in 67.9922ms 200 text/css
+2019-02-19 12:35:00.696 +01:00 [INF] Request finished in 58.5333ms 200 application/javascript
+2019-02-19 12:35:00.707 +01:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"hybridclient","ClientName":"hybridclient","RedirectUri":"https://localhost:44329/signin-oidc","AllowedRedirectUris":["https://localhost:44329/signin-oidc"],"SubjectId":"06283e9f-fb29-4334-9bab-ad5409e1eb30","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile scope_used_for_hybrid_flow offline_access","State":"CfDJ8CGpEylrt0pIt6txpyTWMbSGdkDhlh_6jUROz1rkapKHMF7kcObKArg1iD6eFeB0_a66rft3vVufMgOBoVCLo3AAGmhttv4EwEDbqugngZL-J5wuJ4MJOEDlKG6Olzf67RPbY1h2OFOEUWJBoREgyXP3M1KmgT07vBoPq7xeD3pU8bPRntqhsDbAIumzkWpZCAhzwqx6d4_diB8x4-yYtEh2BLrJscXmRuplv_Rtvj0ZhFprSAhTryhsX5ddfVz_3u0j8zh2U6OHgMBAU6dSurvAqV0yGRImfCierR2dpSpZKXQgRqd_uIDvXYxiNznwGWAyTtrVYmhEX7w3Hpd-0sA","UiLocales":null,"Nonce":"636861729002690414.MDhmZDU5N2MtYjQ3OS00NzgxLWEwM2YtZjAwNjdkZDFkNGJlMjdkZmE5M2YtYWQwMi00OWI4LWFhYTAtYjA4ZDVjMTQ3ZDQ2","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"5e3446ef958a5877266c3cef6f3fed8c","Raw":{"client_id":"hybridclient","redirect_uri":"https://localhost:44329/signin-oidc","response_type":"code id_token","scope":"openid profile scope_used_for_hybrid_flow offline_access","response_mode":"form_post","nonce":"636861729002690414.MDhmZDU5N2MtYjQ3OS00NzgxLWEwM2YtZjAwNjdkZDFkNGJlMjdkZmE5M2YtYWQwMi00OWI4LWFhYTAtYjA4ZDVjMTQ3ZDQ2","state":"CfDJ8CGpEylrt0pIt6txpyTWMbSGdkDhlh_6jUROz1rkapKHMF7kcObKArg1iD6eFeB0_a66rft3vVufMgOBoVCLo3AAGmhttv4EwEDbqugngZL-J5wuJ4MJOEDlKG6Olzf67RPbY1h2OFOEUWJBoREgyXP3M1KmgT07vBoPq7xeD3pU8bPRntqhsDbAIumzkWpZCAhzwqx6d4_diB8x4-yYtEh2BLrJscXmRuplv_Rtvj0ZhFprSAhTryhsX5ddfVz_3u0j8zh2U6OHgMBAU6dSurvAqV0yGRImfCierR2dpSpZKXQgRqd_uIDvXYxiNznwGWAyTtrVYmhEX7w3Hpd-0sA","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.3.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2019-02-19 12:35:01.335 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-02-19 12:35:01.851 +01:00 [INF] Executed DbCommand (49ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[DataEventRecordsRole], [e].[Email], [e].[EmailConfirmed], [e].[IsAdmin], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecuredFilesRole], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2019-02-19 12:35:01.984 +01:00 [INF] Showing consent: User has not yet consented
+2019-02-19 12:35:01.997 +01:00 [INF] Request finished in 1668.644ms 302 
+2019-02-19 12:35:02.000 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/consent?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dhybridclient%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44329%252Fsignin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%2520scope_used_for_hybrid_flow%2520offline_access%26response_mode%3Dform_post%26nonce%3D636861729002690414.MDhmZDU5N2MtYjQ3OS00NzgxLWEwM2YtZjAwNjdkZDFkNGJlMjdkZmE5M2YtYWQwMi00OWI4LWFhYTAtYjA4ZDVjMTQ3ZDQ2%26state%3DCfDJ8CGpEylrt0pIt6txpyTWMbSGdkDhlh_6jUROz1rkapKHMF7kcObKArg1iD6eFeB0_a66rft3vVufMgOBoVCLo3AAGmhttv4EwEDbqugngZL-J5wuJ4MJOEDlKG6Olzf67RPbY1h2OFOEUWJBoREgyXP3M1KmgT07vBoPq7xeD3pU8bPRntqhsDbAIumzkWpZCAhzwqx6d4_diB8x4-yYtEh2BLrJscXmRuplv_Rtvj0ZhFprSAhTryhsX5ddfVz_3u0j8zh2U6OHgMBAU6dSurvAqV0yGRImfCierR2dpSpZKXQgRqd_uIDvXYxiNznwGWAyTtrVYmhEX7w3Hpd-0sA%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.3.0.0  
+2019-02-19 12:35:02.006 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)'
+2019-02-19 12:35:02.019 +01:00 [INF] Route matched with {action = "Index", controller = "Consent"}. Executing action StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)
+2019-02-19 12:35:02.054 +01:00 [INF] Executing action method StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity) with arguments (["/connect/authorize/callback?client_id=hybridclient&redirect_uri=https%3A%2F%2Flocalhost%3A44329%2Fsignin-oidc&response_type=code%20id_token&scope=openid%20profile%20scope_used_for_hybrid_flow%20offline_access&response_mode=form_post&nonce=636861729002690414.MDhmZDU5N2MtYjQ3OS00NzgxLWEwM2YtZjAwNjdkZDFkNGJlMjdkZmE5M2YtYWQwMi00OWI4LWFhYTAtYjA4ZDVjMTQ3ZDQ2&state=CfDJ8CGpEylrt0pIt6txpyTWMbSGdkDhlh_6jUROz1rkapKHMF7kcObKArg1iD6eFeB0_a66rft3vVufMgOBoVCLo3AAGmhttv4EwEDbqugngZL-J5wuJ4MJOEDlKG6Olzf67RPbY1h2OFOEUWJBoREgyXP3M1KmgT07vBoPq7xeD3pU8bPRntqhsDbAIumzkWpZCAhzwqx6d4_diB8x4-yYtEh2BLrJscXmRuplv_Rtvj0ZhFprSAhTryhsX5ddfVz_3u0j8zh2U6OHgMBAU6dSurvAqV0yGRImfCierR2dpSpZKXQgRqd_uIDvXYxiNznwGWAyTtrVYmhEX7w3Hpd-0sA&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0"]) - Validation state: "Valid"
+2019-02-19 12:35:02.070 +01:00 [INF] Executed action method StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16.195800000000002ms.
+2019-02-19 12:35:02.073 +01:00 [INF] Executing ViewResult, running view Index.
+2019-02-19 12:35:02.115 +01:00 [INF] Executed ViewResult - view Index executed in 44.7927ms.
+2019-02-19 12:35:02.115 +01:00 [INF] Executed action StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity) in 95.9946ms
+2019-02-19 12:35:02.116 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)'
+2019-02-19 12:35:02.116 +01:00 [INF] Request finished in 115.4782ms 200 text/html; charset=utf-8
+2019-02-19 12:39:13.265 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration  
+2019-02-19 12:39:13.267 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-02-19 12:39:13.277 +01:00 [INF] Request finished in 11.7575ms 200 application/json; charset=UTF-8
+2019-02-19 12:39:13.324 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration/jwks  
+2019-02-19 12:39:13.325 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-02-19 12:39:13.326 +01:00 [INF] Request finished in 1.1854ms 200 application/jwk-set+json; charset=UTF-8
+2019-02-19 12:39:13.443 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:44352/connect/deviceauthorization application/x-www-form-urlencoded 56
+2019-02-19 12:39:13.445 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DeviceAuthorizationEndpoint for /connect/deviceauthorization
+2019-02-19 12:39:13.519 +01:00 [INF] Request finished in 76.5027ms 200 application/json; charset=UTF-8
+2019-02-19 12:39:18.227 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/device  
+2019-02-19 12:39:18.232 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)'
+2019-02-19 12:39:18.236 +01:00 [INF] Route matched with {action = "Index", controller = "Device"}. Executing action StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)
+2019-02-19 12:39:18.252 +01:00 [INF] Authorization was successful.
+2019-02-19 12:39:18.296 +01:00 [INF] Executing action method StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity) with arguments ([""]) - Validation state: "Valid"
+2019-02-19 12:39:18.298 +01:00 [INF] Executed action method StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.3745ms.
+2019-02-19 12:39:18.300 +01:00 [INF] Executing ViewResult, running view UserCodeCapture.
+2019-02-19 12:39:18.311 +01:00 [INF] Executed ViewResult - view UserCodeCapture executed in 13.1287ms.
+2019-02-19 12:39:18.311 +01:00 [INF] Executed action StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity) in 74.9526ms
+2019-02-19 12:39:18.311 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)'
+2019-02-19 12:39:18.311 +01:00 [INF] Request finished in 84.3577ms 200 text/html; charset=utf-8
+2019-02-19 12:39:18.326 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/css/site.min.css?v=9n42HB2zuqXKDsr8sMaXB5eFvO87SuAf1CjiV4cv1Fg  
+2019-02-19 12:39:18.327 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/css/vendor.min.css?v=RtIwopEx0osLqdXB1F1QPDFWzutpmmdukcoICaRWUFI  
+2019-02-19 12:39:18.327 +01:00 [INF] The file /css/vendor.min.css was not modified
+2019-02-19 12:39:18.327 +01:00 [INF] The file /css/site.min.css was not modified
+2019-02-19 12:39:18.329 +01:00 [INF] Request finished in 2.3389ms 304 text/css
+2019-02-19 12:39:18.329 +01:00 [INF] Request finished in 3.5064ms 304 text/css
+2019-02-19 12:39:18.349 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2019-02-19 12:39:18.349 +01:00 [INF] The file /js/site.min.js was not modified
+2019-02-19 12:39:18.349 +01:00 [INF] Request finished in 0.767ms 304 application/javascript
+2019-02-19 12:39:18.349 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/js/vendor.min.js?v=yg3700ylkpEbw8o9sR1SsYLHNI0v7pw6lI42YH1q40o  
+2019-02-19 12:39:18.359 +01:00 [INF] The file /js/vendor.min.js was not modified
+2019-02-19 12:39:18.359 +01:00 [INF] Request finished in 10.1318ms 304 application/javascript
+2019-02-19 12:39:18.531 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/device  
+2019-02-19 12:39:18.532 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)'
+2019-02-19 12:39:18.532 +01:00 [INF] Route matched with {action = "Index", controller = "Device"}. Executing action StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)
+2019-02-19 12:39:18.533 +01:00 [INF] Authorization was successful.
+2019-02-19 12:39:18.593 +01:00 [INF] Executing action method StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity) with arguments ([""]) - Validation state: "Valid"
+2019-02-19 12:39:18.594 +01:00 [INF] Executed action method StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0339ms.
+2019-02-19 12:39:18.594 +01:00 [INF] Executing ViewResult, running view UserCodeCapture.
+2019-02-19 12:39:18.596 +01:00 [INF] Executed ViewResult - view UserCodeCapture executed in 2.7839ms.
+2019-02-19 12:39:18.597 +01:00 [INF] Executed action StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity) in 64.339300000000009ms
+2019-02-19 12:39:18.597 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)'
+2019-02-19 12:39:18.597 +01:00 [INF] Request finished in 66.174ms 200 text/html; charset=utf-8
+2019-02-19 12:39:24.901 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:44352/Device/UserCodeCapture application/x-www-form-urlencoded 244
+2019-02-19 12:39:24.915 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity)'
+2019-02-19 12:39:24.919 +01:00 [INF] Route matched with {action = "UserCodeCapture", controller = "Device"}. Executing action StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity)
+2019-02-19 12:39:24.919 +01:00 [INF] Authorization was successful.
+2019-02-19 12:39:24.962 +01:00 [INF] Executing action method StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity) with arguments (["497265886"]) - Validation state: "Valid"
+2019-02-19 12:39:24.970 +01:00 [INF] Executed action method StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 7.8283000000000005ms.
+2019-02-19 12:39:24.976 +01:00 [INF] Executing ViewResult, running view UserCodeConfirmation.
+2019-02-19 12:39:24.997 +01:00 [INF] Executed ViewResult - view UserCodeConfirmation executed in 26.465400000000002ms.
+2019-02-19 12:39:24.997 +01:00 [INF] Executed action StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity) in 77.685200000000009ms
+2019-02-19 12:39:24.998 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity)'
+2019-02-19 12:39:25.008 +01:00 [INF] Request finished in 96.9124ms 200 text/html; charset=utf-8
+2019-02-19 12:39:26.281 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:44352/Device/Callback application/x-www-form-urlencoded 367
+2019-02-19 12:39:26.291 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity)'
+2019-02-19 12:39:26.316 +01:00 [INF] Route matched with {action = "Callback", controller = "Device"}. Executing action StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity)
+2019-02-19 12:39:26.316 +01:00 [INF] Authorization was successful.
+2019-02-19 12:39:26.379 +01:00 [INF] Executing action method StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity) with arguments (["StsServerIdentity.Models.DeviceAuthorizationInputModel"]) - Validation state: "Valid"
+2019-02-19 12:39:26.390 +01:00 [INF] Executed action method StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 11.3095ms.
+2019-02-19 12:39:26.395 +01:00 [INF] Executing ViewResult, running view Success.
+2019-02-19 12:39:26.400 +01:00 [INF] Executed ViewResult - view Success executed in 9.0249ms.
+2019-02-19 12:39:26.400 +01:00 [INF] Executed action StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity) in 83.6305ms
+2019-02-19 12:39:26.400 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity)'
+2019-02-19 12:39:26.400 +01:00 [INF] Request finished in 118.9783ms 200 text/html; charset=utf-8
+2019-02-19 12:39:29.400 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration  
+2019-02-19 12:39:29.401 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-02-19 12:39:29.401 +01:00 [INF] Request finished in 1.262ms 200 application/json; charset=UTF-8
+2019-02-19 12:39:29.419 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration/jwks  
+2019-02-19 12:39:29.419 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-02-19 12:39:29.420 +01:00 [INF] Request finished in 1.1432ms 200 application/jwk-set+json; charset=UTF-8
+2019-02-19 12:39:29.451 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:44352/connect/token application/x-www-form-urlencoded 172
+2019-02-19 12:39:29.455 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2019-02-19 12:39:29.503 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-02-19 12:39:29.575 +01:00 [INF] Executed DbCommand (60ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[DataEventRecordsRole], [e].[Email], [e].[EmailConfirmed], [e].[IsAdmin], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecuredFilesRole], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2019-02-19 12:39:29.583 +01:00 [INF] Token request validation success
+{"ClientId":"deviceFlowWebClient","ClientName":"Device Flow Client","GrantType":"urn:ietf:params:oauth:grant-type:device_code","Scopes":null,"AuthorizationCode":null,"RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"device_code":"***REDACTED***","grant_type":"urn:ietf:params:oauth:grant-type:device_code","client_id":"deviceFlowWebClient"},"$type":"TokenRequestValidationLog"}
+2019-02-19 12:39:29.763 +01:00 [INF] Executed DbCommand (62ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+2019-02-19 12:39:29.831 +01:00 [INF] Executed DbCommand (19ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+2019-02-19 12:39:29.952 +01:00 [INF] Executed DbCommand (39ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+2019-02-19 12:39:29.980 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+2019-02-19 12:39:29.996 +01:00 [INF] Request finished in 544.9611ms 200 application/json; charset=UTF-8
+2019-02-19 12:44:27.452 +01:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-19 12:44:27.791 +01:00 [INF] Starting IdentityServer4 version 2.3.2.0
+2019-02-19 12:44:27.809 +01:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-02-19 12:44:27.826 +01:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-02-19 12:44:29.661 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/  
+2019-02-19 12:44:29.661 +01:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:44352/  0
+2019-02-19 12:44:29.694 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration  
+2019-02-19 12:44:29.696 +01:00 [INF] Request finished in 34.5614ms 200 
+2019-02-19 12:44:30.121 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-02-19 12:44:30.187 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)'
+2019-02-19 12:44:30.211 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing action StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)
+2019-02-19 12:44:30.307 +01:00 [INF] Executing action method StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity) - Validation state: "Valid"
+2019-02-19 12:44:30.319 +01:00 [INF] Executed action method StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.6661ms.
+2019-02-19 12:44:30.327 +01:00 [INF] Request finished in 634.0195ms 200 application/json; charset=UTF-8
+2019-02-19 12:44:30.371 +01:00 [INF] Executing ViewResult, running view Index.
+2019-02-19 12:44:30.449 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration/jwks  
+2019-02-19 12:44:30.451 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-02-19 12:44:30.524 +01:00 [INF] Request finished in 74.8111ms 200 application/jwk-set+json; charset=UTF-8
+2019-02-19 12:44:30.643 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/connect/authorize?client_id=hybridclient&redirect_uri=https%3A%2F%2Flocalhost%3A44329%2Fsignin-oidc&response_type=code%20id_token&scope=openid%20profile%20scope_used_for_hybrid_flow%20offline_access&response_mode=form_post&nonce=636861734705555427.Yzk1MWVkNmItMzkwNC00ZmVkLTlhNjktYzMzMDcwZGRiMGUxYWZlYWQ4ZmEtMjMzOC00MmM2LThiMjQtN2VkNjllNmZjYTQy&state=CfDJ8CGpEylrt0pIt6txpyTWMbTru2aRteVbQKwWRn67fK8YGOE1uFFjjEgi7_y0Jbv3e2UpemZekxLRcbmivBx0jnj79wYOAOtFeiw4ssa1PPas_yP4In4HZzy8YSLVInSUXkwjBBQqUU291u711OqkIYeRCNEG16VR5kppVHvWX4MpIz7o1MBfLteXWfiGR9X7trdwAm_5XVFlMfXXxzC6fjBWdEQJbKHIrS5K17UuUFldDRLzrcAr2rpuv-jSsffdUNRl7JEZO9XvD7a0PcDZzvvMe4wHl1_FwnJwcacIbCrZYQcSoNUIUdry12hReYyhz0sOKJssAfPeGZA_fMM7nWo&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0  
+2019-02-19 12:44:30.733 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-02-19 12:44:30.936 +01:00 [INF] Executed ViewResult - view Index executed in 602.5601ms.
+2019-02-19 12:44:30.937 +01:00 [INF] Executed action StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity) in 726.1135ms
+2019-02-19 12:44:30.937 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)'
+2019-02-19 12:44:30.941 +01:00 [INF] Request finished in 1284.1104ms 200 text/html; charset=utf-8
+2019-02-19 12:44:30.953 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/css/vendor.min.css?v=RtIwopEx0osLqdXB1F1QPDFWzutpmmdukcoICaRWUFI  
+2019-02-19 12:44:30.954 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/css/site.min.css?v=9n42HB2zuqXKDsr8sMaXB5eFvO87SuAf1CjiV4cv1Fg  
+2019-02-19 12:44:30.961 +01:00 [INF] The file /css/vendor.min.css was not modified
+2019-02-19 12:44:30.961 +01:00 [INF] The file /css/site.min.css was not modified
+2019-02-19 12:44:30.965 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/js/vendor.min.js?v=yg3700ylkpEbw8o9sR1SsYLHNI0v7pw6lI42YH1q40o  
+2019-02-19 12:44:30.966 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2019-02-19 12:44:30.966 +01:00 [INF] The file /js/vendor.min.js was not modified
+2019-02-19 12:44:30.967 +01:00 [INF] The file /js/site.min.js was not modified
+2019-02-19 12:44:30.968 +01:00 [INF] Request finished in 15.0627ms 304 text/css
+2019-02-19 12:44:30.968 +01:00 [INF] Request finished in 14.2065ms 304 text/css
+2019-02-19 12:44:30.968 +01:00 [INF] Request finished in 3.1103ms 304 application/javascript
+2019-02-19 12:44:30.968 +01:00 [INF] Request finished in 2.0053ms 304 application/javascript
+2019-02-19 12:44:30.975 +01:00 [INF] ValidatedAuthorizeRequest
+{"ClientId":"hybridclient","ClientName":"hybridclient","RedirectUri":"https://localhost:44329/signin-oidc","AllowedRedirectUris":["https://localhost:44329/signin-oidc"],"SubjectId":"06283e9f-fb29-4334-9bab-ad5409e1eb30","ResponseType":"code id_token","ResponseMode":"form_post","GrantType":"hybrid","RequestedScopes":"openid profile scope_used_for_hybrid_flow offline_access","State":"CfDJ8CGpEylrt0pIt6txpyTWMbTru2aRteVbQKwWRn67fK8YGOE1uFFjjEgi7_y0Jbv3e2UpemZekxLRcbmivBx0jnj79wYOAOtFeiw4ssa1PPas_yP4In4HZzy8YSLVInSUXkwjBBQqUU291u711OqkIYeRCNEG16VR5kppVHvWX4MpIz7o1MBfLteXWfiGR9X7trdwAm_5XVFlMfXXxzC6fjBWdEQJbKHIrS5K17UuUFldDRLzrcAr2rpuv-jSsffdUNRl7JEZO9XvD7a0PcDZzvvMe4wHl1_FwnJwcacIbCrZYQcSoNUIUdry12hReYyhz0sOKJssAfPeGZA_fMM7nWo","UiLocales":null,"Nonce":"636861734705555427.Yzk1MWVkNmItMzkwNC00ZmVkLTlhNjktYzMzMDcwZGRiMGUxYWZlYWQ4ZmEtMjMzOC00MmM2LThiMjQtN2VkNjllNmZjYTQy","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":null,"MaxAge":null,"LoginHint":null,"SessionId":"5e3446ef958a5877266c3cef6f3fed8c","Raw":{"client_id":"hybridclient","redirect_uri":"https://localhost:44329/signin-oidc","response_type":"code id_token","scope":"openid profile scope_used_for_hybrid_flow offline_access","response_mode":"form_post","nonce":"636861734705555427.Yzk1MWVkNmItMzkwNC00ZmVkLTlhNjktYzMzMDcwZGRiMGUxYWZlYWQ4ZmEtMjMzOC00MmM2LThiMjQtN2VkNjllNmZjYTQy","state":"CfDJ8CGpEylrt0pIt6txpyTWMbTru2aRteVbQKwWRn67fK8YGOE1uFFjjEgi7_y0Jbv3e2UpemZekxLRcbmivBx0jnj79wYOAOtFeiw4ssa1PPas_yP4In4HZzy8YSLVInSUXkwjBBQqUU291u711OqkIYeRCNEG16VR5kppVHvWX4MpIz7o1MBfLteXWfiGR9X7trdwAm_5XVFlMfXXxzC6fjBWdEQJbKHIrS5K17UuUFldDRLzrcAr2rpuv-jSsffdUNRl7JEZO9XvD7a0PcDZzvvMe4wHl1_FwnJwcacIbCrZYQcSoNUIUdry12hReYyhz0sOKJssAfPeGZA_fMM7nWo","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.3.0.0"},"$type":"AuthorizeRequestValidationLog"}
+2019-02-19 12:44:31.691 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-02-19 12:44:32.301 +01:00 [INF] Executed DbCommand (55ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[DataEventRecordsRole], [e].[Email], [e].[EmailConfirmed], [e].[IsAdmin], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecuredFilesRole], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2019-02-19 12:44:32.436 +01:00 [INF] Showing consent: User has not yet consented
+2019-02-19 12:44:32.454 +01:00 [INF] Request finished in 1810.7962ms 302 
+2019-02-19 12:44:32.457 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/consent?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dhybridclient%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44329%252Fsignin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%2520scope_used_for_hybrid_flow%2520offline_access%26response_mode%3Dform_post%26nonce%3D636861734705555427.Yzk1MWVkNmItMzkwNC00ZmVkLTlhNjktYzMzMDcwZGRiMGUxYWZlYWQ4ZmEtMjMzOC00MmM2LThiMjQtN2VkNjllNmZjYTQy%26state%3DCfDJ8CGpEylrt0pIt6txpyTWMbTru2aRteVbQKwWRn67fK8YGOE1uFFjjEgi7_y0Jbv3e2UpemZekxLRcbmivBx0jnj79wYOAOtFeiw4ssa1PPas_yP4In4HZzy8YSLVInSUXkwjBBQqUU291u711OqkIYeRCNEG16VR5kppVHvWX4MpIz7o1MBfLteXWfiGR9X7trdwAm_5XVFlMfXXxzC6fjBWdEQJbKHIrS5K17UuUFldDRLzrcAr2rpuv-jSsffdUNRl7JEZO9XvD7a0PcDZzvvMe4wHl1_FwnJwcacIbCrZYQcSoNUIUdry12hReYyhz0sOKJssAfPeGZA_fMM7nWo%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.3.0.0  
+2019-02-19 12:44:32.462 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)'
+2019-02-19 12:44:32.486 +01:00 [INF] Route matched with {action = "Index", controller = "Consent"}. Executing action StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)
+2019-02-19 12:44:32.520 +01:00 [INF] Executing action method StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity) with arguments (["/connect/authorize/callback?client_id=hybridclient&redirect_uri=https%3A%2F%2Flocalhost%3A44329%2Fsignin-oidc&response_type=code%20id_token&scope=openid%20profile%20scope_used_for_hybrid_flow%20offline_access&response_mode=form_post&nonce=636861734705555427.Yzk1MWVkNmItMzkwNC00ZmVkLTlhNjktYzMzMDcwZGRiMGUxYWZlYWQ4ZmEtMjMzOC00MmM2LThiMjQtN2VkNjllNmZjYTQy&state=CfDJ8CGpEylrt0pIt6txpyTWMbTru2aRteVbQKwWRn67fK8YGOE1uFFjjEgi7_y0Jbv3e2UpemZekxLRcbmivBx0jnj79wYOAOtFeiw4ssa1PPas_yP4In4HZzy8YSLVInSUXkwjBBQqUU291u711OqkIYeRCNEG16VR5kppVHvWX4MpIz7o1MBfLteXWfiGR9X7trdwAm_5XVFlMfXXxzC6fjBWdEQJbKHIrS5K17UuUFldDRLzrcAr2rpuv-jSsffdUNRl7JEZO9XvD7a0PcDZzvvMe4wHl1_FwnJwcacIbCrZYQcSoNUIUdry12hReYyhz0sOKJssAfPeGZA_fMM7nWo&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.3.0.0"]) - Validation state: "Valid"
+2019-02-19 12:44:32.537 +01:00 [INF] Executed action method StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 16.8935ms.
+2019-02-19 12:44:32.540 +01:00 [INF] Executing ViewResult, running view Index.
+2019-02-19 12:44:32.583 +01:00 [INF] Executed ViewResult - view Index executed in 46.005700000000004ms.
+2019-02-19 12:44:32.584 +01:00 [INF] Executed action StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity) in 97.597000000000008ms
+2019-02-19 12:44:32.584 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)'
+2019-02-19 12:44:32.584 +01:00 [INF] Request finished in 126.9735ms 200 text/html; charset=utf-8
+2019-02-19 12:44:33.592 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration  
+2019-02-19 12:44:33.593 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-02-19 12:44:33.593 +01:00 [INF] Request finished in 1.2363ms 200 application/json; charset=UTF-8
+2019-02-19 12:44:33.623 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration/jwks  
+2019-02-19 12:44:33.623 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-02-19 12:44:33.624 +01:00 [INF] Request finished in 1.1006ms 200 application/jwk-set+json; charset=UTF-8
+2019-02-19 12:44:33.734 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:44352/connect/deviceauthorization application/x-www-form-urlencoded 56
+2019-02-19 12:44:33.736 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DeviceAuthorizationEndpoint for /connect/deviceauthorization
+2019-02-19 12:44:33.801 +01:00 [INF] Request finished in 67.1994ms 200 application/json; charset=UTF-8
+2019-02-19 12:44:39.192 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/device  
+2019-02-19 12:44:39.196 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)'
+2019-02-19 12:44:39.202 +01:00 [INF] Route matched with {action = "Index", controller = "Device"}. Executing action StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)
+2019-02-19 12:44:39.213 +01:00 [INF] Authorization was successful.
+2019-02-19 12:44:39.250 +01:00 [INF] Executing action method StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity) with arguments ([""]) - Validation state: "Valid"
+2019-02-19 12:44:39.252 +01:00 [INF] Executed action method StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.6892ms.
+2019-02-19 12:44:39.257 +01:00 [INF] Executing ViewResult, running view UserCodeCapture.
+2019-02-19 12:44:39.264 +01:00 [INF] Executed ViewResult - view UserCodeCapture executed in 12.273900000000001ms.
+2019-02-19 12:44:39.265 +01:00 [INF] Executed action StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity) in 62.5153ms
+2019-02-19 12:44:39.265 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)'
+2019-02-19 12:44:39.265 +01:00 [INF] Request finished in 72.9968ms 200 text/html; charset=utf-8
+2019-02-19 12:44:39.503 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/device  
+2019-02-19 12:44:39.504 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)'
+2019-02-19 12:44:39.504 +01:00 [INF] Route matched with {action = "Index", controller = "Device"}. Executing action StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)
+2019-02-19 12:44:39.505 +01:00 [INF] Authorization was successful.
+2019-02-19 12:44:39.545 +01:00 [INF] Executing action method StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity) with arguments ([""]) - Validation state: "Valid"
+2019-02-19 12:44:39.545 +01:00 [INF] Executed action method StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.0407ms.
+2019-02-19 12:44:39.546 +01:00 [INF] Executing ViewResult, running view UserCodeCapture.
+2019-02-19 12:44:39.553 +01:00 [INF] Executed ViewResult - view UserCodeCapture executed in 7.0225ms.
+2019-02-19 12:44:39.553 +01:00 [INF] Executed action StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity) in 48.7573ms
+2019-02-19 12:44:39.553 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.DeviceController.Index (StsServerIdentity)'
+2019-02-19 12:44:39.554 +01:00 [INF] Request finished in 50.5303ms 200 text/html; charset=utf-8
+2019-02-19 12:44:45.856 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:44352/Device/UserCodeCapture application/x-www-form-urlencoded 244
+2019-02-19 12:44:45.896 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity)'
+2019-02-19 12:44:45.913 +01:00 [INF] Route matched with {action = "UserCodeCapture", controller = "Device"}. Executing action StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity)
+2019-02-19 12:44:45.913 +01:00 [INF] Authorization was successful.
+2019-02-19 12:44:46.015 +01:00 [INF] Executing action method StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity) with arguments (["413858545"]) - Validation state: "Valid"
+2019-02-19 12:44:46.026 +01:00 [INF] Executed action method StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 10.782ms.
+2019-02-19 12:44:46.030 +01:00 [INF] Executing ViewResult, running view UserCodeConfirmation.
+2019-02-19 12:44:46.052 +01:00 [INF] Executed ViewResult - view UserCodeConfirmation executed in 25.902ms.
+2019-02-19 12:44:46.052 +01:00 [INF] Executed action StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity) in 139.1184ms
+2019-02-19 12:44:46.052 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.DeviceController.UserCodeCapture (StsServerIdentity)'
+2019-02-19 12:44:46.052 +01:00 [INF] Request finished in 196.5894ms 200 text/html; charset=utf-8
+2019-02-19 12:44:47.239 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:44352/Device/Callback application/x-www-form-urlencoded 367
+2019-02-19 12:44:47.255 +01:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity)'
+2019-02-19 12:44:47.296 +01:00 [INF] Route matched with {action = "Callback", controller = "Device"}. Executing action StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity)
+2019-02-19 12:44:47.297 +01:00 [INF] Authorization was successful.
+2019-02-19 12:44:47.436 +01:00 [INF] Executing action method StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity) with arguments (["StsServerIdentity.Models.DeviceAuthorizationInputModel"]) - Validation state: "Valid"
+2019-02-19 12:44:47.462 +01:00 [INF] Executed action method StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 25.757ms.
+2019-02-19 12:44:47.468 +01:00 [INF] Executing ViewResult, running view Success.
+2019-02-19 12:44:47.475 +01:00 [INF] Executed ViewResult - view Success executed in 12.0533ms.
+2019-02-19 12:44:47.475 +01:00 [INF] Executed action StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity) in 178.06050000000002ms
+2019-02-19 12:44:47.475 +01:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.DeviceController.Callback (StsServerIdentity)'
+2019-02-19 12:44:47.475 +01:00 [INF] Request finished in 235.7143ms 200 text/html; charset=utf-8
+2019-02-19 12:44:50.425 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration  
+2019-02-19 12:44:50.426 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-02-19 12:44:50.426 +01:00 [INF] Request finished in 1.3042ms 200 application/json; charset=UTF-8
+2019-02-19 12:44:50.442 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:44352/.well-known/openid-configuration/jwks  
+2019-02-19 12:44:50.442 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-02-19 12:44:50.443 +01:00 [INF] Request finished in 1.1452ms 200 application/jwk-set+json; charset=UTF-8
+2019-02-19 12:44:50.469 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:44352/connect/token application/x-www-form-urlencoded 172
+2019-02-19 12:44:50.473 +01:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2019-02-19 12:44:50.508 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-02-19 12:44:50.564 +01:00 [INF] Executed DbCommand (47ms) [Parameters=[@__get_Item_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[ConcurrencyStamp], [e].[DataEventRecordsRole], [e].[Email], [e].[EmailConfirmed], [e].[IsAdmin], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecuredFilesRole], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0
+2019-02-19 12:44:50.575 +01:00 [INF] Token request validation success
+{"ClientId":"deviceFlowWebClient","ClientName":"Device Flow Client","GrantType":"urn:ietf:params:oauth:grant-type:device_code","Scopes":null,"AuthorizationCode":null,"RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"device_code":"***REDACTED***","grant_type":"urn:ietf:params:oauth:grant-type:device_code","client_id":"deviceFlowWebClient"},"$type":"TokenRequestValidationLog"}
+2019-02-19 12:44:50.753 +01:00 [INF] Executed DbCommand (41ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+2019-02-19 12:44:50.827 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+2019-02-19 12:44:50.935 +01:00 [INF] Executed DbCommand (30ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+2019-02-19 12:44:50.965 +01:00 [INF] Executed DbCommand (28ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+2019-02-19 12:44:50.983 +01:00 [INF] Request finished in 513.927ms 200 application/json; charset=UTF-8

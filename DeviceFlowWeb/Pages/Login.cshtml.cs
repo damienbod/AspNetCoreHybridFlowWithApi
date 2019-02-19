@@ -59,7 +59,10 @@ namespace DeviceFlowWeb.Pages
             var claims = GetClaims(tokenresponse.IdentityToken);
 
             var claimsIdentity = new ClaimsIdentity(
-                claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                claims, 
+                CookieAuthenticationDefaults.AuthenticationScheme, 
+                "name", "user");
+
 
             var authProperties = new AuthenticationProperties();
             var accessToken = new AuthenticationToken
@@ -74,6 +77,7 @@ namespace DeviceFlowWeb.Pages
                 Value = tokenresponse.IdentityToken
             };
 
+            // save the tokens in the cookie
             authProperties.StoreTokens(new List<AuthenticationToken>
             {
                 accessToken, idToken
