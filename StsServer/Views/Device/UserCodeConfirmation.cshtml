@@ -1,4 +1,6 @@
 @model StsServerIdentity.Models.DeviceAuthorizationViewModel
+@using StsServerIdentity.Resources
+@inject LocService SharedLocalizer
 
 <div class="page-header">
     <div class="row page-header">
@@ -13,7 +15,6 @@
             </h1>
         </div>
     </div>
-
     @if (Model.ConfirmUserCode)
     {
         <div class="row">
@@ -24,16 +25,12 @@
             </div>
         </div>
     }
-
     <div class="row">
         <div class="col-sm-8">
             <partial name="_ValidationSummary" />
-
             <form asp-action="Callback" class="consent-form">
                 <input asp-for="UserCode" type="hidden" value="@Model.UserCode" />
-
                 <div>Uncheck the permissions you do not wish to grant.</div>
-
                 @if (Model.IdentityScopes.Any())
                 {
                     <div class="panel panel-default consent-buttons">
@@ -49,7 +46,6 @@
                         </ul>
                     </div>
                 }
-
                 @if (Model.ResourceScopes.Any())
                 {
                     <div class="panel panel-default">
@@ -65,7 +61,6 @@
                         </ul>
                     </div>
                 }
-
                 @if (Model.AllowRememberConsent)
                 {
                     <div class="consent-remember">
@@ -75,7 +70,6 @@
                         </label>
                     </div>
                 }
-
                 <div class="consent-buttons">
                     <button name="button" value="yes" class="btn btn-primary" autofocus>Yes, Allow</button>
                     <button name="button" value="no" class="btn">No, Do Not Allow</button>

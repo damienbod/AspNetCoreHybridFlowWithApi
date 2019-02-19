@@ -821,4 +821,16 @@
     <value>User is not in role '{0}'.</value>
     <comment>Error when a user is not in the role</comment>
   </data>
+  <data name="Access to your applications and resources, even when you are offline" xml:space="preserve">
+    <value>Access to your applications and resources, even when you are offline</value>
+  </data>
+  <data name="Invalid selection" xml:space="preserve">
+    <value>Invalid selection</value>
+  </data>
+  <data name="Offline Access" xml:space="preserve">
+    <value>Offline Access</value>
+  </data>
+  <data name="You must pick at least one permission" xml:space="preserve">
+    <value>You must pick at least one permission</value>
+  </data>
 </root>
