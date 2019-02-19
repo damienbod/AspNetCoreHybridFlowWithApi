@@ -48,24 +48,11 @@ namespace DeviceFlowWeb
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
             .AddCookie();
-            //.AddOpenIdConnect(options =>
-            //{
-            //    options.SignInScheme = "Cookies";
-            //    options.Authority = stsServer;
-            //    options.RequireHttpsMetadata = true;
-            //    options.ClientId = "deviceFlowWebClient";
-            //    options.ClientSecret = "device_flow_secret";
-            //    options.ResponseType = "code id_token";
-            //    options.Scope.Add("scope_used_for_hybrid_flow");
-            //    options.Scope.Add("profile");
-            //    options.SaveTokens = true;
-            //});
 
             services.AddAuthorization();
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddMvc(options =>
             {
