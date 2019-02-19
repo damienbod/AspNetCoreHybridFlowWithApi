@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DeviceFlowWeb.Pages
 {
@@ -50,20 +52,13 @@ namespace DeviceFlowWeb.Pages
 
             var tokenresponse = await _deviceFlowService.RequestTokenAsync(deviceCode, interval.Value);
 
-            /// TODO Add the cliams from the token to the cookie
-            /// 
             if (tokenresponse.IsError)
             {
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 return Page();
             }
 
-            var claims = new List<Claim>
-                {
-                    //new Claim(ClaimTypes.Name, user.Email),
-                    //new Claim("FullName", user.FullName),
-                    new Claim(ClaimTypes.Role, "Administrator"),
-                };
+            var claims = GetClaims(tokenresponse.IdentityToken);
 
             var claimsIdentity = new ClaimsIdentity(
                 claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -114,8 +109,13 @@ namespace DeviceFlowWeb.Pages
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
 
-            
             return Redirect("/Index");
+        }
+
+        public IEnumerable<Claim> GetClaims(string token)
+        {
+            var validJwt = new JwtSecurityToken(token);
+            return validJwt.Claims;
         }
     }
 }
