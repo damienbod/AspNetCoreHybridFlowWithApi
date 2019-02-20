@@ -1,0 +1,42 @@
+﻿@page
+@model DeviceFlowWeb.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+Login: <p>@Model.AuthenticatorUri</p>
+
+<br />
+
+User Code: <p>@Model.UserCode</p>
+<br />
+<br />
+
+<div id="qrCode"></div>
+<div id="qrCodeData" data-url="@Html.Raw(Model.AuthenticatorUri)"></div>
+
+<br />
+<br />
+
+<form data-ajax="true"  method="post" data-ajax-method="POST">
+    <button class="btn btn-secondary" name="begin_token_check" id="begin_token_check" type="submit">Get token</button>
+</form>
+
+@section scripts {
+<script src="~/js/qrcode.min.js"></script>
+<script type="text/javascript">
+        new QRCode(document.getElementById("qrCode"),
+            {
+                text: "@Html.Raw(Model.AuthenticatorUri)",
+                width: 150,
+                height: 150
+            });
+
+    $(document).ready(() => {
+        document.getElementById('begin_token_check').click();
+    });
+
+</script>
+}

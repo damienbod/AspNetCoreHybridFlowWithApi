@@ -1,0 +1,9 @@
+@using StsServerIdentity.Resources
+@inject LocService SharedLocalizer
+
+<div class="page-header">
+    <h1>
+        @SharedLocalizer.GetLocalizedHtmlString("DEVICE_SUCCESS")
+        <small>@SharedLocalizer.GetLocalizedHtmlString("DEVICE_SUCCESS_AUTHORIZE")</small>
+    </h1>
+</div>
