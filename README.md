@@ -6,6 +6,10 @@ https://damienbod.com/2018/02/02/securing-an-asp-net-core-mvc-application-which-
 
 https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-asp-net-mvc-core-application/
 
+# ASP.NET Core OAuth Device Flow Client with IdentityServer4
+
+https://damienbod.com/2019/02/20/asp-net-core-oauth-device-flow-client-with-identityserver4/
+
 # History
 
 - 2019-02-18 Updating STS, adding Device Flow
