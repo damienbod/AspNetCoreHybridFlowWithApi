@@ -23,16 +23,16 @@ namespace WebHybridClient
         {
             try
             {
-                var client = _clientFactory.CreateClient();
+                var tokenclient = _clientFactory.CreateClient();
 
-                var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(client, _authConfigurations.Value.StsServer);
+                var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(tokenclient, _authConfigurations.Value.StsServer);
 
                 if (disco.IsError)
                 {
                     throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
                 }
 
-                var tokenResponse = await HttpClientTokenRequestExtensions.RequestClientCredentialsTokenAsync(client, new ClientCredentialsTokenRequest
+                var tokenResponse = await HttpClientTokenRequestExtensions.RequestClientCredentialsTokenAsync(tokenclient, new ClientCredentialsTokenRequest
                 {
                     Scope = "scope_used_for_api_in_protected_zone",
                     ClientSecret = "api_in_protected_zone_secret",
@@ -44,6 +44,8 @@ namespace WebHybridClient
                 {
                     throw new ApplicationException($"Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
                 }
+
+                var client = _clientFactory.CreateClient();
 
                 client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
                 client.SetBearerToken(tokenResponse.AccessToken);
