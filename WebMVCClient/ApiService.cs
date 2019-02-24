@@ -4,7 +4,6 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WebHybridClient;
 
 namespace WebHybridClient
 {
