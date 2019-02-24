@@ -32,8 +32,13 @@ namespace WebHybridClient
                     throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
                 }
 
-                var tokenClient = new TokenClient(disco.TokenEndpoint, "ProtectedApi", "api_in_protected_zone_secret");
-                var tokenResponse = await tokenClient.RequestClientCredentialsAsync("scope_used_for_api_in_protected_zone");
+                var tokenResponse = await HttpClientTokenRequestExtensions.RequestClientCredentialsTokenAsync(client, new ClientCredentialsTokenRequest
+                {
+                    Scope = "scope_used_for_api_in_protected_zone",
+                    ClientSecret = "api_in_protected_zone_secret",
+                    Address = disco.TokenEndpoint,
+                    ClientId = "ProtectedApi"
+                });
 
                 if (tokenResponse.IsError)
                 {
