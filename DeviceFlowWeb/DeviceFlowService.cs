@@ -72,7 +72,7 @@ namespace DeviceFlowWeb
                         if (response.Error == "authorization_pending" || response.Error == "slow_down")
                         {
                             Console.WriteLine($"{response.Error}...waiting.");
-                            Thread.Sleep(interval * 1000);
+                            await Task.Delay(interval * 1000);
                         }
                         else
                         {
@@ -86,10 +86,8 @@ namespace DeviceFlowWeb
                 }
                 else
                 {
-                    // lets wait
-                    Thread.Sleep(interval * 1000);
+                    await Task.Delay(interval * 1000);
                 }
-                
             }
         }
 
