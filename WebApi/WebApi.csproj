@@ -7,9 +7,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0-preview1" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
     <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="2.0.0" />
-    <PackageReference Include="Serilog" Version="2.7.2-dev-01033" />
+    <PackageReference Include="Serilog" Version="2.8.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="2.1.2-dev-00028" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.0.1" />
