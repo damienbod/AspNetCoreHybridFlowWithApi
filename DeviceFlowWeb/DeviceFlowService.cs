@@ -47,14 +47,14 @@ namespace DeviceFlowWeb
 
         internal async Task<TokenResponse> RequestTokenAsync(string deviceCode, int interval)
         {
-            var discoClient = new DiscoveryClient(_authConfigurations.Value.StsServer);
-            var disco = await discoClient.GetAsync();
+            var client = _clientFactory.CreateClient();
+
+            var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(client, _authConfigurations.Value.StsServer);
+
             if (disco.IsError)
             {
                 throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
             }
-
-            var client = _clientFactory.CreateClient();
 
             while (true)
             {
