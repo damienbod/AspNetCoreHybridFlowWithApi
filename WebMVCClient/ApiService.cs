@@ -23,8 +23,10 @@ namespace WebHybridClient
         {
             try
             {
-                var discoClient = new DiscoveryClient(_authConfigurations.Value.StsServer);
-                var disco = await discoClient.GetAsync();
+                var client = _clientFactory.CreateClient();
+
+                var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(client, _authConfigurations.Value.StsServer);
+
                 if (disco.IsError)
                 {
                     throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
@@ -37,8 +39,6 @@ namespace WebHybridClient
                 {
                     throw new ApplicationException($"Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
                 }
-
-                var client = _clientFactory.CreateClient();
 
                 client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
                 client.SetBearerToken(tokenResponse.AccessToken);
