@@ -12,6 +12,8 @@ https://damienbod.com/2019/02/20/asp-net-core-oauth-device-flow-client-with-iden
 
 # History
 
+- 2019-02-24 Updating obsolete API call code, updating npm packages
+
 - 2019-02-20 Updating STS, added the OAuth Device Flow
 
 - 2018-11-11 Updating Nuget packages, added feauture-policy
