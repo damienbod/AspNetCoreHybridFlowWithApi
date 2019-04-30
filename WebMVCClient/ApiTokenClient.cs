@@ -20,6 +20,7 @@ namespace WebHybridClient
             public string AccessToken { get; set; } = string.Empty;
             public DateTime ExpiresIn { get; set; }
         }
+
         private ConcurrentDictionary<string, AccessTokenItem> _accessTokens = new ConcurrentDictionary<string, AccessTokenItem>();
 
         public ApiTokenClient(
