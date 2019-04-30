@@ -40,8 +40,7 @@ namespace StsServerIdentity
             _environment = env;
 
         }
-
-
+        
         public void ConfigureServices(IServiceCollection services)
         {
             _clientId = Configuration["MicrosoftClientId"];
