@@ -30,27 +30,17 @@ namespace StsServerIdentity
     public class Startup
     {
         private readonly IHostingEnvironment _environment;
+        public IConfiguration Configuration { get; }
 
         private string _clientId = "xxxxxx";
         private string _clientSecret = "xxxxx";
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            if (env.IsDevelopment())
-            {
-                builder.AddUserSecrets<Startup>();
-            }
+            Configuration = configuration;
             _environment = env;
 
-            builder.AddEnvironmentVariables();
-            Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
