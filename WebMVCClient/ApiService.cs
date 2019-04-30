@@ -1,5 +1,4 @@
-﻿using IdentityModel.Client;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
@@ -11,44 +10,33 @@ namespace WebHybridClient
     {
         private readonly IOptions<AuthConfigurations> _authConfigurations;
         private readonly IHttpClientFactory _clientFactory;
+        private readonly ApiTokenClient _apiTokenClient;
 
-
-        public ApiService(IOptions<AuthConfigurations> authConfigurations, IHttpClientFactory clientFactory)
+        public ApiService(
+            IOptions<AuthConfigurations> authConfigurations, 
+            IHttpClientFactory clientFactory,
+            ApiTokenClient apiTokenClient)
         {
             _authConfigurations = authConfigurations;
             _clientFactory = clientFactory;
+            _apiTokenClient = apiTokenClient;
         }
 
         public async Task<JArray> GetApiDataAsync()
         {
             try
             {
-                var tokenclient = _clientFactory.CreateClient();
-
-                var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(tokenclient, _authConfigurations.Value.StsServer);
-
-                if (disco.IsError)
-                {
-                    throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
-                }
-
-                var tokenResponse = await HttpClientTokenRequestExtensions.RequestClientCredentialsTokenAsync(tokenclient, new ClientCredentialsTokenRequest
-                {
-                    Scope = "scope_used_for_api_in_protected_zone",
-                    ClientSecret = "api_in_protected_zone_secret",
-                    Address = disco.TokenEndpoint,
-                    ClientId = "ProtectedApi"
-                });
-
-                if (tokenResponse.IsError)
-                {
-                    throw new ApplicationException($"Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
-                }
-
                 var client = _clientFactory.CreateClient();
 
                 client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
-                client.SetBearerToken(tokenResponse.AccessToken);
+
+                var access_token = await _apiTokenClient.GetApiToken(
+                    "ProtectedApi",
+                    "scope_used_for_api_in_protected_zone",
+                    "api_in_protected_zone_secret"
+                );
+
+                client.SetBearerToken(access_token);
 
                 var response = await client.GetAsync("api/values");
                 if (response.IsSuccessStatusCode)

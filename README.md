@@ -12,6 +12,8 @@ https://damienbod.com/2019/02/20/asp-net-core-oauth-device-flow-client-with-iden
 
 # History
 
+- 2019-04-30 Switch to in-process, add token expired check, Updating nuget packages, updating npm packages
+
 - 2019-02-24 Updating obsolete API call code, updating npm packages
 
 - 2019-02-20 Updating STS, added the OAuth Device Flow

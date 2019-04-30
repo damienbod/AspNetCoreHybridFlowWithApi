@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Serilog;
+
 
 namespace WebHybridClient
 {
@@ -35,6 +34,7 @@ namespace WebHybridClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ApiService>();
+            services.AddSingleton<ApiTokenClient>();
             services.AddHttpClient();
             services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
 
