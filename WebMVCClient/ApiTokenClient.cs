@@ -22,13 +22,10 @@ namespace WebHybridClient
         }
         private ConcurrentDictionary<string, AccessTokenItem> _accessTokens = new ConcurrentDictionary<string, AccessTokenItem>();
 
-
-
         public ApiTokenClient(
             IOptions<AuthConfigurations> authConfigurations,
             IHttpClientFactory httpClientFactory,
-            ILoggerFactory loggerFactory,
-            IHttpClientFactory clientFactory)
+            ILoggerFactory loggerFactory)
         {
             _authConfigurations = authConfigurations;
             _httpClient = httpClientFactory.CreateClient();
@@ -51,6 +48,8 @@ namespace WebHybridClient
                 }
             }
 
+            _logger.LogDebug($"GetApiToken new from STS for {api_name}");
+
             // add
             var newAccessToken = await getApiToken( api_name,  api_scope,  secret);
             _accessTokens.TryAdd(api_name, newAccessToken);
@@ -68,6 +67,7 @@ namespace WebHybridClient
 
                 if (disco.IsError)
                 {
+                    _logger.LogError($"disco error Status code: {disco.IsError}, Error: {disco.Error}");
                     throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
                 }
 
@@ -81,6 +81,7 @@ namespace WebHybridClient
 
                 if (tokenResponse.IsError)
                 {
+                    _logger.LogError($"tokenResponse.IsError Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
                     throw new ApplicationException($"Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
                 }
 
@@ -93,6 +94,7 @@ namespace WebHybridClient
             }
             catch (Exception e)
             {
+                _logger.LogError($"Exception {e}");
                 throw new ApplicationException($"Exception {e}");
             }
         }
