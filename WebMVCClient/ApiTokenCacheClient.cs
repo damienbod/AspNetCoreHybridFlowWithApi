@@ -50,8 +50,7 @@ namespace WebHybridClient
                 }
                 else
                 {
-                    // remove
-
+                    // remove  => NOT Needed for this cache type
                 }
             }
 
