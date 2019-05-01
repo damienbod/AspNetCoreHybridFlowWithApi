@@ -34,12 +34,16 @@ namespace WebHybridClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ApiService>();
-            services.AddSingleton<ApiTokenClient>();
+            services.AddSingleton<ApiTokenInMemoryClient>();
+            services.AddSingleton<ApiTokenCacheClient>();
+            
             services.AddHttpClient();
             services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
 
             var authConfigurations = Configuration.GetSection("AuthConfigurations");
             stsServer = authConfigurations["StsServer"];
+
+            services.AddDistributedMemoryCache();
 
             services.AddAuthentication(options =>
             {

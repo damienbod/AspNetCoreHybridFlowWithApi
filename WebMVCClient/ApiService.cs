@@ -10,12 +10,12 @@ namespace WebHybridClient
     {
         private readonly IOptions<AuthConfigurations> _authConfigurations;
         private readonly IHttpClientFactory _clientFactory;
-        private readonly ApiTokenClient _apiTokenClient;
+        private readonly ApiTokenCacheClient _apiTokenClient;
 
         public ApiService(
             IOptions<AuthConfigurations> authConfigurations, 
             IHttpClientFactory clientFactory,
-            ApiTokenClient apiTokenClient)
+            ApiTokenCacheClient apiTokenClient)
         {
             _authConfigurations = authConfigurations;
             _clientFactory = clientFactory;

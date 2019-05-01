@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace WebHybridClient
 {
-    public class ApiTokenClient
+    public class ApiTokenInMemoryClient
     {
-        private readonly ILogger<ApiTokenClient> _logger;
+        private readonly ILogger<ApiTokenInMemoryClient> _logger;
         private readonly HttpClient _httpClient;
         private readonly IOptions<AuthConfigurations> _authConfigurations;
 
@@ -23,14 +23,14 @@ namespace WebHybridClient
 
         private ConcurrentDictionary<string, AccessTokenItem> _accessTokens = new ConcurrentDictionary<string, AccessTokenItem>();
 
-        public ApiTokenClient(
+        public ApiTokenInMemoryClient(
             IOptions<AuthConfigurations> authConfigurations,
             IHttpClientFactory httpClientFactory,
             ILoggerFactory loggerFactory)
         {
             _authConfigurations = authConfigurations;
             _httpClient = httpClientFactory.CreateClient();
-            _logger = loggerFactory.CreateLogger<ApiTokenClient>();
+            _logger = loggerFactory.CreateLogger<ApiTokenInMemoryClient>();
         }
 
         public async Task<string> GetApiToken(string api_name, string api_scope, string secret)
