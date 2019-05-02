@@ -117,13 +117,10 @@ namespace WebHybridClient
 
         private AccessTokenItem GetFromCache(string key)
         {
-            lock (_lock)
+            var item = _cache.GetString(key);
+            if (item != null)
             {
-                var item = _cache.GetString(key);
-                if (item != null)
-                {
-                    return JsonConvert.DeserializeObject<AccessTokenItem>(item);
-                }
+                return JsonConvert.DeserializeObject<AccessTokenItem>(item);
             }
 
             return null;
