@@ -1,18 +1,19 @@
+## Blogs: 
+
 <ul>
 	<li><a href="https://damienbod.com/2018/02/02/securing-an-asp-net-core-mvc-application-which-uses-a-secure-api/">Securing an ASP.NET Core MVC application which uses a secure API</a></li>
 	<li><a href="https://damienbod.com/2019/05/10/handling-access-tokens-for-private-apis-in-asp-net-core/">Handling Access Tokens for private APIs in ASP.NET Core</a></li>
 
+<li><a href="https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-asp-net-mvc-core-application/">Adding HTTP Headers to improve Security in an ASP.NET MVC Core application</a></li>
+
+<li><a href="https://damienbod.com/2019/02/20/asp-net-core-oauth-device-flow-client-with-identityserver4/">ASP.NET Core OAuth Device Flow Client with IdentityServer4</a></li>
+
 </ul>
 
-# Adding HTTP Headers to improve Security in an ASP.NET MVC Core application
-
-https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-asp-net-mvc-core-application/
-
-# ASP.NET Core OAuth Device Flow Client with IdentityServer4
-
-https://damienbod.com/2019/02/20/asp-net-core-oauth-device-flow-client-with-identityserver4/
 
 # History
+
+- 2019-05-10 Improving token handling
 
 - 2019-04-30 Switch to in-process, add token expired check, Updating nuget packages, updating npm packages
 
