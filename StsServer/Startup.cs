@@ -87,12 +87,25 @@ namespace StsServerIdentity
             if (_clientId != null)
             {
                 services.AddAuthentication()
-                .AddMicrosoftAccount(options =>
-                {
-                    options.ClientId = _clientId;
-                    options.SignInScheme = "Identity.External";
-                    options.ClientSecret = _clientSecret;
-                });
+                 .AddOpenIdConnect("Azure AD / Microsoft", "Azure AD / Microsoft", options => // Microsoft common
+                 {
+                     //  https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
+                     options.ClientId = _clientId;
+                     options.ClientSecret = _clientSecret;
+                     options.SignInScheme = "Identity.External";
+                     options.RemoteAuthenticationTimeout = TimeSpan.FromSeconds(30);
+                     options.Authority = "https://login.microsoftonline.com/common/v2.0/";
+                     options.ResponseType = "code";
+                     options.Scope.Add("profile");
+                     options.Scope.Add("email");
+                     options.TokenValidationParameters = new TokenValidationParameters
+                     {
+                         ValidateIssuer = false,
+                         NameClaimType = "email",
+                     };
+                     options.CallbackPath = "/signin-microsoft";
+                     options.Prompt = "login"; // login, consent
+                 });
             }
             else
             {
