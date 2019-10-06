@@ -13,6 +13,8 @@
 
 ## History
 
+- 2019-10-06 Updated to .NET Core 3.0
+
 - 2019-05-10 Improving token handling
 
 - 2019-04-30 Switch to in-process, add token expired check, Updating nuget packages, updating npm packages
