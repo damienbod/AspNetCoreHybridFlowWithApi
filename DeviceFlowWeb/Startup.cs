@@ -1,23 +1,23 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 
 namespace DeviceFlowWeb
 {
     public class Startup
     {
-        private string stsServer = "";
-        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -43,7 +43,7 @@ namespace DeviceFlowWeb
             });
 
             var authConfigurations = Configuration.GetSection("AuthConfigurations");
-            stsServer = authConfigurations["StsServer"];
+            var stsServer = authConfigurations["StsServer"];
 
             services.AddAuthentication(options =>
             {
@@ -54,14 +54,11 @@ namespace DeviceFlowWeb
             services.AddAuthorization();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(new MissingSecurityHeaders());
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -94,14 +91,20 @@ namespace DeviceFlowWeb
             //);
 
             app.UseStaticFiles();
-
-            app.UseAuthentication();
-
             app.UseCookiePolicy();
-
             app.UseSession();
 
-            app.UseMvc();
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+            });
         }
     }
 }
