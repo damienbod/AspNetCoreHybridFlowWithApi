@@ -74,11 +74,6 @@ namespace StsServerIdentity
                         "https://localhost:44329/signout-callback-oidc",
                         $"{hybridClientUrl}/signout-callback-oidc"
                     },
-                    AllowedCorsOrigins = new List<string>
-                    {
-                        "https://localhost:44329/",
-                        $"{hybridClientUrl}/"
-                    },
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

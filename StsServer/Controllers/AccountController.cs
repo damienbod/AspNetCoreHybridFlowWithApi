@@ -357,7 +357,7 @@ namespace StsServerIdentity.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl = null)
+        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl = null, string loginProvider = null)
         {
             if (ModelState.IsValid)
             {
@@ -383,6 +383,7 @@ namespace StsServerIdentity.Controllers
             }
 
             ViewData["ReturnUrl"] = returnUrl;
+            ViewData["LoginProvider"] = loginProvider;
             return View(model);
         }
 
