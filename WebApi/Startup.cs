@@ -54,10 +54,10 @@ namespace WebApi
                 })
             );
 
-            services.AddMvc(options =>
+            services.AddControllers(options =>
             {
                 options.Filters.Add(new MissingSecurityHeaders());
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -113,9 +113,15 @@ namespace WebApi
 
             app.UseCookiePolicy();
 
-            app.UseAuthentication();
+            app.UseRouting();
 
-            app.UseMvc();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
