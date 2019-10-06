@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using IdentityServer4.Services;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
@@ -21,26 +20,25 @@ using StsServerIdentity.Data;
 using StsServerIdentity.Resources;
 using StsServerIdentity.Services;
 using Microsoft.IdentityModel.Tokens;
-using Serilog;
-using Serilog.Sinks.SystemConsole.Themes;
 using StsServerIdentity.Filters;
+using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Logging;
 
 namespace StsServerIdentity
 {
     public class Startup
     {
-        private readonly IHostingEnvironment _environment;
-        public IConfiguration Configuration { get; }
-
         private string _clientId = "xxxxxx";
         private string _clientSecret = "xxxxx";
-        public Startup(IHostingEnvironment env, IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
             _environment = env;
-
         }
-        
+
+        public IConfiguration Configuration { get; }
+        public IWebHostEnvironment _environment { get; }
+
         public void ConfigureServices(IServiceCollection services)
         {
             _clientId = Configuration["MicrosoftClientId"];
@@ -75,11 +73,13 @@ namespace StsServerIdentity
             {
                 cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "sts_dev_cert.pfx"), "1234");
             }
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.AddTransient<IProfileService, IdentityWithAdditionalClaimsProfileService>();
 
             services.AddSingleton<LocService>();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
@@ -143,10 +143,11 @@ namespace StsServerIdentity
                     options.RequestCultureProviders.Insert(0, providerQuery);
                 });
 
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(new SecurityHeadersAttribute());
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            services.AddControllersWithViews(options =>
+                {
+                    options.Filters.Add(new SecurityHeadersAttribute());
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization(options =>
                 {
@@ -157,12 +158,7 @@ namespace StsServerIdentity
                     };
                 });
 
-            services.AddTransient<IProfileService, IdentityWithAdditionalClaimsProfileService>();
-
             services.AddTransient<IEmailSender, EmailSender>();
-
-            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-
 
             services.AddIdentityServer()
                 .AddSigningCredential(cert)
@@ -171,20 +167,11 @@ namespace StsServerIdentity
                 .AddInMemoryClients(Config.GetClients(authConfigurations))
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddProfileService<IdentityWithAdditionalClaimsProfileService>();
-                //.AddOperationalStore(options =>
-                //{
-                //    options.ConfigureDbContext = builder =>
-                //        builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                //            sql => sql.MigrationsAssembly(migrationsAssembly));
-
-                //    // this enables automatic token cleanup. this is optional.
-                //    options.EnableTokenCleanup = true;
-                //    options.TokenCleanupInterval = 30; // interval in seconds
-                //});
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            IdentityModelEventSource.ShowPII = true;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -234,13 +221,19 @@ namespace StsServerIdentity
                     }
                 }
             });
+
             app.UseIdentityServer();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
