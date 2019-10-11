@@ -56,6 +56,7 @@ namespace StsServerIdentity
         public static IEnumerable<Client> GetClients(IConfigurationSection authConfigurations)
         {
             var hybridClientUrl = authConfigurations["HybridClientUrl"];
+            var codeFlowClientUrl = authConfigurations["CodeFlowClientUrl"];
 
             return new List<Client>
             {
@@ -107,6 +108,31 @@ namespace StsServerIdentity
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
+                    }
+                },
+                new Client
+                {
+                    ClientName = "codeflowpkceclient",
+                    ClientId = "codeflowpkceclient",
+                    ClientSecrets = {new Secret("codeflow_pkce_client_secret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = true,
+                    AllowOfflineAccess = true,
+                    RedirectUris = {
+                        "https://localhost:44330/signin-oidc",
+                        $"{codeFlowClientUrl}/signin-oidc"
+                    },
+                    PostLogoutRedirectUris = {
+                        "https://localhost:44330/signout-callback-oidc",
+                        $"{codeFlowClientUrl}/signout-callback-oidc"
+                    },
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "role"
                     }
                 }
             };

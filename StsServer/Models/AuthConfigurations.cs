@@ -5,5 +5,6 @@
         public string StsServerIdentityUrl { get; set; }
 
         public string HybridClientUrl { get; set; }
+        public string CodeFlowClientUrl { get; set; }
     }
 }
