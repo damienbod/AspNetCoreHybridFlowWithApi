@@ -40,7 +40,6 @@ namespace WebCodeFlowPkceClient
                options.ClientSecret = "codeflow_pkce_client_secret";
                options.ResponseType = "code";
                options.UsePkce = true;
-               options.Scope.Add("scope_used_for_hybrid_flow");
                options.Scope.Add("profile");
                options.Scope.Add("offline_access");
                options.SaveTokens = true;
