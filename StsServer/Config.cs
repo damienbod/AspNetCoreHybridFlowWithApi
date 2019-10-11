@@ -108,6 +108,30 @@ namespace StsServerIdentity
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email
                     }
+                },
+                new Client
+                {
+                    ClientName = "codeflowpkceclient",
+                    ClientId = "codeflowpkceclient",
+                    ClientSecrets = {new Secret("codeflow_pkce_client_secret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    AllowOfflineAccess = true,
+                    RedirectUris = {
+                        "https://localhost:44330/signin-oidc",
+                        $"{hybridClientUrl}/signin-oidc"
+                    },
+                    PostLogoutRedirectUris = {
+                        "https://localhost:44330/signout-callback-oidc",
+                        $"{hybridClientUrl}/signout-callback-oidc"
+                    },
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "role"
+                    }
                 }
             };
         }
