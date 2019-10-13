@@ -67,6 +67,9 @@ namespace StsServerIdentity
                     ClientSecrets = {new Secret("hybrid_flow_secret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
+                    AlwaysSendClientClaims = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
                     RedirectUris = {
                         "https://localhost:44329/signin-oidc",
                         $"{hybridClientUrl}/signin-oidc"
@@ -119,6 +122,9 @@ namespace StsServerIdentity
                     RequirePkce = true,
                     RequireClientSecret = true,
                     AllowOfflineAccess = true,
+                    AlwaysSendClientClaims = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
                     RedirectUris = {
                         "https://localhost:44330/signin-oidc",
                         $"{codeFlowClientUrl}/signin-oidc"
