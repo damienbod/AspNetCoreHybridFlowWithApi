@@ -32,9 +32,9 @@ namespace WebHybridClient
                 client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
 
                 var access_token = await _apiTokenClient.GetApiToken(
-                    "ProtectedApi",
+                    "CC_FOR_API",
                     "scope_used_for_api_in_protected_zone",
-                    "api_in_protected_zone_secret"
+                    "cc_for_api_secret"
                 );
 
                 client.SetBearerToken(access_token);

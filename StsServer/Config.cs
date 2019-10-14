@@ -31,7 +31,7 @@ namespace StsServerIdentity
                     {
                         new Secret("hybrid_flow_secret".Sha256())
                     },
-                    UserClaims = { "role", "admin", "user", "some_api" }
+                    UserClaims = { "role", "admin", "user" }
                 },
                 new ApiResource("ProtectedApi")
                 {
@@ -48,7 +48,7 @@ namespace StsServerIdentity
                             ShowInDiscoveryDocument = false
                         }
                     },
-                    UserClaims = { "role", "admin", "user", "safe_zone_api" }
+                    UserClaims = { "role", "admin", "user" }
                 }
             };
         }
@@ -89,9 +89,9 @@ namespace StsServerIdentity
                 },
                 new Client
                 {
-                    ClientId = "ProtectedApi",
-                    ClientName = "ProtectedApi",
-                    ClientSecrets = new List<Secret> { new Secret { Value = "api_in_protected_zone_secret".Sha256() } },
+                    ClientId = "CC_FOR_API",
+                    ClientName = "CC_FOR_API",
+                    ClientSecrets = new List<Secret> { new Secret { Value = "cc_for_api_secret".Sha256() } },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     AllowedScopes = new List<string> { "scope_used_for_api_in_protected_zone" }
                 },
