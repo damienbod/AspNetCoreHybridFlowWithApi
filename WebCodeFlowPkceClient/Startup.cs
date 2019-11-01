@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
@@ -43,6 +45,9 @@ namespace WebCodeFlowPkceClient
                options.Scope.Add("profile");
                options.Scope.Add("offline_access");
                options.SaveTokens = true;
+               options.GetClaimsFromUserInfoEndpoint = true;
+               options.ClaimActions.MapUniqueJsonKey("preferred_username", "preferred_username");
+               options.ClaimActions.MapUniqueJsonKey("gender", "gender");
            });
 
            services.AddAuthorization();
@@ -52,6 +57,9 @@ namespace WebCodeFlowPkceClient
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //IdentityModelEventSource.ShowPII = true;
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
