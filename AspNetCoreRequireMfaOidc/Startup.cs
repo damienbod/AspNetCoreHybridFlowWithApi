@@ -55,15 +55,6 @@ namespace AspNetCoreRequireMfaOidc
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.ClaimActions.MapUniqueJsonKey("preferred_username", "preferred_username");
                 options.ClaimActions.MapUniqueJsonKey("gender", "gender");
-                options.Events = new OpenIdConnectEvents
-                {
-                    OnRedirectToIdentityProvider = context =>
-                    {
-                        context.ProtocolMessage.SetParameter("acr_values", Amr.Mfa);
-
-                        return Task.FromResult(0);
-                    }
-                };
             });
 
             services.AddAuthorization(options =>
