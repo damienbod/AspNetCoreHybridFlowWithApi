@@ -47,3 +47,7 @@ https://leastprivilege.com/2019/02/08/try-device-flow-with-identityserver4/
 https://tools.ietf.org/wg/oauth/draft-ietf-oauth-device-flow/
 
 https://github.com/leastprivilege/AspNetCoreSecuritySamples/tree/aspnetcore21/DeviceFlow
+
+https://hajekj.net/2017/03/06/forcing-reauthentication-with-azure-ad/
+
+https://tools.ietf.org/html/draft-ietf-oauth-amr-values-04

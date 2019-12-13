@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,30 +27,38 @@ namespace AspNetCoreRequireMfaOidc
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IAuthorizationHandler, RequireMfaHandler>();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-           .AddCookie()
-           .AddOpenIdConnect(options =>
-           {
-               options.SignInScheme = "Cookies";
-               options.Authority = "https://localhost:44352";
-               options.RequireHttpsMetadata = true;
-               options.ClientId = "AspNetCoreRequireMfaOidc";
-               options.ClientSecret = "AspNetCoreRequireMfaOidcSecret";
-               options.ResponseType = "code";
-               options.UsePkce = true;
-               options.Scope.Add("profile");
-               options.Scope.Add("offline_access");
-               options.SaveTokens = true;
-               options.GetClaimsFromUserInfoEndpoint = true;
-               options.ClaimActions.MapUniqueJsonKey("preferred_username", "preferred_username");
-               options.ClaimActions.MapUniqueJsonKey("gender", "gender");
-           });
+            .AddCookie()
+            .AddOpenIdConnect(options =>
+            {
+                options.SignInScheme = "Cookies";
+                options.Authority = "https://localhost:44352";
+                options.RequireHttpsMetadata = true;
+                options.ClientId = "AspNetCoreRequireMfaOidc";
+                options.ClientSecret = "AspNetCoreRequireMfaOidcSecret";
+                options.ResponseType = "code";
+                options.UsePkce = true;
+                options.Scope.Add("profile");
+                options.Scope.Add("offline_access");
+                options.SaveTokens = true;
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.ClaimActions.MapUniqueJsonKey("preferred_username", "preferred_username");
+                options.ClaimActions.MapUniqueJsonKey("gender", "gender");
+            });
 
-            services.AddAuthorization();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireMfa", policyIsAdminRequirement =>
+                {
+                    policyIsAdminRequirement.Requirements.Add(new RequireMfa());
+                });
+            });
 
             services.AddRazorPages();
         }

@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreRequireMfaOidc.Pages
 {
-    [Authorize]
+    [Authorize(Policy= "RequireMfa")]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
