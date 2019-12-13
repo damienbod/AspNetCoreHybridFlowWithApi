@@ -91,7 +91,7 @@ namespace StsServerIdentity.Controllers
         {
             var returnUrl = model.ReturnUrl;
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
-            var requires2Fa = context.AcrValues.Count(t => t.Contains("mfa")) >= 1;
+            var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -318,7 +318,7 @@ namespace StsServerIdentity.Controllers
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
         {
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
-            var requires2Fa = context.AcrValues.Count(t => t.Contains("mfa")) >= 1;
+            var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
 
             if (remoteError != null)
             {
