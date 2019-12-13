@@ -19,7 +19,7 @@ namespace AspNetCoreRequireMfaOidc
 
             var amrClaim = context.User.Claims.FirstOrDefault(t => t.Type == "amr");
 
-            if (amrClaim != null)
+            if (amrClaim != null && amrClaim.Value == Amr.Mfa)
             {
                 context.Succeed(requirement);
             }

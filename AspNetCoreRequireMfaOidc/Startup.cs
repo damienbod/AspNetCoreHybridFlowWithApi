@@ -42,7 +42,7 @@ namespace AspNetCoreRequireMfaOidc
                 options.RequireHttpsMetadata = true;
                 options.ClientId = "AspNetCoreRequireMfaOidc";
                 options.ClientSecret = "AspNetCoreRequireMfaOidcSecret";
-                options.ResponseType = "code";
+                options.ResponseType = "code"; 
                 options.UsePkce = true;
                 options.Scope.Add("profile");
                 options.Scope.Add("offline_access");
@@ -50,6 +50,15 @@ namespace AspNetCoreRequireMfaOidc
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.ClaimActions.MapUniqueJsonKey("preferred_username", "preferred_username");
                 options.ClaimActions.MapUniqueJsonKey("gender", "gender");
+                options.Events = new OpenIdConnectEvents
+                {
+                    OnRedirectToIdentityProvider = context =>
+                    {
+                        context.ProtocolMessage.SetParameter("acr_values", Amr.Otp);
+
+                        return Task.FromResult(0);
+                    }
+                };
             });
 
             services.AddAuthorization(options =>
