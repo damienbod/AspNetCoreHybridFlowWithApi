@@ -11,6 +11,8 @@
 
 ## History
 
+- 2019-12-13 Updated to .NET core 3.1
+
 - 2019-10-11 Added example of Code Flow with PKCE for ASP.NET Core Razor Page App
 
 - 2019-10-06 Updated to .NET Core 3.0
