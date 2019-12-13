@@ -124,7 +124,7 @@ namespace StsServerIdentity
                     AllowOfflineAccess = true,
                     AlwaysSendClientClaims = true,
                     UpdateAccessTokenClaimsOnRefresh = true,
-                    AlwaysIncludeUserClaimsInIdToken = true,
+                    //AlwaysIncludeUserClaimsInIdToken = true,
                     RedirectUris = {
                         "https://localhost:44330/signin-oidc",
                         $"{codeFlowClientUrl}/signin-oidc"

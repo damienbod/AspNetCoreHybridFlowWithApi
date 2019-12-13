@@ -35,6 +35,8 @@ namespace StsServerIdentity
             claims = claims.Where(claim => context.RequestedClaimTypes.Contains(claim.Type)).ToList();
             claims.Add(new Claim(JwtClaimTypes.GivenName, user.UserName));
 
+            claims.Add(new Claim("gender", "unknown"));
+
             if (user.IsAdmin)
             {
                 claims.Add(new Claim(JwtClaimTypes.Role, "admin"));
