@@ -90,7 +90,8 @@ namespace StsServerIdentity.Controllers
         public async Task<IActionResult> Login(LoginInputModel model)
         {
             var returnUrl = model.ReturnUrl;
-
+            var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
+            var requires2Fa = context.AcrValues.Count(t => t.Contains("mfa")) >= 1;
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -102,7 +103,7 @@ namespace StsServerIdentity.Controllers
                     _logger.LogInformation(1, "User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
+                if (result.RequiresTwoFactor || requires2Fa)
                 {
                     return RedirectToAction(nameof(VerifyCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberLogin });
                 }
@@ -316,6 +317,9 @@ namespace StsServerIdentity.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
         {
+            var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
+            var requires2Fa = context.AcrValues.Count(t => t.Contains("mfa")) >= 1;
+
             if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, _sharedLocalizer["EXTERNAL_PROVIDER_ERROR", remoteError]);
@@ -334,7 +338,7 @@ namespace StsServerIdentity.Controllers
                 _logger.LogInformation(5, "User logged in with {Name} provider.", info.LoginProvider);
                 return RedirectToLocal(returnUrl);
             }
-            if (result.RequiresTwoFactor)
+            if (result.RequiresTwoFactor || requires2Fa)
             {
                 return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl });
             }

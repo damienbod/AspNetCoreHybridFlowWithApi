@@ -54,7 +54,7 @@ namespace AspNetCoreRequireMfaOidc
                 {
                     OnRedirectToIdentityProvider = context =>
                     {
-                        context.ProtocolMessage.SetParameter("acr_values", Amr.Otp);
+                        context.ProtocolMessage.SetParameter("acr_values", Amr.Mfa);
 
                         return Task.FromResult(0);
                     }
