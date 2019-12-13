@@ -140,6 +140,34 @@ namespace StsServerIdentity
                         IdentityServerConstants.StandardScopes.OfflineAccess,
                         "role"
                     }
+                },
+                new Client
+                {
+                    ClientName = "AspNetCoreRequireMfaOidc",
+                    ClientId = "AspNetCoreRequireMfaOidc",
+                    ClientSecrets = {new Secret("AspNetCoreRequireMfaOidcSecret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = true,
+                    AllowOfflineAccess = true,
+                    AlwaysSendClientClaims = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    //AlwaysIncludeUserClaimsInIdToken = true,
+                    RedirectUris = {
+                        "https://localhost:44389/signin-oidc",
+                        $"{codeFlowClientUrl}/signin-oidc"
+                    },
+                    PostLogoutRedirectUris = {
+                        "https://localhost:44389/signout-callback-oidc",
+                        $"{codeFlowClientUrl}/signout-callback-oidc"
+                    },
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "role"
+                    }
                 }
             };
         }
