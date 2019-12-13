@@ -41,6 +41,11 @@ namespace StsServerIdentity
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.Always;
+            });
+
             _clientId = Configuration["MicrosoftClientId"];
             _clientSecret = Configuration["MircosoftClientSecret"];
             var authConfigurations = Configuration.GetSection("AuthConfigurations");
@@ -172,6 +177,8 @@ namespace StsServerIdentity
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             IdentityModelEventSource.ShowPII = true;
+            app.UseCookiePolicy();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

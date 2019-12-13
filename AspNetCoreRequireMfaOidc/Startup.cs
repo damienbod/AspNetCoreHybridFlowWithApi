@@ -27,6 +27,11 @@ namespace AspNetCoreRequireMfaOidc
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.Always;
+            });
+
             services.AddSingleton<IAuthorizationHandler, RequireMfaHandler>();
 
             services.AddAuthentication(options =>
@@ -74,6 +79,8 @@ namespace AspNetCoreRequireMfaOidc
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCookiePolicy();
+
             //IdentityModelEventSource.ShowPII = true;
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
