@@ -22,6 +22,7 @@ using Microsoft.IdentityModel.Tokens;
 using StsServerIdentity.Filters;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Logging;
+using Serilog;
 
 namespace StsServerIdentity
 {
@@ -174,6 +175,10 @@ namespace StsServerIdentity
                     }
                 }
             });
+
+            // https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/
+            // https://nblumhardt.com/2019/10/serilog-mvc-logging/
+            app.UseSerilogRequestLogging();
 
             app.UseStaticFiles();
             app.UseRouting();
