@@ -15,18 +15,18 @@ else
 }
 
 
-<a href="@OptionsStsConfig.Value.HybridClientUrl">
-    Hybrid Client APP Url
+<a href="@OptionsStsConfig.Value.WebHybridClientUrl">
+Web Hybrid Client 
 </a>
 
 <br /><br />
 
-<a href="https://localhost:44389">
-    Require MFA App Url
+<a href="@OptionsStsConfig.Value.WebCodeFlowPkceClientUrl">
+Web Code Flow PKCE Client
 </a>
 
 <br /><br />
 
-<a href="https://localhost:44330">
-    Code flow with PKCE App Url
+<a href="@OptionsStsConfig.Value.AspNetCoreRequireMfaOidcUrl">
+ASP.NET Core OIDC Client Require MFA
 </a>
