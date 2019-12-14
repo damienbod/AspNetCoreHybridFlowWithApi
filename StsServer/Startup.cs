@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using System.Reflection;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using StsServerIdentity.Services.Certificate;
 using StsServerIdentity.Models;
