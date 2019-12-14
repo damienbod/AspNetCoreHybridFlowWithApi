@@ -47,14 +47,10 @@ namespace AspNetCoreRequireMfaOidc
                 options.RequireHttpsMetadata = true;
                 options.ClientId = "AspNetCoreRequireMfaOidc";
                 options.ClientSecret = "AspNetCoreRequireMfaOidcSecret";
-                options.ResponseType = "code"; 
-                options.UsePkce = true;
+                options.ResponseType = "code id_token";
                 options.Scope.Add("profile");
                 options.Scope.Add("offline_access");
                 options.SaveTokens = true;
-                options.GetClaimsFromUserInfoEndpoint = true;
-                options.ClaimActions.MapUniqueJsonKey("preferred_username", "preferred_username");
-                options.ClaimActions.MapUniqueJsonKey("gender", "gender");
             });
 
             services.AddAuthorization(options =>

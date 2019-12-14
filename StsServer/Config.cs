@@ -146,20 +146,16 @@ namespace StsServerIdentity
                     ClientName = "AspNetCoreRequireMfaOidc",
                     ClientId = "AspNetCoreRequireMfaOidc",
                     ClientSecrets = {new Secret("AspNetCoreRequireMfaOidcSecret".Sha256()) },
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RequirePkce = true,
-                    RequireClientSecret = true,
+                    AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
                     AlwaysSendClientClaims = true,
                     UpdateAccessTokenClaimsOnRefresh = true,
-                    //AlwaysIncludeUserClaimsInIdToken = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
                     RedirectUris = {
-                        "https://localhost:44389/signin-oidc",
-                        $"{codeFlowClientUrl}/signin-oidc"
+                        "https://localhost:44389/signin-oidc"
                     },
                     PostLogoutRedirectUris = {
-                        "https://localhost:44389/signout-callback-oidc",
-                        $"{codeFlowClientUrl}/signout-callback-oidc"
+                        "https://localhost:44389/signout-callback-oidc"
                     },
                     AllowedScopes = new List<string>
                     {
