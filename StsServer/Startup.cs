@@ -156,6 +156,10 @@ namespace StsServerIdentity
             var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(locOptions.Value);
 
+            // https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/
+            // https://nblumhardt.com/2019/10/serilog-mvc-logging/
+            app.UseSerilogRequestLogging();
+
             app.UseStaticFiles(new StaticFileOptions()
             {
                 OnPrepareResponse = context =>
@@ -176,11 +180,6 @@ namespace StsServerIdentity
                 }
             });
 
-            // https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/
-            // https://nblumhardt.com/2019/10/serilog-mvc-logging/
-            app.UseSerilogRequestLogging();
-
-            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseIdentityServer();
