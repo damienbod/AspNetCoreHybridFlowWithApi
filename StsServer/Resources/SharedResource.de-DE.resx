@@ -870,7 +870,7 @@
     <value>API Genehmigung</value>
   </data>
   <data name="GRANTS_CLIENT_APP_ACCESS" xml:space="preserve">
-    <value>Client-Anwendungszugrif</value>
+    <value>Client-Anwendungszugriff</value>
   </data>
   <data name="GRANTS_CREATED" xml:space="preserve">
     <value>Erstellt</value>
