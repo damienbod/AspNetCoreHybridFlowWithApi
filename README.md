@@ -53,3 +53,5 @@ https://github.com/leastprivilege/AspNetCoreSecuritySamples/tree/aspnetcore21/De
 https://hajekj.net/2017/03/06/forcing-reauthentication-with-azure-ad/
 
 https://tools.ietf.org/html/draft-ietf-oauth-amr-values-04
+
+https://openid.net/specs/openid-connect-core-1_0.html
