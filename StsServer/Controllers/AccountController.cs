@@ -330,6 +330,11 @@ namespace StsServerIdentity.Controllers
             var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
 
             // TODO handle only if user has MFA active or external login did MFA
+            var user = await _userManager.FindByNameAsync(model.Email);
+            if (user != null && !user.TwoFactorEnabled && requires2Fa)
+            {
+                return RedirectToAction(nameof(ErrorEnable2FA));
+            }
 
             if (remoteError != null)
             {
