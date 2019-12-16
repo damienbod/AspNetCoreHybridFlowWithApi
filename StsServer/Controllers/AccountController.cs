@@ -94,6 +94,11 @@ namespace StsServerIdentity.Controllers
             var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
 
             // TODO handle only if user has MFA active or external login did MFA
+            var user = await _userManager.FindByNameAsync(model.Email);
+            if(user != null && !user.TwoFactorEnabled && requires2Fa)
+            {
+                return RedirectToAction(nameof(ErrorEnable2FA));
+            }
 
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
@@ -124,6 +129,13 @@ namespace StsServerIdentity.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(await BuildLoginViewModelAsync(model));
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ErrorEnable2FA()
+        {
+            return View();
         }
 
         private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl, AuthorizationRequest context)
