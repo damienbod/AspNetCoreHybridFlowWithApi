@@ -3,8 +3,8 @@
     public class AuthConfigurations
     {
         public string StsServerIdentityUrl { get; set; }
-
-        public string HybridClientUrl { get; set; }
-        public string CodeFlowClientUrl { get; set; }
+        public string WebHybridClientUrl { get; set; }
+        public string WebCodeFlowPkceClientUrl { get; set; }
+        public string AspNetCoreRequireMfaOidcUrl { get; set; }
     }
 }

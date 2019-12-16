@@ -55,8 +55,9 @@ namespace StsServerIdentity
 
         public static IEnumerable<Client> GetClients(IConfigurationSection authConfigurations)
         {
-            var hybridClientUrl = authConfigurations["HybridClientUrl"];
-            var codeFlowClientUrl = authConfigurations["CodeFlowClientUrl"];
+            var webHybridClientUrl = authConfigurations["WebHybridClientUrl"];
+            var webCodeFlowPkceClientUrl = authConfigurations["WebCodeFlowPkceClientUrl"];
+            var aspNetCoreRequireMfaOidcUrl = authConfigurations["AspNetCoreRequireMfaOidcUrl"];
 
             return new List<Client>
             {
@@ -71,12 +72,10 @@ namespace StsServerIdentity
                     UpdateAccessTokenClaimsOnRefresh = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
                     RedirectUris = {
-                        "https://localhost:44329/signin-oidc",
-                        $"{hybridClientUrl}/signin-oidc"
+                        $"{webHybridClientUrl}/signin-oidc"
                     },
                     PostLogoutRedirectUris = {
-                        "https://localhost:44329/signout-callback-oidc",
-                        $"{hybridClientUrl}/signout-callback-oidc"
+                        $"{webHybridClientUrl}/signout-callback-oidc"
                     },
                     AllowedScopes = new List<string>
                     {
@@ -126,12 +125,34 @@ namespace StsServerIdentity
                     UpdateAccessTokenClaimsOnRefresh = true,
                     //AlwaysIncludeUserClaimsInIdToken = true,
                     RedirectUris = {
-                        "https://localhost:44330/signin-oidc",
-                        $"{codeFlowClientUrl}/signin-oidc"
+                        $"{webCodeFlowPkceClientUrl}/signin-oidc"
                     },
                     PostLogoutRedirectUris = {
-                        "https://localhost:44330/signout-callback-oidc",
-                        $"{codeFlowClientUrl}/signout-callback-oidc"
+                        $"{webCodeFlowPkceClientUrl}/signout-callback-oidc"
+                    },
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "role"
+                    }
+                },
+                new Client
+                {
+                    ClientName = "AspNetCoreRequireMfaOidc",
+                    ClientId = "AspNetCoreRequireMfaOidc",
+                    ClientSecrets = {new Secret("AspNetCoreRequireMfaOidcSecret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowOfflineAccess = true,
+                    AlwaysSendClientClaims = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
+                    RedirectUris = {
+                         $"{aspNetCoreRequireMfaOidcUrl}/signin-oidc"
+                    },
+                    PostLogoutRedirectUris = {
+                        $"{aspNetCoreRequireMfaOidcUrl}/signout-callback-oidc"
                     },
                     AllowedScopes = new List<string>
                     {

@@ -11,6 +11,8 @@
 
 ## History
 
+- 2019-12-14 Added Require MFA client
+
 - 2019-12-13 Updated to .NET Core 3.1
 
 - 2019-10-11 Added example of Code Flow with PKCE for ASP.NET Core Razor Page App
@@ -47,3 +49,9 @@ https://leastprivilege.com/2019/02/08/try-device-flow-with-identityserver4/
 https://tools.ietf.org/wg/oauth/draft-ietf-oauth-device-flow/
 
 https://github.com/leastprivilege/AspNetCoreSecuritySamples/tree/aspnetcore21/DeviceFlow
+
+https://hajekj.net/2017/03/06/forcing-reauthentication-with-azure-ad/
+
+https://tools.ietf.org/html/draft-ietf-oauth-amr-values-04
+
+https://openid.net/specs/openid-connect-core-1_0.html

@@ -90,7 +90,8 @@ namespace StsServerIdentity.Controllers
         public async Task<IActionResult> Login(LoginInputModel model)
         {
             var returnUrl = model.ReturnUrl;
-
+            var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
+            var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -102,7 +103,7 @@ namespace StsServerIdentity.Controllers
                     _logger.LogInformation(1, "User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
+                if (result.RequiresTwoFactor || requires2Fa)
                 {
                     return RedirectToAction(nameof(VerifyCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberLogin });
                 }
@@ -122,7 +123,7 @@ namespace StsServerIdentity.Controllers
             return View(await BuildLoginViewModelAsync(model));
         }
 
-        async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl, AuthorizationRequest context)
+        private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl, AuthorizationRequest context)
         {
             var loginProviders = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             var providers = loginProviders
@@ -157,7 +158,7 @@ namespace StsServerIdentity.Controllers
             };
         }
 
-        async Task<LoginViewModel> BuildLoginViewModelAsync(LoginInputModel model)
+        private async Task<LoginViewModel> BuildLoginViewModelAsync(LoginInputModel model)
         {
             var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
             var vm = await BuildLoginViewModelAsync(model.ReturnUrl, context);
@@ -172,9 +173,6 @@ namespace StsServerIdentity.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
-            var item = CultureInfo.CurrentCulture;
-            var item2 = CultureInfo.CurrentUICulture;
-
             if (User.Identity.IsAuthenticated == false)
             {
                 // if the user is not authenticated, then just show logged out page
@@ -205,9 +203,6 @@ namespace StsServerIdentity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout(LogoutViewModel model)
         {
-            var item = CultureInfo.CurrentCulture;
-            var item2 = CultureInfo.CurrentUICulture;
-
             var idp = User?.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
             var subjectId = HttpContext.User.Identity.GetSubjectId();
 
@@ -221,7 +216,7 @@ namespace StsServerIdentity.Controllers
                     model.LogoutId = await _interaction.CreateLogoutContextAsync();
                 }
 
-                string url = "/Account/Logout?logoutId=" + model.LogoutId;
+                // string url = "/Account/Logout?logoutId=" + model.LogoutId;
                 try
                 {
                     await _signInManager.SignOutAsync();
@@ -316,6 +311,9 @@ namespace StsServerIdentity.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
         {
+            var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
+            var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
+
             if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, _sharedLocalizer["EXTERNAL_PROVIDER_ERROR", remoteError]);
@@ -334,7 +332,7 @@ namespace StsServerIdentity.Controllers
                 _logger.LogInformation(5, "User logged in with {Name} provider.", info.LoginProvider);
                 return RedirectToLocal(returnUrl);
             }
-            if (result.RequiresTwoFactor)
+            if (result.RequiresTwoFactor || requires2Fa)
             {
                 return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl });
             }
@@ -623,11 +621,6 @@ namespace StsServerIdentity.Controllers
             {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
-        }
-
-        private Task<ApplicationUser> GetCurrentUserAsync()
-        {
-            return _userManager.GetUserAsync(HttpContext.User);
         }
 
         private IActionResult RedirectToLocal(string returnUrl)
