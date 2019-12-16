@@ -51,6 +51,15 @@ namespace AspNetCoreRequireMfaOidc
                 options.Scope.Add("profile");
                 options.Scope.Add("offline_access");
                 options.SaveTokens = true;
+                options.Events = new OpenIdConnectEvents
+                {
+                    OnRedirectToIdentityProvider = context =>
+                    {
+                        context.ProtocolMessage.SetParameter("acr_values", Amr.Mfa);
+
+                        return Task.FromResult(0);
+                    }
+                };
             });
 
             services.AddAuthorization(options =>
