@@ -92,6 +92,9 @@ namespace StsServerIdentity.Controllers
             var returnUrl = model.ReturnUrl;
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
+
+            // TODO handle only if user has MFA active or external login did MFA
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -103,7 +106,7 @@ namespace StsServerIdentity.Controllers
                     _logger.LogInformation(1, "User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
-                if (result.RequiresTwoFactor || requires2Fa)
+                if (result.RequiresTwoFactor)
                 {
                     return RedirectToAction(nameof(VerifyCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberLogin });
                 }
@@ -314,6 +317,8 @@ namespace StsServerIdentity.Controllers
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
 
+            // TODO handle only if user has MFA active or external login did MFA
+
             if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, _sharedLocalizer["EXTERNAL_PROVIDER_ERROR", remoteError]);
@@ -332,7 +337,7 @@ namespace StsServerIdentity.Controllers
                 _logger.LogInformation(5, "User logged in with {Name} provider.", info.LoginProvider);
                 return RedirectToLocal(returnUrl);
             }
-            if (result.RequiresTwoFactor || requires2Fa)
+            if (result.RequiresTwoFactor)
             {
                 return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl });
             }
