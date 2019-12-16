@@ -6,6 +6,7 @@
 	<li><a href="https://damienbod.com/2018/02/08/adding-http-headers-to-improve-security-in-an-asp-net-mvc-core-application/">Adding HTTP Headers to improve Security in an ASP.NET MVC Core application</a></li>
 	<li><a href="https://damienbod.com/2019/02/20/asp-net-core-oauth-device-flow-client-with-identityserver4/">ASP.NET Core OAuth Device Flow Client with IdentityServer4</a></li>
 	<li><a href="https://damienbod.com/2019/10/11/securing-an-asp-net-core-razor-page-app-using-openid-connect-code-flow-with-pkce/">Securing an ASP.NET Core Razor Page App using OpenID Connect Code flow with PKCE</a></li>
+	<li><a href="https://damienbod.com/2019/12/16/force-asp-net-core-openid-connect-client-to-require-mfa/">Force ASP.NET Core OpenID Connect client to require MFA</a></li>
 </ul>
 
 
