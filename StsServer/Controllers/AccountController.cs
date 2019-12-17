@@ -93,7 +93,6 @@ namespace StsServerIdentity.Controllers
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
 
-            // TODO handle only if user has MFA active or external login did MFA
             var user = await _userManager.FindByNameAsync(model.Email);
             if(user != null && !user.TwoFactorEnabled && requires2Fa)
             {
@@ -342,10 +341,8 @@ namespace StsServerIdentity.Controllers
                 return RedirectToAction(nameof(Login));
             }
 
-            // TODO handle only if user has MFA active or external login did MFA
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-            var amr = info.Principal.FindFirstValue("amr");
-
+  
             if (!string.IsNullOrEmpty(email))
             {
                 var user = await _userManager.FindByNameAsync(email);
