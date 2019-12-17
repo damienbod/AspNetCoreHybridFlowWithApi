@@ -329,12 +329,6 @@ namespace StsServerIdentity.Controllers
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
 
-            // TODO handle only if user has MFA active or external login did MFA
-            var user = await _userManager.FindByNameAsync(model.Email);
-            if (user != null && !user.TwoFactorEnabled && requires2Fa)
-            {
-                return RedirectToAction(nameof(ErrorEnable2FA));
-            }
 
             if (remoteError != null)
             {
@@ -342,9 +336,23 @@ namespace StsServerIdentity.Controllers
                 return View(nameof(Login));
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
+
             if (info == null)
             {
                 return RedirectToAction(nameof(Login));
+            }
+
+            // TODO handle only if user has MFA active or external login did MFA
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            var amr = info.Principal.FindFirstValue("amr");
+
+            if (!string.IsNullOrEmpty(email))
+            {
+                var user = await _userManager.FindByNameAsync(email);
+                if (user != null && !user.TwoFactorEnabled && requires2Fa)
+                {
+                    return RedirectToAction(nameof(ErrorEnable2FA));
+                }
             }
 
             // Sign in the user with this external login provider if the user already has a login.
@@ -367,7 +375,7 @@ namespace StsServerIdentity.Controllers
                 // If the user does not have an account, then ask the user to create an account.
                 ViewData["ReturnUrl"] = returnUrl;
                 ViewData["LoginProvider"] = info.LoginProvider;
-                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+                //var email = info.Principal.FindFirstValue(ClaimTypes.Email);
                 return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = email });
             }
         }
