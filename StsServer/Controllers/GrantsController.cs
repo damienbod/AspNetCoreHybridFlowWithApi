@@ -6,6 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using StsServerIdentity.Models;
+using Microsoft.Extensions.Localization;
+using StsServerIdentity.Resources;
+using System.Reflection;
 
 namespace StsServerIdentity.Controllers
 {
@@ -15,14 +18,20 @@ namespace StsServerIdentity.Controllers
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clients;
         private readonly IResourceStore _resources;
+        private readonly IStringLocalizer _sharedLocalizer;
 
         public GrantsController(IIdentityServerInteractionService interaction,
             IClientStore clients,
-            IResourceStore resources)
+            IResourceStore resources,
+            IStringLocalizerFactory factory)
         {
             _interaction = interaction;
             _clients = clients;
             _resources = resources;
+
+            var type = typeof(SharedResource);
+            var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
+            _sharedLocalizer = factory.Create("SharedResource", assemblyName.Name);
         }
 
         /// <summary>
@@ -65,7 +74,8 @@ namespace StsServerIdentity.Controllers
                         ClientUrl = client.ClientUri,
                         Created = grant.CreationTime,
                         Expires = grant.Expiration,
-                        IdentityGrantNames = resources.IdentityResources.Select(x => x.DisplayName ?? x.Name).ToArray(),
+                        IdentityGrantNames = resources.IdentityResources.Select(
+                            x => GetLocalString(x.DisplayName) ?? GetLocalString(x.Name)).ToArray(),
                         ApiGrantNames = resources.ApiResources.Select(x => x.DisplayName ?? x.Name).ToArray()
                     };
 
@@ -77,6 +87,11 @@ namespace StsServerIdentity.Controllers
             {
                 Grants = list
             };
+        }
+
+        private string GetLocalString(string data)
+        {
+            return _sharedLocalizer[data];
         }
     }
 }
