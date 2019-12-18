@@ -7,6 +7,7 @@
 	<li><a href="https://damienbod.com/2019/02/20/asp-net-core-oauth-device-flow-client-with-identityserver4/">ASP.NET Core OAuth Device Flow Client with IdentityServer4</a></li>
 	<li><a href="https://damienbod.com/2019/10/11/securing-an-asp-net-core-razor-page-app-using-openid-connect-code-flow-with-pkce/">Securing an ASP.NET Core Razor Page App using OpenID Connect Code flow with PKCE</a></li>
 	<li><a href="https://damienbod.com/2019/12/16/force-asp-net-core-openid-connect-client-to-require-mfa/">Force ASP.NET Core OpenID Connect client to require MFA</a></li>
+	<li><a href="https://damienbod.com/2019/12/18/send-mfa-signin-requirement-to-openid-connect-server-using-asp-net-core-identity-and-identityserver4/">Send MFA signin requirement to OpenID Connect server using ASP.NET Core Identity and IdentityServer4</a></li>
 </ul>
 
 
