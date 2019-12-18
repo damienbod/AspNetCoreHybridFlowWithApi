@@ -12,7 +12,7 @@
 
 ## History
 
-- 2019-12-14 Added STS acr_values parameters logic
+- 2019-12-18 Added STS acr_values parameters logic
 
 - 2019-12-14 Added Require MFA client
 
