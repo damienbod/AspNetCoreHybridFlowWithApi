@@ -12,6 +12,7 @@ using IdentityStandaloneMfa.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace IdentityStandaloneMfa
 {
@@ -35,10 +36,12 @@ namespace IdentityStandaloneMfa
             //    options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                options => options.SignIn.RequireConfirmedAccount = false)
              .AddEntityFrameworkStores<ApplicationDbContext>()
              .AddDefaultTokenProviders();
 
+            services.AddSingleton<IEmailSender, EmailSender>();
             services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, AdditionalUserClaimsPrincipalFactory>();
 
             services.AddRazorPages();
