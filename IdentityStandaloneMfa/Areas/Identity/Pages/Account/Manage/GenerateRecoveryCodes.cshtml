@@ -4,6 +4,9 @@
     ViewData["Title"] = "Generate two-factor authentication (2FA) recovery codes";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
+@{
+    Layout = "_Layout.cshtml";
+}
 
 <partial name="_StatusMessage" for="StatusMessage" />
 <h4>@ViewData["Title"]</h4>
