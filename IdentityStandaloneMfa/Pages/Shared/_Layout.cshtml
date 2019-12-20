@@ -43,10 +43,15 @@
                             else
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="/Admin">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Admin" 
+                                       id="tooltip-demo"  
+                                       data-toggle="tooltip" 
+                                       data-placement="bottom" 
+                                       title="MFA is NOT enabled. This is required for the Admin Page. If you have activated MFA, then logout, login again.">
                                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                                         Admin
                                     </a>
+                     
                                 </li>
                             }
                         }
