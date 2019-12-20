@@ -44,6 +44,13 @@ namespace IdentityStandaloneMfa
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, AdditionalUserClaimsPrincipalFactory>();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("TwoFactorEnabled",
+                    x => x.RequireClaim("TwoFactorEnabled", "true" )
+                ) ;
+            });
+
             services.AddRazorPages();
         }
 
