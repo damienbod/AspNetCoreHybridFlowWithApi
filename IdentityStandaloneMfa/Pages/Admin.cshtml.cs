@@ -9,9 +9,20 @@ namespace IdentityStandaloneMfa
 {
     public class AdminModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            var claimTwoFactorEnabled = User.Claims.FirstOrDefault(t => t.Type == "TwoFactorEnabled");
 
+            if (claimTwoFactorEnabled != null && "true".Equals(claimTwoFactorEnabled.Value))
+            {
+                // You logged in with MFA, do the admin stuff
+            }
+            else
+            {
+                return Redirect("/Identity/Account/Manage/TwoFactorAuthentication");
+            }
+
+            return Page();
         }
     }
 }
