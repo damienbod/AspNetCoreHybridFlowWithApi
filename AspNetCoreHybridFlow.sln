@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceFlowWeb", "DeviceFlow
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCodeFlowPkceClient", "WebCodeFlowPkceClient\WebCodeFlowPkceClient.csproj", "{26DCEE1F-7132-4134-A592-C7AF7AF5B855}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreRequireMfaOidc", "AspNetCoreRequireMfaOidc\AspNetCoreRequireMfaOidc.csproj", "{DDBA0895-521A-489D-909B-EDFA7F53D4EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreRequireMfaOidc", "AspNetCoreRequireMfaOidc\AspNetCoreRequireMfaOidc.csproj", "{DDBA0895-521A-489D-909B-EDFA7F53D4EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityStandaloneMfa", "IdentityStandaloneMfa\IdentityStandaloneMfa.csproj", "{EA5CA6A3-4590-4E6B-AF85-E650BEE63ECA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{DDBA0895-521A-489D-909B-EDFA7F53D4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDBA0895-521A-489D-909B-EDFA7F53D4EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDBA0895-521A-489D-909B-EDFA7F53D4EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5CA6A3-4590-4E6B-AF85-E650BEE63ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5CA6A3-4590-4E6B-AF85-E650BEE63ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5CA6A3-4590-4E6B-AF85-E650BEE63ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5CA6A3-4590-4E6B-AF85-E650BEE63ECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
