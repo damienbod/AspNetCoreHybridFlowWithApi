@@ -1,5 +1,4 @@
-﻿using IdentityModel;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -22,9 +21,7 @@ namespace IdentityStandaloneMfa
             var principal = await base.CreateAsync(user);
             var identity = (ClaimsIdentity)principal.Identity;
 
-            var claims = new List<Claim>
-            {
-            };
+            var claims = new List<Claim>();
 
             if (user.TwoFactorEnabled)
             {
