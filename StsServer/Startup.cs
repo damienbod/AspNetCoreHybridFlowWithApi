@@ -23,6 +23,9 @@ using StsServerIdentity.Filters;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Logging;
 using Serilog;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 
 namespace StsServerIdentity
 {
@@ -79,6 +82,10 @@ namespace StsServerIdentity
                      options.UsePkce = false; // live does not support this yet
                      options.Scope.Add("profile");
                      options.Scope.Add("email");
+                     options.ClaimActions.MapUniqueJsonKey("preferred_username", "preferred_username");
+                     options.ClaimActions.MapAll(); // ClaimActions.MapUniqueJsonKey("amr", "amr");
+                     //options.ClaimActions.Remove("amr");
+                     options.GetClaimsFromUserInfoEndpoint = true;
                      options.TokenValidationParameters = new TokenValidationParameters
                      {
                          ValidateIssuer = false,
@@ -86,6 +93,15 @@ namespace StsServerIdentity
                      };
                      options.CallbackPath = "/signin-microsoft";
                      options.Prompt = "login"; // login, consent
+                     options.Events = new OpenIdConnectEvents
+                     {
+                         OnRedirectToIdentityProvider = context =>
+                         {
+                             context.ProtocolMessage.SetParameter("acr_values", "mfa");
+
+                             return Task.FromResult(0);
+                         }
+                     };
                  });
             }
             else
