@@ -392,7 +392,15 @@ namespace StsServerIdentity.Controllers
             }
             if (result.RequiresTwoFactor)
             {
-                return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl });
+                var fido2ItemExistsForUser = await _fido2Storage.GetCredentialsByUsername(email);
+                if (fido2ItemExistsForUser.Count > 0)
+                {
+                    return RedirectToAction(nameof(LoginFido2Mfa), new { ReturnUrl = returnUrl });
+                }
+                else
+                {
+                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl });
+                }
             }
             if (result.IsLockedOut)
             {
