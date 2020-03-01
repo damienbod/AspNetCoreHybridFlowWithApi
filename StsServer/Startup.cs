@@ -24,11 +24,15 @@ using StsServerIdentity.Services.Certificate;
 using Serilog;
 using Microsoft.AspNetCore.Http;
 using Fido2NetLib;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication;
 
 namespace StsServerIdentity
 {
     public class Startup
     {
+        private string _clientId = "xxxxxx";
+        private string _clientSecret = "xxxxx";
         private IConfiguration _configuration { get; }
         private IWebHostEnvironment _environment { get; }
 
@@ -50,19 +54,19 @@ namespace StsServerIdentity
                     CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
             });
 
-            _clientId = Configuration["MicrosoftClientId"];
-            _clientSecret = Configuration["MircosoftClientSecret"];
-            var authConfigurations = Configuration.GetSection("AuthConfigurations");
-            var useLocalCertStore = Convert.ToBoolean(Configuration["UseLocalCertStore"]);
-            var certificateThumbprint = Configuration["CertificateThumbprint"];
+            _clientId = _configuration["MicrosoftClientId"];
+            _clientSecret = _configuration["MircosoftClientSecret"];
+            var authConfigurations = _configuration.GetSection("AuthConfigurations");
+            var useLocalCertStore = Convert.ToBoolean(_configuration["UseLocalCertStore"]);
+            var certificateThumbprint = _configuration["CertificateThumbprint"];
 
-            X509Certificate2 cert = GetCertificate(_environment, Configuration);
+            X509Certificate2 cert = GetCertificate(_environment, _configuration);
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
-            services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
-            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.Configure<AuthConfigurations>(_configuration.GetSection("AuthConfigurations"));
+            services.Configure<EmailSettings>(_configuration.GetSection("EmailSettings"));
             services.AddTransient<IProfileService, IdentityWithAdditionalClaimsProfileService>();
             services.AddTransient<IEmailSender, EmailSender>();
             AddLocalizationConfigurations(services);
