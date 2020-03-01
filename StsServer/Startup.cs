@@ -26,6 +26,8 @@ using Microsoft.AspNetCore.Http;
 using Fido2NetLib;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authentication;
+using System.Threading.Tasks;
+using Microsoft.IdentityModel.Logging;
 
 namespace StsServerIdentity
 {
