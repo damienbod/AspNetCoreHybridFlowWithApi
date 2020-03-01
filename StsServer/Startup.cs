@@ -46,7 +46,6 @@ namespace StsServerIdentity
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.MinimumSameSitePolicy = SameSiteMode.Unspecified;

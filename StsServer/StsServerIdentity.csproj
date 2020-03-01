@@ -9,6 +9,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageTags>oidc identityserver4 identity aspnetcore</PackageTags>
     <PackageReleaseNotes>Added support for FIDO2</PackageReleaseNotes>
+    <UserSecretsId>cdc2d146-b2b5-40d1-b99e-28e660bf7d39</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
