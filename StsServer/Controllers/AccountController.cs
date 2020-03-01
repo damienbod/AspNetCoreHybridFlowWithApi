@@ -360,7 +360,6 @@ namespace StsServerIdentity.Controllers
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
 
-
             if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, _sharedLocalizer["EXTERNAL_PROVIDER_ERROR", remoteError]);
