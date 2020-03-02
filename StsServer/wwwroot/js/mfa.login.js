@@ -142,6 +142,9 @@ async function verifyAssertionWithServer(assertedCredential) {
     //    //type: 'success',
     //    timer: 2000
     //});
-    var returnUrl = document.getElementById('fido2ReturnUrl').innerHTML = '';
-    window.location.href = returnUrl; // "/";
+    let fido2ReturnUrl = document.getElementById('fido2ReturnUrl').innerText;
+    if (!fido2ReturnUrl) {
+        fido2ReturnUrl = "/";
+    }
+    window.location.href = fido2ReturnUrl;
 }
