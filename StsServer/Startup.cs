@@ -1,32 +1,33 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using IdentityServer4.Services;
-using System.Security.Cryptography.X509Certificates;
-using System.IO;
-using Microsoft.AspNetCore.Identity;
-using System.Globalization;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using System.Reflection;
-using System;
-using StsServerIdentity.Services.Certificate;
+using Microsoft.IdentityModel.Tokens;
+using IdentityServer4.Services;
 using StsServerIdentity.Models;
 using StsServerIdentity.Data;
 using StsServerIdentity.Resources;
 using StsServerIdentity.Services;
-using Microsoft.IdentityModel.Tokens;
 using StsServerIdentity.Filters;
-using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Logging;
+using StsServerIdentity.Services.Certificate;
 using Serilog;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Fido2NetLib;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication;
+using System.Threading.Tasks;
+using Microsoft.IdentityModel.Logging;
 
 namespace StsServerIdentity
 {
@@ -34,22 +35,17 @@ namespace StsServerIdentity
     {
         private string _clientId = "xxxxxx";
         private string _clientSecret = "xxxxx";
+        private IConfiguration _configuration { get; }
+        private IWebHostEnvironment _environment { get; }
+
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
-            Configuration = configuration;
+            _configuration = configuration;
             _environment = env;
         }
 
-        public IConfiguration Configuration { get; }
-        public IWebHostEnvironment _environment { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    options.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.Always;
-            //});
-
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
@@ -59,23 +55,27 @@ namespace StsServerIdentity
                     CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
             });
 
-            _clientId = Configuration["MicrosoftClientId"];
-            _clientSecret = Configuration["MircosoftClientSecret"];
-            var authConfigurations = Configuration.GetSection("AuthConfigurations");
-            var useLocalCertStore = Convert.ToBoolean(Configuration["UseLocalCertStore"]);
-            var certificateThumbprint = Configuration["CertificateThumbprint"];
+            _clientId = _configuration["MicrosoftClientId"];
+            _clientSecret = _configuration["MircosoftClientSecret"];
+            var authConfigurations = _configuration.GetSection("AuthConfigurations");
+            var useLocalCertStore = Convert.ToBoolean(_configuration["UseLocalCertStore"]);
+            var certificateThumbprint = _configuration["CertificateThumbprint"];
 
-            X509Certificate2 cert = GetCertificate(_environment, Configuration);
+            X509Certificate2 cert = GetCertificate(_environment, _configuration);
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
-            services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
-            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.Configure<AuthConfigurations>(_configuration.GetSection("AuthConfigurations"));
+            services.Configure<EmailSettings>(_configuration.GetSection("EmailSettings"));
             services.AddTransient<IProfileService, IdentityWithAdditionalClaimsProfileService>();
             services.AddTransient<IEmailSender, EmailSender>();
-
             AddLocalizationConfigurations(services);
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddErrorDescriber<StsIdentityErrorDescriber>()
+                .AddDefaultTokenProviders()
+                .AddTokenProvider<Fifo2UserTwoFactorTokenProvider>("FIDO2");
 
             if (_clientId != null)
             {
@@ -119,24 +119,20 @@ namespace StsServerIdentity
                 services.AddAuthentication();
             }
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddErrorDescriber<StsIdentityErrorDescriber>()
-                .AddDefaultTokenProviders();
-
             services.AddControllersWithViews(options =>
-            {
-                options.Filters.Add(new SecurityHeadersAttribute());
-            })
-            .AddViewLocalization()
-            .AddDataAnnotationsLocalization(options =>
-            {
-                options.DataAnnotationLocalizerProvider = (type, factory) =>
                 {
-                    var assemblyName = new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
-                    return factory.Create("SharedResource", assemblyName.Name);
-                };
-            });
+                    options.Filters.Add(new SecurityHeadersAttribute());
+                })
+                .AddViewLocalization()
+                .AddDataAnnotationsLocalization(options =>
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    {
+                        var assemblyName = new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
+                        return factory.Create("SharedResource", assemblyName.Name);
+                    };
+                })
+                .AddNewtonsoftJson();
 
             services.AddIdentityServer()
                 .AddSigningCredential(cert)
@@ -145,14 +141,27 @@ namespace StsServerIdentity
                 .AddInMemoryClients(Config.GetClients(authConfigurations))
                 .AddAspNetIdentity<ApplicationUser>()
                 .AddProfileService<IdentityWithAdditionalClaimsProfileService>();
+
+            services.Configure<Fido2Configuration>(_configuration.GetSection("fido2"));
+            services.Configure<Fido2MdsConfiguration>(_configuration.GetSection("fido2mds"));
+            services.AddScoped<Fido2Storage>();
+            // Adds a default in-memory implementation of IDistributedCache.
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(2);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SameSite = SameSiteMode.None;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
             IdentityModelEventSource.ShowPII = true;
             app.UseCookiePolicy();
 
-            if (env.IsDevelopment())
+            if (_environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
@@ -210,6 +219,8 @@ namespace StsServerIdentity
 
             app.UseIdentityServer();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

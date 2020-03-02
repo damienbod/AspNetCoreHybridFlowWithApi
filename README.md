@@ -14,6 +14,8 @@
 
 ## History
 
+- 2020-03-02 Support FIDO2 and updated nuget packages
+
 - 2020-01-03 Added ASP.NET Core Identity App with MFA force
 
 - 2019-12-18 Added STS acr_values parameters logic
