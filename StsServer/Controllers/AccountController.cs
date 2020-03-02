@@ -146,7 +146,6 @@ namespace StsServerIdentity.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> LoginFido2Mfa(string provider, bool rememberMe, string returnUrl = null)
         {
-            return View();
             // Require that the user has already logged in via username/password or external login
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
