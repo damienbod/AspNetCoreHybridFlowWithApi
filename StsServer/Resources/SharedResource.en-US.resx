@@ -932,4 +932,16 @@
   <data name="FIDO2_WEBAUTHN_NOT_SUPPORTED" xml:space="preserve">
     <value>Please note: Your browser does not seem to support WebAuthn yet.</value>
   </data>
+  <data name="ERROR_ENABLE_MFA" xml:space="preserve">
+    <value>Enable MFA</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA_CLIENT_APP_REQUIRES_MFA" xml:space="preserve">
+    <value>The client application requires you to have MFA enabled. Enable this and try to sign in again.</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA_ERROR_TITLE" xml:space="preserve">
+    <value>Enable MFA Error</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA_YOU_CAN_ENABLE_HERE" xml:space="preserve">
+    <value>You can enable MFA to login here:</value>
+  </data>
 </root>

@@ -1,16 +1,16 @@
-﻿
+﻿@using StsServerIdentity.Resources
+@inject LocService SharedLocalizer
 @{
-    ViewData["Title"] = "ErrorEnable2FA";
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("ERROR_ENABLE_MFA_ERROR_TITLE");
 }
 
-<h1>The client application requires you to have MFA enabled. Enable this and try to sign in again.</h1>
+<h1>@SharedLocalizer.GetLocalizedHtmlString("ERROR_ENABLE_MFA_CLIENT_APP_REQUIRES_MFA")</h1>
 
 <br />
 
-You can enable MFA to login here:
-
+@SharedLocalizer.GetLocalizedHtmlString("ERROR_ENABLE_MFA_YOU_CAN_ENABLE_HERE")
 
 <br />
 
-<a asp-controller="Manage" asp-action="TwoFactorAuthentication">Enable MFA</a>
+<a asp-controller="Manage" asp-action="TwoFactorAuthentication">@SharedLocalizer.GetLocalizedHtmlString("ERROR_ENABLE_MFA")</a>
 
