@@ -11,9 +11,9 @@ namespace IdentityStandaloneMfa
     {
         public IActionResult OnGet()
         {
-            var claimTwoFactorEnabled = User.Claims.FirstOrDefault(t => t.Type == "TwoFactorEnabled");
+            var claimTwoFactorEnabled = User.Claims.FirstOrDefault(t => t.Type == "amr");
 
-            if (claimTwoFactorEnabled != null && "true".Equals(claimTwoFactorEnabled.Value))
+            if (claimTwoFactorEnabled != null && "mfa".Equals(claimTwoFactorEnabled.Value))
             {
                 // You logged in with MFA, do the admin stuff
             }

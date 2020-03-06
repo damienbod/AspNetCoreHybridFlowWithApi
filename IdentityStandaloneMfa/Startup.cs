@@ -47,7 +47,7 @@ namespace IdentityStandaloneMfa
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("TwoFactorEnabled",
-                    x => x.RequireClaim("TwoFactorEnabled", "true" )
+                    x => x.RequireClaim("amr", "mfa" )
                 ) ;
             });
 

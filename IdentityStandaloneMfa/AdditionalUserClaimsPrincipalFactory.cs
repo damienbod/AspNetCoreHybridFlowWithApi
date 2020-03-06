@@ -25,11 +25,11 @@ namespace IdentityStandaloneMfa
 
             if (user.TwoFactorEnabled)
             {
-                claims.Add(new Claim("TwoFactorEnabled", "true"));
+                claims.Add(new Claim("amr", "mfa"));
             }
             else
             {
-                claims.Add(new Claim("TwoFactorEnabled", "false")); ;
+                claims.Add(new Claim("amr", "pwd")); ;
             }
 
             identity.AddClaims(claims);
