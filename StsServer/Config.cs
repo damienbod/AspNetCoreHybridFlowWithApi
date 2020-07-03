@@ -71,6 +71,7 @@ namespace StsServerIdentity
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
                     AlwaysSendClientClaims = true,
+                    RequirePkce = false,
                     UpdateAccessTokenClaimsOnRefresh = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
                     RedirectUris = {
@@ -147,6 +148,7 @@ namespace StsServerIdentity
                     ClientSecrets = {new Secret("AspNetCoreRequireMfaOidcSecret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
+                    RequirePkce = false,
                     AlwaysSendClientClaims = true,
                     UpdateAccessTokenClaimsOnRefresh = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
