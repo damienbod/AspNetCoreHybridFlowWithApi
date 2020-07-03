@@ -16,8 +16,16 @@ namespace StsServerIdentity
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email(),
-                new IdentityResource("my_identity_scope",new []{ "role", "admin", "user" } )
+                new IdentityResources.Email()
+            };
+        }
+
+        public static IEnumerable<ApiScope> GetApiScopes()
+        {
+            return new List<ApiScope>
+            {
+                new ApiScope("scope_used_for_hybrid_flow", "Scope for the scope_used_for_hybrid_flow"),
+                new ApiScope("scope_used_for_api_in_protected_zone",  "Scope for the scope_used_for_api_in_protected_zone")
             };
         }
 
@@ -25,12 +33,13 @@ namespace StsServerIdentity
         {
             return new List<ApiResource>
             {
-                new ApiResource("scope_used_for_hybrid_flow")
+                new ApiResource("ApiHybridFlow")
                 {
                     ApiSecrets =
                     {
                         new Secret("hybrid_flow_secret".Sha256())
                     },
+                    Scopes = { "scope_used_for_hybrid_flow" },
                     UserClaims = { "role", "admin", "user" }
                 },
                 new ApiResource("ProtectedApi")
@@ -40,14 +49,7 @@ namespace StsServerIdentity
                     {
                         new Secret("api_in_protected_zone_secret".Sha256())
                     },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "scope_used_for_api_in_protected_zone",
-                            ShowInDiscoveryDocument = false
-                        }
-                    },
+                    Scopes = { "scope_used_for_api_in_protected_zone" },
                     UserClaims = { "role", "admin", "user" }
                 }
             };
@@ -69,6 +71,7 @@ namespace StsServerIdentity
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
                     AlwaysSendClientClaims = true,
+                    RequirePkce = false,
                     UpdateAccessTokenClaimsOnRefresh = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
                     RedirectUris = {
@@ -145,6 +148,7 @@ namespace StsServerIdentity
                     ClientSecrets = {new Secret("AspNetCoreRequireMfaOidcSecret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
+                    RequirePkce = false,
                     AlwaysSendClientClaims = true,
                     UpdateAccessTokenClaimsOnRefresh = true,
                     AlwaysIncludeUserClaimsInIdToken = true,

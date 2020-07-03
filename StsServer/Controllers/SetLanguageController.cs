@@ -13,15 +13,15 @@ namespace StsServerIdentity.Controllers
         }
 
         [HttpPost]
-        public IActionResult SetLanguage(string culture, string returnUrl, string returnUrlForLanguageSwitch)
+        public IActionResult SetLanguage(string culture, string returnUrl)
         {
             Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,
                 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
-                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1), Secure = true, SameSite = SameSiteMode.None }
             );
 
-            return Redirect(returnUrlForLanguageSwitch);
+            return LocalRedirect(returnUrl);
         }
     }
 }

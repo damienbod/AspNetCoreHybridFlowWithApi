@@ -932,4 +932,19 @@
   <data name="FIDO2_TAP_YOUR_SECURITY_KEY_TO_FINISH_REGISTRATION" xml:space="preserve">
     <value>Tippen Sie auf Ihren Sicherheitsschlüssel, um die Registrierung abzuschließen.</value>
   </data>
+  <data name="ERROR_ENABLE_MFA_CLIENT_APP_REQUIRES_MFA" xml:space="preserve">
+    <value>Die Client-Anwendung erfordert, dass Sie MFA aktiviert haben. Aktivieren Sie dies und versuchen Sie, sich erneut anzumelden.</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA" xml:space="preserve">
+    <value>MFA aktivieren</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA_ERROR_TITLE" xml:space="preserve">
+    <value>MFA Aktivierungsfehler</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA_YOU_CAN_ENABLE_HERE" xml:space="preserve">
+    <value>Sie können MFA hier zum Einloggen aktivieren:</value>
+  </data>
+  <data name="CONSENT_CONFIRM_AUTH_REQUEST_QUOTES" xml:space="preserve">
+    <value>Bitte bestätigen Sie, dass die Autorisierungsanfrage den Code enthält:</value>
+  </data>
 </root>
