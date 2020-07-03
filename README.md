@@ -14,6 +14,8 @@
 
 ## History
 
+- 2020-07-03 Update IdentityServer4 to V4, Updated nuget packages, update npm packages
+
 - 2020-05-03 Updated nuget packages
 
 - 2020-03-02 Support FIDO2 and updated nuget packages
