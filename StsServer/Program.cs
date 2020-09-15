@@ -71,6 +71,6 @@ namespace StsServerIdentity
                         .WriteTo.File("../StsLogs.txt")
                         .WriteTo.Console(theme: AnsiConsoleTheme.Code)
                 );
-            });
+                });
     }
 }

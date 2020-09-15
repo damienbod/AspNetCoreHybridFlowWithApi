@@ -16,6 +16,7 @@ using StsServerIdentity.Resources;
 using System.Reflection;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace StsServerIdentity.Controllers
 {
@@ -135,12 +136,13 @@ namespace StsServerIdentity.Controllers
             }
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
             await _emailSender.SendEmail(
                model.Email,
                "StsServerIdentity Verification Email",
-               $"Please verify by clicking here: {callbackUrl}",
+               $"Please verify by clicking here: {HtmlEncoder.Default.Encode(callbackUrl)}",
                "Hi Sir");
 
             StatusMessage = _sharedLocalizer["STATUS_UPDATE_PROFILE_EMAIL_SEND"];
