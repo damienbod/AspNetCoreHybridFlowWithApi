@@ -8,7 +8,7 @@
 
   <ItemGroup>
 	  <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-	  <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.8" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="IdentityModel" Version="4.4.0" />
     <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="3.0.0" />
