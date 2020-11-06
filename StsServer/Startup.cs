@@ -135,7 +135,13 @@ namespace StsServerIdentity
                 })
                 .AddNewtonsoftJson();
 
-            services.AddIdentityServer()
+            services.AddIdentityServer(options =>
+                {
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+                })
                 .AddSigningCredential(x509Certificate2Certs.ActiveCertificate)
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApiResources())
