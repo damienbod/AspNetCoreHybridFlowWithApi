@@ -14,6 +14,8 @@
 
 ## History
 
+- 2020-11-06 Updated nuget packages, npm packages
+
 - 2020-08-23 Updated nuget packages
 
 - 2020-07-03 Update IdentityServer4 to V4, Updated nuget packages, update npm packages
