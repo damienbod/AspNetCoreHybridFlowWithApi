@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StsServerIdentity", "StsSer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{AB31E1B1-F103-4A8B-BE79-1966C57C319A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHybridClient", "WebMVCClient\WebHybridClient.csproj", "{5A1E5B5D-4CE7-439E-938A-DA9937091586}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHybridFlowClient", "WebHybridFlowClient\WebHybridFlowClient.csproj", "{5A1E5B5D-4CE7-439E-938A-DA9937091586}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{038CF360-14D7-4AF0-8BA9-5FF422D3CC7E}"
 	ProjectSection(SolutionItems) = preProject
