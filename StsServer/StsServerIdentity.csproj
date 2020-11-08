@@ -10,8 +10,10 @@
     <PackageTags>oidc identityserver4 identity aspnetcore</PackageTags>
     <PackageReleaseNotes>FIDO2 Anti-forgery tokens, updated nuget packages 3.1.7, update npm packages
     </PackageReleaseNotes>
+    <UserSecretsId>55674afb-fac9-407f-898f-6a543e9d137a</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.1.0" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="IdentityServer4" Version="4.1.1" />
     <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.1" />
@@ -27,8 +29,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Remotion.Linq" Version="2.2.0" />
-    
-    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.8" />
     <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="3.0.0" />
     <PackageReference Include="Sendgrid" Version="9.21.1" />
