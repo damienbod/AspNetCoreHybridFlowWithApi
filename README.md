@@ -14,7 +14,7 @@
 
 ## History
 
-- 2020-11-08 Added swagger to the API
+- 2020-11-08 Added swagger to the API, moved to Azure.Security.KeyVault.Secrets
 
 - 2020-11-06 Updated nuget packages, npm packages
 
