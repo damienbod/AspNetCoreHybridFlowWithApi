@@ -14,6 +14,8 @@
 
 ## History
 
+- 2020-11-08 Added swagger to the API
+
 - 2020-11-06 Updated nuget packages, npm packages
 
 - 2020-08-23 Updated nuget packages
