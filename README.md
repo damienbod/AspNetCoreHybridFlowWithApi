@@ -14,6 +14,8 @@
 
 ## History
 
+- 2021-01-17 Updated nuget packages .NET 5.0.2
+
 - 2020-12-11 Updated to .NET 5
 
 - 2020-11-08 Added swagger to the API, moved to Azure.Security.KeyVault.Secrets
