@@ -1,5 +1,4 @@
 
-![.NET]()
 [![.NET](https://github.com/damienbod/AspNetCoreHybridFlowWithApi/workflows/.NET/badge.svg)](https://github.com/damienbod/AspNetCoreHybridFlowWithApi/actions?query=workflow%3A.NET) 
 
 
