@@ -1,3 +1,7 @@
+
+[![.NET](https://github.com/damienbod/AspNetCoreHybridFlowWithApi/workflows/.NET/badge.svg)](https://github.com/damienbod/AspNetCoreHybridFlowWithApi/actions?query=workflow%3A.NET) 
+
+
 ## Blogs: 
 
 <ul>
@@ -13,6 +17,8 @@
 
 
 ## History
+
+- 2021-01-17 Updated nuget packages .NET 5.0.2
 
 - 2020-12-11 Updated to .NET 5
 
