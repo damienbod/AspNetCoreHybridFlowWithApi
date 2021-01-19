@@ -30,19 +30,19 @@ namespace StsServerIdentity.Services.Certificate
         {
             (X509Certificate2 ActiveCertificate, X509Certificate2 SecondaryCertificate) certs = (null, null);
 
-            certs.ActiveCertificate = await GetCertificateAsync(_certificateName, secretClient);
-
             var certificateItems = GetAllEnabledCertificateVersions(certificateClient);
-            //var item = certificateItems.FirstOrDefault();
-            //if (item != null)
-            //{
-            //    certs.ActiveCertificate = await GetCertificateAsync(item.Identifier.Identifier, secretClient);
-            //}
+            var item = certificateItems.FirstOrDefault();
+            if (item != null)
+            {
+                certs.ActiveCertificate = await GetCertificateAsync(
+                    secretClient, _certificateName, item.Version);
+            }
 
-            //if (certificateItems.Count > 1)
-            //{
-            //    certs.SecondaryCertificate = await GetCertificateAsync(certificateItems[1].Identifier.Identifier, secretClient);
-            //}
+            if (certificateItems.Count > 1)
+            {
+                certs.SecondaryCertificate = await GetCertificateAsync(
+                    secretClient, _certificateName, certificateItems[1].Version);
+            }
 
             return certs;
         }
@@ -60,12 +60,14 @@ namespace StsServerIdentity.Services.Certificate
               .ToList();
         }
 
-        private async Task<X509Certificate2> GetCertificateAsync(string certName, SecretClient secretClient)
+        private async Task<X509Certificate2> GetCertificateAsync(
+            SecretClient secretClient, 
+            string certName, 
+            string version)
         {
             // Create a new secret using the secret client.
             var secretName = certName;
-            //var secretVersion = "";
-            KeyVaultSecret secret = await secretClient.GetSecretAsync(secretName);
+            KeyVaultSecret secret = await secretClient.GetSecretAsync(secretName, version);
 
             var privateKeyBytes = Convert.FromBase64String(secret.Value);
 
