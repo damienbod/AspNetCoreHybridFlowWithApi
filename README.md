@@ -18,6 +18,8 @@
 
 ## History
 
+- 2021-01-19 Switching to Azure.Extensions.AspNetCore.Configuration.Secrets
+
 - 2021-01-17 Updated nuget packages .NET 5.0.2
 
 - 2020-12-11 Updated to .NET 5
