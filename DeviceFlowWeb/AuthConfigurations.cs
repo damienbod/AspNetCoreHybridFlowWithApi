@@ -4,5 +4,6 @@
     {
         public string StsServer { get; set; }
         public string ProtectedApiUrl { get; set; }
+        public string ClientId { get; set; }
     }
 }

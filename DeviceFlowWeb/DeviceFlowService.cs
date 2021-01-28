@@ -2,37 +2,31 @@
 using Microsoft.Extensions.Options;
 using System;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace DeviceFlowWeb
 {
     public class DeviceFlowService
     {
-        private readonly IOptions<AuthConfigurations> _authConfigurations;
+        private readonly AuthConfigurations _authConfigurations;
         private readonly IHttpClientFactory _clientFactory;
 
         public DeviceFlowService(IOptions<AuthConfigurations> authConfigurations, IHttpClientFactory clientFactory)
         {
-            _authConfigurations = authConfigurations;
+            _authConfigurations = authConfigurations.Value;
             _clientFactory = clientFactory;
         }
 
-        internal async Task<DeviceAuthorizationResponse> BeginLogin()
+        public async Task<DeviceAuthorizationResponse> RequestDeviceCode()
         {
             var client = _clientFactory.CreateClient();
 
-            var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(client, _authConfigurations.Value.StsServer);
-
-            if (disco.IsError)
-            {
-                throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
-            }
+            var disco = await GetDiscoveryEndpoints(client);
 
             var deviceAuthorizationRequest = new DeviceAuthorizationRequest
             {
                 Address = disco.DeviceAuthorizationEndpoint,
-                ClientId = "deviceFlowWebClient"
+                ClientId = _authConfigurations.ClientId
             };
             deviceAuthorizationRequest.Scope = "email profile openid";
             var response = await client.RequestDeviceAuthorizationAsync(deviceAuthorizationRequest);
@@ -49,12 +43,7 @@ namespace DeviceFlowWeb
         {
             var client = _clientFactory.CreateClient();
 
-            var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(client, _authConfigurations.Value.StsServer);
-
-            if (disco.IsError)
-            {
-                throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
-            }
+            var disco = await GetDiscoveryEndpoints(client);
 
             while (true)
             {
@@ -63,7 +52,7 @@ namespace DeviceFlowWeb
                     var response = await client.RequestDeviceTokenAsync(new DeviceTokenRequest
                     {
                         Address = disco.TokenEndpoint,
-                        ClientId = "deviceFlowWebClient",
+                        ClientId = _authConfigurations.ClientId,
                         DeviceCode = deviceCode
                     });
 
@@ -91,5 +80,17 @@ namespace DeviceFlowWeb
             }
         }
 
+        private async Task<DiscoveryDocumentResponse> GetDiscoveryEndpoints(HttpClient client)
+        {
+            var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
+                client, _authConfigurations.StsServer);
+
+            if (disco.IsError)
+            {
+                throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
+            }
+
+            return disco;
+        }
     }
 }

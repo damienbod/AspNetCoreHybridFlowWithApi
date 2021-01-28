@@ -29,7 +29,7 @@ namespace DeviceFlowWeb.Pages
 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            var deviceAuthorizationResponse = await _deviceFlowService.BeginLogin();
+            var deviceAuthorizationResponse = await _deviceFlowService.RequestDeviceCode();
             AuthenticatorUri = deviceAuthorizationResponse.VerificationUri;
             UserCode = deviceAuthorizationResponse.UserCode;
 
