@@ -9,12 +9,12 @@ namespace DeviceFlowWeb
 {
     public class DeviceFlowService
     {
-        private readonly IOptions<AuthConfigurations> _authConfigurations;
+        private readonly AuthConfigurations _authConfigurations;
         private readonly IHttpClientFactory _clientFactory;
 
         public DeviceFlowService(IOptions<AuthConfigurations> authConfigurations, IHttpClientFactory clientFactory)
         {
-            _authConfigurations = authConfigurations;
+            _authConfigurations = authConfigurations.Value;
             _clientFactory = clientFactory;
         }
 
@@ -22,7 +22,8 @@ namespace DeviceFlowWeb
         {
             var client = _clientFactory.CreateClient();
 
-            var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(client, _authConfigurations.Value.StsServer);
+            var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
+                client, _authConfigurations.StsServer);
 
             if (disco.IsError)
             {
@@ -32,7 +33,7 @@ namespace DeviceFlowWeb
             var deviceAuthorizationRequest = new DeviceAuthorizationRequest
             {
                 Address = disco.DeviceAuthorizationEndpoint,
-                ClientId = "deviceFlowWebClient"
+                ClientId = _authConfigurations.ClientId
             };
             deviceAuthorizationRequest.Scope = "email profile openid";
             var response = await client.RequestDeviceAuthorizationAsync(deviceAuthorizationRequest);
@@ -49,7 +50,8 @@ namespace DeviceFlowWeb
         {
             var client = _clientFactory.CreateClient();
 
-            var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(client, _authConfigurations.Value.StsServer);
+            var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
+                client, _authConfigurations.StsServer);
 
             if (disco.IsError)
             {
@@ -63,7 +65,7 @@ namespace DeviceFlowWeb
                     var response = await client.RequestDeviceTokenAsync(new DeviceTokenRequest
                     {
                         Address = disco.TokenEndpoint,
-                        ClientId = "deviceFlowWebClient",
+                        ClientId = _authConfigurations.ClientId,
                         DeviceCode = deviceCode
                     });
 

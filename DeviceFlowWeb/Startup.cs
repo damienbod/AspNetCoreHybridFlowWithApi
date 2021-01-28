@@ -26,8 +26,6 @@ namespace DeviceFlowWeb
             services.AddHttpClient();
             services.Configure<AuthConfigurations>(Configuration.GetSection("AuthConfigurations"));
 
-            services.AddDistributedMemoryCache();
-
             services.AddSession(options =>
             {
                 // Set a short timeout for easy testing.
