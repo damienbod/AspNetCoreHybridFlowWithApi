@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IdentityStandaloneUserCheck.Pages
 {
+    [UserCheckFilter]
     public class RequirePasswordCheckModel : PageModel
     {
         public void OnGet()
         {
             // https://localhost:44327/UserCheck?returnUrl=/RequirePasswordCheck
+
 
             // check for claim
             // redirect if missing
