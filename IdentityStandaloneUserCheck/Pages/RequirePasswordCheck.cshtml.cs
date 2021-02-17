@@ -11,6 +11,11 @@ namespace IdentityStandaloneUserCheck.Pages
     {
         public void OnGet()
         {
+            // https://localhost:44327/Identity/Account/Login?returnUrl=/RequirePasswordCheck
+
+            // check for claim
+            // redirect if missing
+            // continue if ok
         }
     }
 }
