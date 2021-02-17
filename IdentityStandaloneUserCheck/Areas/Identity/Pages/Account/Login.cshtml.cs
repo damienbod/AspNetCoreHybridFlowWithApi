@@ -86,8 +86,6 @@ namespace IdentityStandaloneUserCheck.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User logged in.");
 
-                    var test = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
