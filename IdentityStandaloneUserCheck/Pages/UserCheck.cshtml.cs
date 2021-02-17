@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 
 namespace IdentityStandaloneUserCheck.Pages
 {
@@ -88,8 +89,20 @@ namespace IdentityStandaloneUserCheck.Pages
                 var result = await _signInManager.PasswordSignInAsync(user.Email, Input.Password, false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    _logger.LogInformation("User password re-entered");
+                    var claimType = "passwordChecked";
+                    if (User.HasClaim(c => c.Type == claimType))
+                    {
+                        var claims = User.FindAll(claimType);
+                        foreach(Claim c in claims)
+                        {
+                            await _userManager.RemoveClaimAsync(user, c);
+                        }
+                    }
+                    var claim = new Claim(claimType, DateTime.UtcNow.ToFileTimeUtc().ToString());
+                    await _userManager.AddClaimAsync(user, claim);
 
+                    await _signInManager.RefreshSignInAsync(user);
                     return LocalRedirect(returnUrl);
                 }
                 if (result.IsLockedOut)
