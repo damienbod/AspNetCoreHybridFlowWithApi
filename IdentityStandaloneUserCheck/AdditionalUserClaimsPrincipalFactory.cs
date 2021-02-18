@@ -23,7 +23,7 @@ namespace IdentityStandaloneUserCheck
             var identity = (ClaimsIdentity)principal.Identity;
 
             var claims = new List<Claim>();
-            claims.Add(new Claim("lastlogin", DateTime.UtcNow.ToFileTimeUtc().ToString()));
+            claims.Add(new Claim(UserCheckFilter.LastloginClaimType, DateTime.UtcNow.ToFileTimeUtc().ToString()));
 
             identity.AddClaims(claims);
             return principal;

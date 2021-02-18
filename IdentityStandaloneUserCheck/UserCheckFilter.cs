@@ -7,18 +7,26 @@ namespace IdentityStandaloneUserCheck
 {
     public class UserCheckFilter : IAsyncPageFilter
     {
-        public static string PasswordCheckedClaimType = "passwordChecked"; 
+        public static string PasswordCheckedClaimType = "passwordChecked";
+        public static string LastloginClaimType = "lastlogin";
 
+        
         public async Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)
         {
             if (context.HttpContext.User.Identity.IsAuthenticated)
             {
-                var claimType = PasswordCheckedClaimType;
-                if (context.HttpContext.User.HasClaim(c => c.Type == claimType))
+                if (context.HttpContext.User.HasClaim(c => c.Type == PasswordCheckedClaimType))
                 {
-                    var lastChecked = context.HttpContext.User.FindFirst(claimType);
-                    var dateTimeLastUserCheck = DateTime.FromFileTimeUtc(Convert.ToInt64(lastChecked.Value));
-                    if (DateTime.UtcNow.AddMinutes(-10.0) > dateTimeLastUserCheck)
+                    var lastloginClaimTypeClaim = context.HttpContext.User.FindFirst(LastloginClaimType);
+                    var dateTimeLastLogin = DateTime.FromFileTimeUtc(Convert.ToInt64(lastloginClaimTypeClaim.Value));
+
+                    var lastCheckedClaim = context.HttpContext.User.FindFirst(PasswordCheckedClaimType);
+                    var dateTimeLastUserCheck = DateTime.FromFileTimeUtc(Convert.ToInt64(lastCheckedClaim.Value));
+                    if (dateTimeLastLogin > dateTimeLastUserCheck)
+                    {
+                        context.Result = new RedirectToPageResult("/UserCheck", "?returnUrl=/DoUserChecks/RequirePasswordCheck");
+                    } 
+                    else if (DateTime.UtcNow.AddMinutes(-10.0) > dateTimeLastUserCheck)
                     {
                         context.Result = new RedirectToPageResult("/UserCheck", "?returnUrl=/DoUserChecks/RequirePasswordCheck");
                     }
