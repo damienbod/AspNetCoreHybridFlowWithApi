@@ -6,7 +6,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-page="/DoUserChecks/RequirePasswordCheck">RequirePasswordCheck</a>
+        <a class="nav-link text-dark" asp-area="" asp-page="/DoUserChecks/RequirePasswordVerification">RequireUserVerification</a>
     </li>
     <li class="nav-item">
         <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
