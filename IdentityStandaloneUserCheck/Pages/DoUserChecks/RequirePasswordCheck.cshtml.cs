@@ -15,17 +15,19 @@ namespace IdentityStandaloneUserCheck.Pages
         {
 
         }
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
             // https://localhost:44327/UserCheck?returnUrl=/RequirePasswordCheck
 
             var passwordCheckOk = await ValidatePasswordCheck();
             if(!passwordCheckOk)
             {
-                Redirect("/UserCheck?returnUrl=/DoUserChecks/RequirePasswordCheck");
+                return RedirectToPage("/UserCheck", new { ReturnUrl = "/DoUserChecks/RequirePasswordCheck" });
             }
 
             var ok = "";
+
+            return Page();
         }
     }
 }

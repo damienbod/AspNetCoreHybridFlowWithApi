@@ -36,12 +36,10 @@ namespace IdentityStandaloneUserCheck.Pages
                     if (dateTimeLastLogin > dateTimeLastUserCheck)
                     {
                         return false;
-                        // context.Result = new RedirectToPageResult("/UserCheck", "?returnUrl=/DoUserChecks/RequirePasswordCheck");
                     }
                     else if (DateTime.UtcNow.AddMinutes(-10.0) > dateTimeLastUserCheck)
                     {
                         return false;
-                        //context.Result = new RedirectToPageResult("/UserCheck", "?returnUrl=/DoUserChecks/RequirePasswordCheck");
                     }
 
                     return true;
