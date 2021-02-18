@@ -90,16 +90,9 @@ namespace IdentityStandaloneUserCheck.Pages
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User password re-entered");
-                    var claimType = "passwordChecked";
-                    if (User.HasClaim(c => c.Type == claimType))
-                    {
-                        var claims = User.FindAll(claimType);
-                        foreach(Claim c in claims)
-                        {
-                            await _userManager.RemoveClaimAsync(user, c);
-                        }
-                    }
+                    string claimType = await RemovePasswordCheck(user);
                     var claim = new Claim(claimType, DateTime.UtcNow.ToFileTimeUtc().ToString());
+                    await _userManager.AddClaimAsync(user, claim);
                     await _userManager.AddClaimAsync(user, claim);
 
                     await _signInManager.RefreshSignInAsync(user);
@@ -119,6 +112,21 @@ namespace IdentityStandaloneUserCheck.Pages
 
             // If we got this far, something failed, redisplay form
             return Page();
+        }
+
+        private async Task<string> RemovePasswordCheck(IdentityUser user)
+        {
+            var claimType = "passwordChecked";
+            if (User.HasClaim(c => c.Type == claimType))
+            {
+                var claims = User.FindAll(claimType);
+                foreach (Claim c in claims)
+                {
+                    await _userManager.RemoveClaimAsync(user, c);
+                }
+            }
+
+            return claimType;
         }
     }
 }
