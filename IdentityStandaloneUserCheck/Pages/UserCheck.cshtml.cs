@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using IdentityStandaloneUserCheck.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -17,13 +18,13 @@ namespace IdentityStandaloneUserCheck.Pages
 {
     public class UserCheckModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<UserCheckModel> _logger;
 
-        public UserCheckModel(SignInManager<IdentityUser> signInManager, 
+        public UserCheckModel(SignInManager<ApplicationUser> signInManager, 
             ILogger<UserCheckModel> logger,
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -92,7 +93,7 @@ namespace IdentityStandaloneUserCheck.Pages
                     _logger.LogInformation("User password re-entered");
                     
                     await RemovePasswordCheck(user);
-                    var claim = new Claim(UserCheckFilter.PasswordCheckedClaimType, 
+                    var claim = new Claim(BasePasswordCheck.PasswordCheckedClaimType, 
                         DateTime.UtcNow.ToFileTimeUtc().ToString());
                     await _userManager.AddClaimAsync(user, claim);
                     await _signInManager.RefreshSignInAsync(user);
@@ -115,11 +116,11 @@ namespace IdentityStandaloneUserCheck.Pages
             return Page();
         }
 
-        private async Task RemovePasswordCheck(IdentityUser user)
+        private async Task RemovePasswordCheck(ApplicationUser user)
         {
-            if (User.HasClaim(c => c.Type == UserCheckFilter.PasswordCheckedClaimType))
+            if (User.HasClaim(c => c.Type == BasePasswordCheck.PasswordCheckedClaimType))
             {
-                var claims = User.FindAll(UserCheckFilter.PasswordCheckedClaimType);
+                var claims = User.FindAll(BasePasswordCheck.PasswordCheckedClaimType);
                 foreach (Claim c in claims)
                 {
                     await _userManager.RemoveClaimAsync(user, c);

@@ -32,19 +32,12 @@ namespace IdentityStandaloneUserCheck
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddIdentity<IdentityUser, IdentityRole>(
+            services.AddIdentity<ApplicationUser, IdentityRole>(
                 options => options.SignIn.RequireConfirmedAccount = false)
              .AddEntityFrameworkStores<ApplicationDbContext>()
              .AddDefaultTokenProviders();
 
-            services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, AdditionalUserClaimsPrincipalFactory>();
-
-            services.AddRazorPages()
-                .AddRazorPagesOptions(options =>
-                {
-                    options.Conventions.AddFolderApplicationModelConvention("/DoUserChecks", 
-                        model => model.Filters.Add(new UserCheckFilter()));
-                });
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
