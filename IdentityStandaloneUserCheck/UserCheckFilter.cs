@@ -7,11 +7,13 @@ namespace IdentityStandaloneUserCheck
 {
     public class UserCheckFilter : IAsyncPageFilter
     {
+        public static string PasswordCheckedClaimType = "passwordChecked"; 
+
         public async Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)
         {
             if (context.HttpContext.User.Identity.IsAuthenticated)
             {
-                var claimType = "passwordChecked";
+                var claimType = PasswordCheckedClaimType;
                 if (context.HttpContext.User.HasClaim(c => c.Type == claimType))
                 {
                     var lastChecked = context.HttpContext.User.FindFirst(claimType);
@@ -20,10 +22,16 @@ namespace IdentityStandaloneUserCheck
                     {
                         context.Result = new RedirectToPageResult("/UserCheck", "?returnUrl=/DoUserChecks/RequirePasswordCheck");
                     }
+                    else
+                    {
+                        await next.Invoke();
+                    }
                 }   
             }
-
-            await next.Invoke();
+            else
+            {
+                await next.Invoke();
+            }
         }
 
         public async Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context)
