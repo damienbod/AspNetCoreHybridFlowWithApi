@@ -22,7 +22,7 @@ namespace IdentityStandaloneUserCheck.Pages
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<UserCheckModel> _logger;
 
-        public UserCheckModel(SignInManager<ApplicationUser> signInManager, 
+        public UserCheckModel(SignInManager<ApplicationUser> signInManager,
             ILogger<UserCheckModel> logger,
             UserManager<ApplicationUser> userManager)
         {
@@ -91,9 +91,9 @@ namespace IdentityStandaloneUserCheck.Pages
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User password re-entered");
-                    
+
                     await RemovePasswordCheck(user);
-                    var claim = new Claim(BasePasswordCheck.PasswordCheckedClaimType, 
+                    var claim = new Claim(BasePasswordCheck.PasswordCheckedClaimType,
                         DateTime.UtcNow.ToFileTimeUtc().ToString());
                     await _userManager.AddClaimAsync(user, claim);
                     await _signInManager.RefreshSignInAsync(user);

@@ -11,7 +11,7 @@ namespace IdentityStandaloneUserCheck.Pages
 {
     public class RequirePasswordCheckModel : BasePasswordCheck
     {
-        public RequirePasswordCheckModel(UserManager<ApplicationUser> userManager): base(userManager)
+        public RequirePasswordCheckModel(UserManager<ApplicationUser> userManager) : base(userManager)
         {
 
         }
@@ -20,7 +20,7 @@ namespace IdentityStandaloneUserCheck.Pages
             // https://localhost:44327/UserCheck?returnUrl=/RequirePasswordCheck
 
             var passwordCheckOk = await ValidatePasswordCheck();
-            if(!passwordCheckOk)
+            if (!passwordCheckOk)
             {
                 return RedirectToPage("/UserCheck", new { ReturnUrl = "/DoUserChecks/RequirePasswordCheck" });
             }
