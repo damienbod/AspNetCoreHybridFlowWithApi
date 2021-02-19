@@ -13,6 +13,12 @@
 	<li><a href="https://damienbod.com/2019/12/16/force-asp-net-core-openid-connect-client-to-require-mfa/">Force ASP.NET Core OpenID Connect client to require MFA</a></li>
 	<li><a href="https://damienbod.com/2019/12/18/send-mfa-signin-requirement-to-openid-connect-server-using-asp-net-core-identity-and-identityserver4/">Send MFA signin requirement to OpenID Connect server using ASP.NET Core Identity and IdentityServer4</a></li>
 	<li><a href="https://damienbod.com/2020/01/03/requiring-mfa-for-admin-pages-in-an-asp-net-core-identity-application/">Requiring MFA for Admin Pages in an ASP.NET Core Identity application</a></li>
+	<li><a href="https://damienbod.com/2021/02/19/require-user-password-verification-with-asp-net-core-identity-to-access-razor-page/">Require user password verification with ASP.NET Core Identity to access Razor Page</a></li>
+
+	
+
+
+
 </ul>
 
 
