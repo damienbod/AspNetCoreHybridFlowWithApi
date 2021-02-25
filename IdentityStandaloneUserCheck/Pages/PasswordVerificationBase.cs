@@ -9,7 +9,6 @@ namespace IdentityStandaloneUserCheck.Pages
     public class PasswordVerificationBase : PageModel
     {
         public static string PasswordCheckedClaimType = "passwordChecked";
-        public static string LastLoginClaimType = "lastlogin";
 
         private readonly UserManager<ApplicationUser> _userManager;
 

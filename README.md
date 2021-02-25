@@ -15,10 +15,6 @@
 	<li><a href="https://damienbod.com/2020/01/03/requiring-mfa-for-admin-pages-in-an-asp-net-core-identity-application/">Requiring MFA for Admin Pages in an ASP.NET Core Identity application</a></li>
 	<li><a href="https://damienbod.com/2021/02/19/require-user-password-verification-with-asp-net-core-identity-to-access-razor-page/">Require user password verification with ASP.NET Core Identity to access Razor Page</a></li>
 
-	
-
-
-
 </ul>
 
 
