@@ -20,6 +20,8 @@
 
 ## History
 
+- 2021-03-17 Updated nuget packages
+
 - 2021-03-05 Updated nuget packages
 
 - 2021-02-25 Updated nuget packages, small clean up

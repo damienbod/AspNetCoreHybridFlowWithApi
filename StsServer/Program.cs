@@ -47,8 +47,9 @@ namespace StsServerIdentity
                     var keyVaultEndpoint = builder["AzureKeyVaultEndpoint"];
                     if (!string.IsNullOrEmpty(keyVaultEndpoint))
                     {
+                        var credential = new DefaultAzureCredential();
                         var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        config.AddAzureKeyVault(new Uri(keyVaultEndpoint), new DefaultAzureCredential());
+                        config.AddAzureKeyVault(new Uri(keyVaultEndpoint), credential);
                     }
                     else
                     {
