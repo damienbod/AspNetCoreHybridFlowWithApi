@@ -17,6 +17,16 @@
 
 </ul>
 
+## Database migrations
+
+```
+Add-Migration InitialCreate -c ApplicationDbContext
+```
+
+```
+Update-Database
+```
+
 
 ## History
 
