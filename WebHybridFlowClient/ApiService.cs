@@ -1,8 +1,9 @@
 ﻿using IdentityModel.Client;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace WebHybridClient
@@ -23,7 +24,7 @@ namespace WebHybridClient
             _apiTokenClient = apiTokenClient;
         }
 
-        public async Task<JArray> GetApiDataAsync()
+        public async Task<List<string>> GetApiDataAsync()
         {
             try
             {
@@ -42,8 +43,8 @@ namespace WebHybridClient
                 var response = await client.GetAsync("api/values");
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var data = JArray.Parse(responseContent);
+                    var data = await JsonSerializer.DeserializeAsync<List<string>>(
+                    await response.Content.ReadAsStreamAsync());
 
                     return data;
                 }

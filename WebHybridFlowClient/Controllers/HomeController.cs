@@ -19,9 +19,7 @@ namespace WebHybridClient.Controllers
         public async System.Threading.Tasks.Task<IActionResult> Index()
         {
             var result = await _apiService.GetApiDataAsync();
-
-            ViewData["data"] = result.ToString();
-            return View();
+            return View(result);
         }
 
         public IActionResult Error()

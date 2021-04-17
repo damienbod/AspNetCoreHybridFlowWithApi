@@ -1,7 +1,11 @@
-﻿@{
+﻿@model List<string>  
+@{
     ViewData["Title"] = "Home Page";
 }
 
 Data from protected server:
 
-@ViewData["data"]
+@foreach(string item in Model)
+{ 
+    <p>@item</p>
+}
