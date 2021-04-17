@@ -103,7 +103,7 @@ namespace WebApi
             services.AddControllers(options =>
             {
                 options.Filters.Add(new MissingSecurityHeaders());
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            });
         }
 
         public void Configure(IApplicationBuilder app)
