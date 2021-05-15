@@ -1,4 +1,5 @@
 using IdentityStandaloneUserCheck.Data;
+using IdentityStandaloneUserCheck.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,8 +35,11 @@ namespace IdentityStandaloneUserCheck
 
             services.AddIdentity<ApplicationUser, IdentityRole>(
                 options => options.SignIn.RequireConfirmedAccount = false)
-             .AddEntityFrameworkStores<ApplicationDbContext>()
-             .AddDefaultTokenProviders();
+               .AddDefaultTokenProviders()
+               .AddDefaultUI()
+               .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddRazorPages();
         }
