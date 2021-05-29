@@ -30,6 +30,8 @@ Update-Database
 
 ## History
 
+- 2021-05-28 Updated packages, added example for IClaimsTransformation
+
 - 2021-05-15 Updated packages, fix identity email bug
 
 - 2021-04-17 Updated nuget packages, improving API calls
