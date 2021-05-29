@@ -22,6 +22,8 @@ namespace WebCodeFlowPkceClient
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IClaimsTransformation, MyClaimsTransformation>();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -45,8 +47,8 @@ namespace WebCodeFlowPkceClient
                options.ClaimActions.MapUniqueJsonKey("gender", "gender");
            });
 
-           services.AddAuthorization();
-           services.AddRazorPages();
+            services.AddAuthorization();
+            services.AddRazorPages();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
