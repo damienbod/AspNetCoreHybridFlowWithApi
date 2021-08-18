@@ -100,69 +100,26 @@ namespace WebApi
                 });
             });
 
-            services.AddControllers(options =>
-            {
-                options.Filters.Add(new MissingSecurityHeaders());
-            });
+            services.AddControllers();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            if (_environment.IsDevelopment())
+            app.UseSecurityHeaders(
+                SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment()));
+
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "User API");
-                c.RoutePrefix = string.Empty;
-            });
-
-            //Registered before static files to always set header
-            app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
-            app.UseXContentTypeOptions();
-            app.UseReferrerPolicy(opts => opts.NoReferrer());
-            app.UseXXssProtection(options => options.EnabledWithBlockMode());
-            app.UseXfo(options => options.Deny());
-
-            app.UseCsp(opts => opts
-                .BlockAllMixedContent()
-                .StyleSources(s => s.Self())
-                .StyleSources(s => s.UnsafeInline())
-                .FontSources(s => s.Self())
-                .FormActions(s => s.Self())
-                .FrameAncestors(s => s.Self())
-                .ImageSources(s => s.Self())
-                .ScriptSources(s => s.Self())
-            );
-
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                OnPrepareResponse = context =>
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
                 {
-                    if (context.Context.Response.Headers["feature-policy"].Count == 0)
-                    {
-                        var featurePolicy = "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'";
-
-                        context.Context.Response.Headers["feature-policy"] = featurePolicy;
-                    }
-
-                    if (context.Context.Response.Headers["X-Content-Security-Policy"].Count == 0)
-                    {
-                        var csp = "script-src 'self';style-src 'self';img-src 'self' data:;font-src 'self';form-action 'self';frame-ancestors 'self';block-all-mixed-content";
-                        // IE
-                        context.Context.Response.Headers["X-Content-Security-Policy"] = csp;
-                    }
-                }
-            });
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+                });
+            }
 
             app.UseCookiePolicy();
 
