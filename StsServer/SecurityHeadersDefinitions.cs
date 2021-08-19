@@ -29,12 +29,15 @@ namespace StsServerIdentity
                     builder.AddObjectSrc().None();
                     builder.AddBlockAllMixedContent();
                     builder.AddImgSrc().Self().From("data:");
-                    builder.AddFormAction().Self();
                     builder.AddFontSrc().Self();
                     builder.AddStyleSrc().Self().UnsafeInline();
                     builder.AddBaseUri().Self();
                     builder.AddScriptSrc().Self().UnsafeInline(); //.WithNonce();
                     builder.AddFrameAncestors().Self();
+
+                    // removed this for demos add this back with explicit redirects for prod
+                    // builder.AddFormAction().Self();
+
                     // builder.AddCustomDirective("require-trusted-types-for", "'script'");
                 })
                 .RemoveServerHeader()
