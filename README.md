@@ -30,6 +30,8 @@ Update-Database
 
 ## History
 
+- 2021-08-19 improved security headers
+
 - 2021-08-18 Updated packages, improved security headers STS
 
 - 2021-05-28 Updated packages, added example for IClaimsTransformation
