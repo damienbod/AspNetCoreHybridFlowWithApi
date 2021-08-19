@@ -6,11 +6,16 @@
     <title>@ViewData["Title"] - Hybrid Client</title>
 </head>
 <body>
-   
+
     <div class="container body-content">
         @RenderBody()
 
     </div>
+
+    @{var nonce = Context.GetNonce();}
+    <script src="~/lib/jquery/dist/jquery.min.js" nonce="@nonce"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" nonce="@nonce"></script>
+    <script src="~/js/site.js" asp-append-version="true" nonce="@nonce"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

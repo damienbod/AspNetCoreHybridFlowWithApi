@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace StsServerIdentity
+namespace WebApi
 {
     public static class SecurityHeadersDefinitions
     {
@@ -24,22 +24,6 @@ namespace StsServerIdentity
                 {
                     builder.SameOrigin();
                 })
-                .AddContentSecurityPolicy(builder =>
-                {
-                    builder.AddObjectSrc().None();
-                    builder.AddBlockAllMixedContent();
-                    builder.AddImgSrc().Self().From("data:");
-                    builder.AddFontSrc().Self();
-                    builder.AddStyleSrc().Self().UnsafeInline();
-                    builder.AddBaseUri().Self();
-                    builder.AddScriptSrc().Self().UnsafeInline(); //.WithNonce();
-                    builder.AddFrameAncestors().Self();
-
-                    // removed this for demos add this back with explicit redirects for prod
-                    // builder.AddFormAction().Self();
-
-                    // builder.AddCustomDirective("require-trusted-types-for", "'script'");
-                })
                 .RemoveServerHeader()
                 .AddPermissionsPolicy(builder =>
                 {
@@ -59,13 +43,47 @@ namespace StsServerIdentity
                     builder.AddUsb().None();
                 });
 
+            AddCspHstsDefinitions(isDev, policy);
+
+            return policy;
+        }
+
+        private static void AddCspHstsDefinitions(bool isDev, HeaderPolicyCollection policy)
+        {
             if (!isDev)
             {
+                policy.AddContentSecurityPolicy(builder =>
+                {
+                    builder.AddObjectSrc().None();
+                    builder.AddBlockAllMixedContent();
+                    builder.AddImgSrc().None();
+                    builder.AddFormAction().None();
+                    builder.AddFontSrc().None();
+                    builder.AddStyleSrc().None();
+                    builder.AddScriptSrc().None();
+                    builder.AddBaseUri().Self();
+                    builder.AddFrameAncestors().None();
+                    builder.AddCustomDirective("require-trusted-types-for", "'script'");
+                });
                 // maxage = one year in seconds
                 policy.AddStrictTransportSecurityMaxAgeIncludeSubDomains(maxAgeInSeconds: 60 * 60 * 24 * 365);
             }
-
-            return policy;
+            else
+            {
+                // allow swagger UI for dev
+                policy.AddContentSecurityPolicy(builder =>
+                {
+                    builder.AddObjectSrc().None();
+                    builder.AddBlockAllMixedContent();
+                    builder.AddImgSrc().Self().From("data:");
+                    builder.AddFormAction().Self();
+                    builder.AddFontSrc().Self();
+                    builder.AddStyleSrc().Self().UnsafeInline();
+                    builder.AddScriptSrc().Self().UnsafeInline(); //.WithNonce();
+                    builder.AddBaseUri().Self();
+                    builder.AddFrameAncestors().None();
+                });
+            }
         }
     }
 }
