@@ -30,6 +30,8 @@ Update-Database
 
 ## History
 
+- 2021-11-06 Update .NET 5
+
 - 2021-08-19 improved security headers
 
 - 2021-08-18 Updated packages, improved security headers STS
