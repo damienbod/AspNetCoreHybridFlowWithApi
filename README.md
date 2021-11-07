@@ -30,6 +30,8 @@ Update-Database
 
 ## History
 
+- 2021-11-07 Update .NET 6 
+- 
 - 2021-11-06 Update .NET 5
 
 - 2021-08-19 improved security headers
