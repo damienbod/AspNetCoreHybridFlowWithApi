@@ -30,6 +30,8 @@ Update-Database
 
 ## History
 
+- 2021-11-08 Update .NET 6 release
+
 - 2021-11-07 Update .NET 6 
 
 - 2021-11-06 Update .NET 5
