@@ -30,6 +30,8 @@ Update-Database
 
 ## History
 
+- 2022-02-10 Updated namespaces
+
 - 2022-01-28 Updated packages
 
 - 2021-11-08 Update .NET 6 release
