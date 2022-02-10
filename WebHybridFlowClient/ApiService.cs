@@ -6,55 +6,54 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace WebHybridClient
+namespace WebHybridClient;
+
+public class ApiService
 {
-    public class ApiService
+    private readonly IOptions<AuthConfigurations> _authConfigurations;
+    private readonly IHttpClientFactory _clientFactory;
+    private readonly ApiTokenCacheClient _apiTokenClient;
+
+    public ApiService(
+        IOptions<AuthConfigurations> authConfigurations, 
+        IHttpClientFactory clientFactory,
+        ApiTokenCacheClient apiTokenClient)
     {
-        private readonly IOptions<AuthConfigurations> _authConfigurations;
-        private readonly IHttpClientFactory _clientFactory;
-        private readonly ApiTokenCacheClient _apiTokenClient;
+        _authConfigurations = authConfigurations;
+        _clientFactory = clientFactory;
+        _apiTokenClient = apiTokenClient;
+    }
 
-        public ApiService(
-            IOptions<AuthConfigurations> authConfigurations, 
-            IHttpClientFactory clientFactory,
-            ApiTokenCacheClient apiTokenClient)
+    public async Task<List<string>> GetApiDataAsync()
+    {
+        try
         {
-            _authConfigurations = authConfigurations;
-            _clientFactory = clientFactory;
-            _apiTokenClient = apiTokenClient;
+            var client = _clientFactory.CreateClient();
+
+            client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
+
+            var access_token = await _apiTokenClient.GetApiToken(
+                "CC_FOR_API",
+                "scope_used_for_api_in_protected_zone",
+                "cc_for_api_secret"
+            );
+
+            client.SetBearerToken(access_token);
+
+            var response = await client.GetAsync("api/values");
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await JsonSerializer.DeserializeAsync<List<string>>(
+                await response.Content.ReadAsStreamAsync());
+
+                return data;
+            }
+
+            throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
         }
-
-        public async Task<List<string>> GetApiDataAsync()
+        catch (Exception e)
         {
-            try
-            {
-                var client = _clientFactory.CreateClient();
-
-                client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
-
-                var access_token = await _apiTokenClient.GetApiToken(
-                    "CC_FOR_API",
-                    "scope_used_for_api_in_protected_zone",
-                    "cc_for_api_secret"
-                );
-
-                client.SetBearerToken(access_token);
-
-                var response = await client.GetAsync("api/values");
-                if (response.IsSuccessStatusCode)
-                {
-                    var data = await JsonSerializer.DeserializeAsync<List<string>>(
-                    await response.Content.ReadAsStreamAsync());
-
-                    return data;
-                }
-
-                throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
-            }
-            catch (Exception e)
-            {
-                throw new ApplicationException($"Exception {e}");
-            }
+            throw new ApplicationException($"Exception {e}");
         }
     }
 }

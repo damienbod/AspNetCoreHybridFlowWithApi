@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace IdentityStandaloneMfa
+namespace IdentityStandaloneMfa;
+
+public class AdminModel : PageModel
 {
-    public class AdminModel : PageModel
+    public IActionResult OnGet()
     {
-        public IActionResult OnGet()
+        var claimTwoFactorEnabled = User.Claims.FirstOrDefault(t => t.Type == "amr");
+
+        if (claimTwoFactorEnabled != null && "mfa".Equals(claimTwoFactorEnabled.Value))
         {
-            var claimTwoFactorEnabled = User.Claims.FirstOrDefault(t => t.Type == "amr");
-
-            if (claimTwoFactorEnabled != null && "mfa".Equals(claimTwoFactorEnabled.Value))
-            {
-                // You logged in with MFA, do the admin stuff
-            }
-            else
-            {
-                return Redirect("/Identity/Account/Manage/TwoFactorAuthentication");
-            }
-
-            return Page();
+            // You logged in with MFA, do the admin stuff
         }
+        else
+        {
+            return Redirect("/Identity/Account/Manage/TwoFactorAuthentication");
+        }
+
+        return Page();
     }
 }
