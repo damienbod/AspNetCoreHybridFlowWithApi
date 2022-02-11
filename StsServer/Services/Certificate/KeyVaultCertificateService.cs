@@ -7,76 +7,74 @@ using Azure.Security.KeyVault.Certificates;
 using Azure.Security.KeyVault.Secrets;
 using Microsoft.Azure.Services.AppAuthentication;
 
-namespace StsServerIdentity.Services.Certificate
+namespace StsServerIdentity.Services.Certificate;
+
+public class KeyVaultCertificateService
 {
-    public class KeyVaultCertificateService
+    private readonly string _keyVaultEndpoint;
+    private readonly string _certificateName;
+
+    public KeyVaultCertificateService(string keyVaultEndpoint, string certificateName)
     {
-        private readonly string _keyVaultEndpoint;
-        private readonly string _certificateName;
-
-        public KeyVaultCertificateService(string keyVaultEndpoint, string certificateName)
+        if (string.IsNullOrEmpty(keyVaultEndpoint))
         {
-            if (string.IsNullOrEmpty(keyVaultEndpoint))
-            {
-                throw new ArgumentException("missing keyVaultEndpoint");
-            }
-
-            _keyVaultEndpoint = keyVaultEndpoint; // "https://damienbod.vault.azure.net"
-            _certificateName = certificateName; // certificateName
+            throw new ArgumentException("missing keyVaultEndpoint");
         }
 
-        public async Task<(X509Certificate2 ActiveCertificate, X509Certificate2 SecondaryCertificate)> GetCertificatesFromKeyVault(
-            SecretClient secretClient, CertificateClient certificateClient)
+        _keyVaultEndpoint = keyVaultEndpoint; // "https://damienbod.vault.azure.net"
+        _certificateName = certificateName; // certificateName
+    }
+
+    public async Task<(X509Certificate2 ActiveCertificate, X509Certificate2 SecondaryCertificate)> GetCertificatesFromKeyVault(
+        SecretClient secretClient, CertificateClient certificateClient)
+    {
+        (X509Certificate2 ActiveCertificate, X509Certificate2 SecondaryCertificate) certs = (null, null);
+
+        var certificateItems = GetAllEnabledCertificateVersions(certificateClient);
+        var item = certificateItems.FirstOrDefault();
+        if (item != null)
         {
-            (X509Certificate2 ActiveCertificate, X509Certificate2 SecondaryCertificate) certs = (null, null);
-
-            var certificateItems = GetAllEnabledCertificateVersions(certificateClient);
-            var item = certificateItems.FirstOrDefault();
-            if (item != null)
-            {
-                certs.ActiveCertificate = await GetCertificateAsync(
-                    secretClient, _certificateName, item.Version);
-            }
-
-            if (certificateItems.Count > 1)
-            {
-                certs.SecondaryCertificate = await GetCertificateAsync(
-                    secretClient, _certificateName, certificateItems[1].Version);
-            }
-
-            return certs;
+            certs.ActiveCertificate = await GetCertificateAsync(
+                secretClient, _certificateName, item.Version);
         }
 
-        private List<CertificateProperties> GetAllEnabledCertificateVersions(
-            CertificateClient certificateClient)
+        if (certificateItems.Count > 1)
         {
-            var certificateVersions = certificateClient.GetPropertiesOfCertificateVersions(_certificateName);
-            var certificateItems = certificateVersions.ToList();
-
-            // Find all enabled versions of the certificate and sort them by creation date in decending order 
-            return certificateVersions
-              .Where(certVersion => certVersion.Enabled.HasValue && certVersion.Enabled.Value)
-              .OrderByDescending(certVersion => certVersion.CreatedOn)
-              .ToList();
+            certs.SecondaryCertificate = await GetCertificateAsync(
+                secretClient, _certificateName, certificateItems[1].Version);
         }
 
-        private async Task<X509Certificate2> GetCertificateAsync(
-            SecretClient secretClient, 
-            string certName, 
-            string version)
-        {
-            // Create a new secret using the secret client.
-            var secretName = certName;
-            KeyVaultSecret secret = await secretClient.GetSecretAsync(secretName, version);
+        return certs;
+    }
 
-            var privateKeyBytes = Convert.FromBase64String(secret.Value);
+    private List<CertificateProperties> GetAllEnabledCertificateVersions(
+        CertificateClient certificateClient)
+    {
+        var certificateVersions = certificateClient.GetPropertiesOfCertificateVersions(_certificateName);
+        var certificateItems = certificateVersions.ToList();
 
-            var certificateWithPrivateKey = new X509Certificate2(privateKeyBytes,
-                (string)null,
-                X509KeyStorageFlags.MachineKeySet);
+        // Find all enabled versions of the certificate and sort them by creation date in decending order 
+        return certificateVersions
+            .Where(certVersion => certVersion.Enabled.HasValue && certVersion.Enabled.Value)
+            .OrderByDescending(certVersion => certVersion.CreatedOn)
+            .ToList();
+    }
 
-            return certificateWithPrivateKey;
-        }
+    private async Task<X509Certificate2> GetCertificateAsync(
+        SecretClient secretClient, 
+        string certName, 
+        string version)
+    {
+        // Create a new secret using the secret client.
+        var secretName = certName;
+        KeyVaultSecret secret = await secretClient.GetSecretAsync(secretName, version);
 
+        var privateKeyBytes = Convert.FromBase64String(secret.Value);
+
+        var certificateWithPrivateKey = new X509Certificate2(privateKeyBytes,
+            (string)null,
+            X509KeyStorageFlags.MachineKeySet);
+
+        return certificateWithPrivateKey;
     }
 }

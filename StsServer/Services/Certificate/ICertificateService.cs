@@ -1,9 +1,8 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
-namespace StsServerIdentity.Services.Certificate
+namespace StsServerIdentity.Services.Certificate;
+
+public interface ICertificateService
 {
-    public interface ICertificateService
-    {
-        X509Certificate2 GetCertificateFromKeyVault(string vaultCertificateName);
-    }
+    X509Certificate2 GetCertificateFromKeyVault(string vaultCertificateName);
 }
