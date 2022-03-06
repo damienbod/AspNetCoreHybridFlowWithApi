@@ -128,10 +128,12 @@ public class Config
                 UpdateAccessTokenClaimsOnRefresh = true,
                 //AlwaysIncludeUserClaimsInIdToken = true,
                 RedirectUris = {
-                    $"{webCodeFlowPkceClientUrl}/signin-oidc"
+                    $"{webCodeFlowPkceClientUrl}/signin-oidc",
+                    "https://localhost:44345/signin-oidc"
                 },
                 PostLogoutRedirectUris = {
-                    $"{webCodeFlowPkceClientUrl}/signout-callback-oidc"
+                    $"{webCodeFlowPkceClientUrl}/signout-callback-oidc",
+                    "https://localhost:44345/signout-callback-oidc"
                 },
                 AllowedScopes = new List<string>
                 {
@@ -153,7 +155,7 @@ public class Config
                 UpdateAccessTokenClaimsOnRefresh = true,
                 AlwaysIncludeUserClaimsInIdToken = true,
                 RedirectUris = {
-                        $"{aspNetCoreRequireMfaOidcUrl}/signin-oidc"
+                    $"{aspNetCoreRequireMfaOidcUrl}/signin-oidc"
                 },
                 PostLogoutRedirectUris = {
                     $"{aspNetCoreRequireMfaOidcUrl}/signout-callback-oidc"
