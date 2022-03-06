@@ -41,10 +41,13 @@ builder.Services.Configure<OpenIdConnectOptions>(OpenIdConnectDefaults.Authentic
 {
     options.Events.OnTokenValidated = async context =>
     {
-        using var scope = ApplicationServices.CreateScope();
-        context.Principal = await scope.ServiceProvider
-            .GetRequiredService<MyClaimsTransformation>()
-            .TransformAsync(context.Principal);
+        if(ApplicationServices != null && context.Principal != null)
+        {
+            using var scope = ApplicationServices.CreateScope();
+            context.Principal = await scope.ServiceProvider
+                .GetRequiredService<MyClaimsTransformation>()
+                .TransformAsync(context.Principal);
+        }
     };
 });
 

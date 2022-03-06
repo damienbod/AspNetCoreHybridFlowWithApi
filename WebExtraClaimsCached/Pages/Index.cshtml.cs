@@ -8,6 +8,7 @@ namespace WebExtraClaimsCached.Pages
     {
         public void OnGet()
         {
+            var ss = User.Identity.Name;
         }
     }
 }
