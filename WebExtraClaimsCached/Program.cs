@@ -5,6 +5,8 @@ using Microsoft.IdentityModel.Logging;
 using System.IdentityModel.Tokens.Jwt;
 using WebExtraClaimsCached;
 
+IServiceProvider ApplicationServices = null;
+
 IdentityModelEventSource.ShowPII = true;
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
@@ -35,10 +37,22 @@ builder.Services.AddAuthentication(options =>
     options.ClaimActions.MapUniqueJsonKey("gender", "gender");
 });
 
-// Add services to the container.
+builder.Services.Configure<OpenIdConnectOptions>(OpenIdConnectDefaults.AuthenticationScheme, options =>
+{
+    options.Events.OnTokenValidated = async context =>
+    {
+        using var scope = ApplicationServices.CreateScope();
+        context.Principal = await scope.ServiceProvider
+            .GetRequiredService<MyClaimsTransformation>()
+            .TransformAsync(context.Principal);
+    };
+});
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+ApplicationServices = app.Services;
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
