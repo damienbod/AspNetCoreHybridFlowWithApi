@@ -50,14 +50,14 @@ public class Program
                 //.AddUserSecrets("your user secret....");
                     
             })
+            .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
+                .ReadFrom.Configuration(hostingContext.Configuration)
+                .Enrich.FromLogContext()
+                .WriteTo.File("../PkceClientApp.txt")
+                .WriteTo.Console(theme: AnsiConsoleTheme.Code)
+            )
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                webBuilder.UseStartup<Startup>()
-                    .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-                    .ReadFrom.Configuration(hostingContext.Configuration)
-                    .Enrich.FromLogContext()
-                    .WriteTo.File("../PkceClientApp.txt")
-                    .WriteTo.Console(theme: AnsiConsoleTheme.Code)
-            );
+                webBuilder.UseStartup<Startup>();
             });
 }
