@@ -14,9 +14,9 @@ public class LoginModel : PageModel
 {
     private readonly DeviceFlowService _deviceFlowService;
 
-    public string AuthenticatorUri { get; set; }
+    public string? AuthenticatorUri { get; set; }
 
-    public string UserCode { get; set; }
+    public string? UserCode { get; set; }
 
     public LoginModel(DeviceFlowService deviceFlowService)
     {
@@ -50,48 +50,51 @@ public class LoginModel : PageModel
             interval = 5;
         }
 
-        var tokenresponse = await _deviceFlowService.RequestTokenAsync(deviceCode, interval.Value);
-
-        if (tokenresponse.IsError)
+        if(deviceCode != null && interval != null)
         {
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-            return Page();
-        }
+            var tokenresponse = await _deviceFlowService.RequestTokenAsync(deviceCode, interval.Value);
 
-        var claims = GetClaims(tokenresponse.IdentityToken);
-
-        var claimsIdentity = new ClaimsIdentity(
-            claims, 
-            CookieAuthenticationDefaults.AuthenticationScheme, 
-            "name", 
-            "user");
-
-        var authProperties = new AuthenticationProperties();
-
-        // save the tokens in the cookie
-        authProperties.StoreTokens(new List<AuthenticationToken>
-        {
-            new AuthenticationToken
+            if (tokenresponse.IsError)
             {
-                Name = "access_token",
-                Value = tokenresponse.AccessToken
-            },
-            new AuthenticationToken
-            {
-                Name = "id_token",
-                Value = tokenresponse.IdentityToken
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return Page();
             }
-        });
 
-        await HttpContext.SignInAsync(
-            CookieAuthenticationDefaults.AuthenticationScheme,
-            new ClaimsPrincipal(claimsIdentity),
-            authProperties);
+            var claims = GetClaims(tokenresponse.IdentityToken);
+
+            var claimsIdentity = new ClaimsIdentity(
+                claims,
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                "name",
+                "user");
+
+            var authProperties = new AuthenticationProperties();
+
+            // save the tokens in the cookie
+            authProperties.StoreTokens(new List<AuthenticationToken>
+            {
+                new AuthenticationToken
+                {
+                    Name = "access_token",
+                    Value = tokenresponse.AccessToken
+                },
+                new AuthenticationToken
+                {
+                    Name = "id_token",
+                    Value = tokenresponse.IdentityToken
+                }
+            });
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                authProperties);
+        }
 
         return Redirect("/Index");
     }
 
-    private IEnumerable<Claim> GetClaims(string token)
+    private static IEnumerable<Claim> GetClaims(string token)
     {
         var validJwt = new JwtSecurityToken(token);
         return validJwt.Claims;
