@@ -21,7 +21,7 @@ public class ApiTokenInMemoryClient
         public DateTime ExpiresIn { get; set; }
     }
 
-    private ConcurrentDictionary<string, AccessTokenItem> _accessTokens = new ConcurrentDictionary<string, AccessTokenItem>();
+    private readonly ConcurrentDictionary<string, AccessTokenItem> _accessTokens = new();
 
     public ApiTokenInMemoryClient(
         IOptions<AuthConfigurations> authConfigurations,
@@ -38,27 +38,27 @@ public class ApiTokenInMemoryClient
         if (_accessTokens.ContainsKey(api_name))
         {
             var accessToken = _accessTokens.GetValueOrDefault(api_name);
-            if (accessToken.ExpiresIn > DateTime.UtcNow)
+            if (accessToken?.ExpiresIn > DateTime.UtcNow)
             {
                 return accessToken.AccessToken;
             }
             else
             {
                 // remove
-                _accessTokens.TryRemove(api_name, out AccessTokenItem accessTokenItem);
+                _accessTokens.TryRemove(api_name, out _);
             }
         }
 
-        _logger.LogDebug($"GetApiToken new from STS for {api_name}");
+        _logger.LogDebug("GetApiToken new from STS for {api_name}", api_name);
 
         // add
-        var newAccessToken = await getApiToken( api_name,  api_scope,  secret);
+        var newAccessToken = await GetInternalApiToken( api_name,  api_scope,  secret);
         _accessTokens.TryAdd(api_name, newAccessToken);
 
         return newAccessToken.AccessToken;
     }
 
-    private async Task<AccessTokenItem> getApiToken(string api_name, string api_scope, string secret)
+    private async Task<AccessTokenItem> GetInternalApiToken(string api_name, string api_scope, string secret)
     {
         try
         {
@@ -68,7 +68,7 @@ public class ApiTokenInMemoryClient
 
             if (disco.IsError)
             {
-                _logger.LogError($"disco error Status code: {disco.IsError}, Error: {disco.Error}");
+                _logger.LogError("disco error Status code: {discoIsError}, Error: {discoError}", disco.IsError, disco.Error);
                 throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
             }
 
@@ -82,7 +82,7 @@ public class ApiTokenInMemoryClient
 
             if (tokenResponse.IsError)
             {
-                _logger.LogError($"tokenResponse.IsError Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
+                _logger.LogError("tokenResponse.IsError Status code: {tokenResponseIsError}, Error: {tokenResponseError}", tokenResponse.IsError, tokenResponse.Error);
                 throw new ApplicationException($"Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
             }
 
@@ -91,11 +91,10 @@ public class ApiTokenInMemoryClient
                 ExpiresIn = DateTime.UtcNow.AddSeconds(tokenResponse.ExpiresIn),
                 AccessToken = tokenResponse.AccessToken
             };
-                
         }
         catch (Exception e)
         {
-            _logger.LogError($"Exception {e}");
+            _logger.LogError("Exception {e}", e);
             throw new ApplicationException($"Exception {e}");
         }
     }

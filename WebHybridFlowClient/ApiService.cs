@@ -46,7 +46,10 @@ public class ApiService
                 var data = await JsonSerializer.DeserializeAsync<List<string>>(
                 await response.Content.ReadAsStreamAsync());
 
-                return data;
+                if(data != null)
+                    return data;
+
+                return new List<string>();
             }
 
             throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
