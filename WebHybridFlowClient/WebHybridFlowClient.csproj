@@ -8,11 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.5" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.9" />
     <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.16.1" />
     <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="0.16.1" />
-	<PackageReference Include="Serilog" Version="2.10.0" />
+	<PackageReference Include="Serilog" Version="2.11.0" />
 	<PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
 	<PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
 	<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
