@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using IdentityStandaloneUserCheck.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

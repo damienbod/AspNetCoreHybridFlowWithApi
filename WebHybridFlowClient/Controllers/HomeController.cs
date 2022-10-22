@@ -15,7 +15,7 @@ public class HomeController : Controller
         _apiService = apiService;
     }
 
-    public async System.Threading.Tasks.Task<IActionResult> Index()
+    public async Task<IActionResult> Index()
     {
         var result = await _apiService.GetApiDataAsync();
         return View(result);
