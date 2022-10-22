@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace WebApi;
+﻿namespace WebApi;
 
 public static class SecurityHeadersDefinitions
 {

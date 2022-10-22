@@ -7,7 +7,7 @@
     "inputFiles": [
       "wwwroot/css/site.css"
     ],
-    "minify": { "enabled": true }
+    "minify": { "enabled": false }
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
@@ -28,7 +28,7 @@
     "inputFiles": [
       "node_modules/bootstrap/dist/css/bootstrap.min.css"
     ],
-    "minify": { "enabled": true }
+    "minify": { "enabled": false }
   },
   // Vendor JS
   {
@@ -38,7 +38,7 @@
       "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
     ],
     "minify": {
-      "enabled": true,
+      "enabled": false,
       "renameLocals": true
     },
     "sourceMap": false
@@ -53,7 +53,7 @@
       "node_modules//jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"
     ],
     "minify": {
-      "enabled": true,
+      "enabled": false,
       "renameLocals": true
     },
     "sourceMap": false

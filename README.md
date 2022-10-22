@@ -30,6 +30,8 @@ Update-Database
 
 ## History
 
+- 2022-10-22 Updated packages
+
 - 2022-05-20 Updated packages
 
 - 2022-04-02 Updated packages, moved to nullable, some .NET 6 code styles

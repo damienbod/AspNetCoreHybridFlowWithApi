@@ -7,7 +7,7 @@
     "inputFiles": [
       "wwwroot/css/site.css"
     ],
-    "minify": { "enabled": true }
+    "minify": { "enabled": false }
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
@@ -29,7 +29,7 @@
       "node_modules/bootstrap/dist/css/bootstrap.min.css",
       "node_modules/sweetalert2/dist/sweetalert2.min.css"
     ],
-    "minify": { "enabled": true }
+    "minify": { "enabled": false }
   },
   // Vendor JS
   {
@@ -40,7 +40,7 @@
       "node_modules/sweetalert2/dist/sweetalert2.all.min.js"
     ],
     "minify": {
-      "enabled": true,
+      "enabled": false,
       "renameLocals": true
     },
     "sourceMap": false
@@ -55,7 +55,7 @@
       "node_modules/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"
     ],
     "minify": {
-      "enabled": true,
+      "enabled": false,
       "renameLocals": true
     },
     "sourceMap": false

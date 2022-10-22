@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace IdentityStandaloneUserCheck.Services;
+﻿namespace IdentityStandaloneUserCheck.Services;
 
 public interface IEmailSender
 {
