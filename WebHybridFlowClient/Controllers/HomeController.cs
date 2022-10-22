@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebHybridClient;
 using WebHybridClient.Models;
 
 namespace WebHybridClient.Controllers;
