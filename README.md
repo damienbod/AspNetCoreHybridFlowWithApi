@@ -30,6 +30,8 @@ Update-Database
 
 ## History
 
+- 2022-12-17 Updated packages to .NET 7
+
 - 2022-10-22 Updated packages
 
 - 2022-05-20 Updated packages
