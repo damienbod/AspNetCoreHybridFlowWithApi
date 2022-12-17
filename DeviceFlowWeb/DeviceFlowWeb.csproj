@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <UserSecretsId>7953929f-5999-4847-b4b8-2f6cf964f467</UserSecretsId>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
@@ -10,16 +10,16 @@
 
   <ItemGroup>
 	  <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-	  <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.10" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.1" />
     <PackageReference Include="IdentityModel" Version="6.0.0" />
     <PackageReference Include="Serilog" Version="2.12.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.1" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.2" />
     <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.17.0" />
     <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="0.17.0" />
   </ItemGroup>
