@@ -129,11 +129,15 @@ public class Config
                 //AlwaysIncludeUserClaimsInIdToken = true,
                 RedirectUris = {
                     $"{webCodeFlowPkceClientUrl}/signin-oidc",
-                    "https://localhost:44345/signin-oidc"
+                    "https://localhost:44345/signin-oidc",
+                    "https://localhost:44355/signin-oidc",
+                    "https://localhost:5001/signin-oidc"
                 },
                 PostLogoutRedirectUris = {
                     $"{webCodeFlowPkceClientUrl}/signout-callback-oidc",
-                    "https://localhost:44345/signout-callback-oidc"
+                    "https://localhost:44345/signout-callback-oidc",
+                    "https://localhost:44355/signout-callback-oidc",
+                    "https://localhost:5001/signout-callback-oidc",
                 },
                 AllowedScopes = new List<string>
                 {
