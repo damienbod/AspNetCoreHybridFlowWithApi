@@ -7,7 +7,7 @@
 
 <div class="text-center">
 
-    @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+    @if (HttpContextAccessor.HttpContext!.User.Identity!.IsAuthenticated)
     {
         <h1 class="display-4">Hi @HttpContextAccessor.HttpContext.User.Identity.Name</h1>
 
