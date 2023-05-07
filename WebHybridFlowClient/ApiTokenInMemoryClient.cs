@@ -84,7 +84,7 @@ public class ApiTokenInMemoryClient
             return new AccessTokenItem
             {
                 ExpiresIn = DateTime.UtcNow.AddSeconds(tokenResponse.ExpiresIn),
-                AccessToken = tokenResponse.AccessToken
+                AccessToken = tokenResponse.AccessToken!
             };
         }
         catch (Exception e)

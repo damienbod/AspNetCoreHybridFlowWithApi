@@ -32,7 +32,7 @@ public class LoginModel : PageModel
 
         if (string.IsNullOrEmpty(HttpContext.Session.GetString("DeviceCode")))
         {
-            HttpContext.Session.SetString("DeviceCode", deviceAuthorizationResponse.DeviceCode);
+            HttpContext.Session.SetString("DeviceCode", deviceAuthorizationResponse.DeviceCode!);
             HttpContext.Session.SetInt32("Interval", deviceAuthorizationResponse.Interval);
         }
     }
@@ -57,7 +57,7 @@ public class LoginModel : PageModel
                 return Page();
             }
 
-            var claims = GetClaims(tokenresponse.IdentityToken);
+            var claims = GetClaims(tokenresponse.IdentityToken!);
 
             var claimsIdentity = new ClaimsIdentity(
                 claims,
@@ -73,12 +73,12 @@ public class LoginModel : PageModel
                 new AuthenticationToken
                 {
                     Name = "access_token",
-                    Value = tokenresponse.AccessToken
+                    Value = tokenresponse.AccessToken!
                 },
                 new AuthenticationToken
                 {
                     Name = "id_token",
-                    Value = tokenresponse.IdentityToken
+                    Value = tokenresponse.IdentityToken!
                 }
             });
 

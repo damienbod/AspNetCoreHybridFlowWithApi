@@ -6,7 +6,7 @@ namespace WebHybridClient;
 
 public class Startup
 {
-    private string stsServer = "";
+    private string? stsServer = string.Empty;
     private readonly IWebHostEnvironment _environment;
     public IConfiguration Configuration { get; }
 
