@@ -9,7 +9,7 @@ Log.Logger = new LoggerConfiguration()
 
 try
 {
-    Log.Information("Starting web host");
+    Log.Information("Starting WebHybridClient");
 
     var builder = WebApplication.CreateBuilder(args);
 
