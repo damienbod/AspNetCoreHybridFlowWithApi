@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>55674afb-fac9-407f-898f-6a543e9d137a</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,5 +20,8 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+
+		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.20.0" />
+		<PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="0.20.0" />
 	</ItemGroup>
 </Project>
