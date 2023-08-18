@@ -1,6 +1,7 @@
 using Duende.IdentityServer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 using StsServerIdentity.Data;
 using StsServerIdentity.Models;
@@ -18,7 +19,9 @@ namespace StsServerIdentity
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            .AddDefaultTokenProviders();
+
+            var authConfigurations = builder.Configuration.GetSection("AuthConfigurations");
 
             builder.Services
                 .AddIdentityServer(options =>
@@ -31,10 +34,12 @@ namespace StsServerIdentity
                     // see https://docs.duendesoftware.com/identityserver/v6/fundamentals/resources/
                     options.EmitStaticAudienceClaim = true;
                 })
-                .AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryClients(Config.Clients)
-                .AddAspNetIdentity<ApplicationUser>();
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApiResources())
+                .AddInMemoryApiScopes(Config.GetApiScopes())
+                .AddInMemoryClients(Config.GetClients(authConfigurations))
+                .AddAspNetIdentity<ApplicationUser>()
+                .AddProfileService<IdentityWithAdditionalClaimsProfileService>();
 
             builder.Services.AddAuthentication()
                 .AddGoogle(options =>
