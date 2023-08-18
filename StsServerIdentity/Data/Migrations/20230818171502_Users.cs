@@ -53,6 +53,27 @@ namespace StsServerIdentity.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FidoStoredCredential",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserName = table.Column<string>(type: "TEXT", nullable: true),
+                    UserId = table.Column<byte[]>(type: "BLOB", nullable: true),
+                    PublicKey = table.Column<byte[]>(type: "BLOB", nullable: true),
+                    UserHandle = table.Column<byte[]>(type: "BLOB", nullable: true),
+                    SignatureCounter = table.Column<uint>(type: "INTEGER", nullable: false),
+                    CredType = table.Column<string>(type: "TEXT", nullable: true),
+                    RegDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    AaGuid = table.Column<Guid>(type: "TEXT", nullable: false),
+                    DescriptorJson = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FidoStoredCredential", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -213,6 +234,9 @@ namespace StsServerIdentity.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "FidoStoredCredential");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

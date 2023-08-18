@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.3.3" />
+		<PackageReference Include="Fido2" Version="3.0.1" />
 
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="7.0.10" />
 

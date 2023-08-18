@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Fido2Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using StsServerIdentity.Models;
 
@@ -11,12 +12,13 @@ namespace StsServerIdentity.Data
         {
         }
 
+        public DbSet<FidoStoredCredential> FidoStoredCredential => Set<FidoStoredCredential>();
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<FidoStoredCredential>().HasKey(m => m.Id);
+
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
         }
     }
 }

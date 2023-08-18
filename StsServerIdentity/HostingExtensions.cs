@@ -1,4 +1,6 @@
 using Duende.IdentityServer;
+using Fido2Identity;
+using Fido2NetLib;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -53,6 +55,18 @@ namespace StsServerIdentity
                     options.ClientSecret = "copy client secret from Google here";
                 });
 
+            builder.Services.Configure<Fido2Configuration>(builder.Configuration.GetSection("fido2"));
+            builder.Services.AddScoped<Fido2Store>();
+            // Adds a default in-memory implementation of IDistributedCache.
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(2);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SameSite = SameSiteMode.None;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            });
+
             return builder.Build();
         }
 
@@ -70,8 +84,12 @@ namespace StsServerIdentity
             app.UseIdentityServer();
             app.UseAuthorization();
 
+            app.UseSession();
+            
             app.MapRazorPages()
                 .RequireAuthorization();
+
+            app.MapControllers();
 
             return app;
         }

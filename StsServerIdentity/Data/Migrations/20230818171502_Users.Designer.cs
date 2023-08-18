@@ -11,7 +11,7 @@ using StsServerIdentity.Data;
 namespace StsServerIdentity.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230818160136_Users")]
+    [Migration("20230818171502_Users")]
     partial class Users
     {
         /// <inheritdoc />
@@ -19,6 +19,44 @@ namespace StsServerIdentity.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
+
+            modelBuilder.Entity("Fido2Identity.FidoStoredCredential", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("AaGuid")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CredType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DescriptorJson")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("PublicKey")
+                        .HasColumnType("BLOB");
+
+                    b.Property<DateTime>("RegDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<uint>("SignatureCounter")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<byte[]>("UserHandle")
+                        .HasColumnType("BLOB");
+
+                    b.Property<byte[]>("UserId")
+                        .HasColumnType("BLOB");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FidoStoredCredential");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
