@@ -3,7 +3,6 @@ using Fido2Identity;
 using Fido2NetLib;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Serilog;
 using StsServerIdentity.Data;
 using StsServerIdentity.Models;
@@ -21,7 +20,11 @@ namespace StsServerIdentity
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddTokenProvider<Fido2UserTwoFactorTokenProvider>("FIDO2");
+
+            builder.Services.Configure<Fido2Configuration>(builder.Configuration.GetSection("fido2"));
+            builder.Services.AddScoped<Fido2Store>();
 
             var authConfigurations = builder.Configuration.GetSection("AuthConfigurations");
 
@@ -55,9 +58,6 @@ namespace StsServerIdentity
                     options.ClientSecret = "copy client secret from Google here";
                 });
 
-            builder.Services.Configure<Fido2Configuration>(builder.Configuration.GetSection("fido2"));
-            builder.Services.AddScoped<Fido2Store>();
-            // Adds a default in-memory implementation of IDistributedCache.
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>
             {
