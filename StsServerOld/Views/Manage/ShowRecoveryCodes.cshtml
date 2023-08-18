@@ -1,0 +1,26 @@
+﻿@using StsServerIdentity.Resources
+@inject LocService SharedLocalizer
+@model ShowRecoveryCodesViewModel
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("Recovery codes");
+    ViewData.AddActivePage(ManageNavPages.TwoFactorAuthentication);
+}
+
+<h4>@ViewData["Title"]</h4>
+<div class="alert alert-warning" role="alert">
+    <p>
+        <span class="fas fa-exclamation-triangle"></span>
+        <strong>@SharedLocalizer.GetLocalizedHtmlString("GENERATE_2FA_RECOVERY_CODES_SAFE_PLACE")</strong>
+    </p>
+    <p>
+        @SharedLocalizer.GetLocalizedHtmlString("GENERATE_2FA_RECOVERY_CODES_INFO_LOSE")
+    </p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @for (var row = 0; row < Model.RecoveryCodes.Length; row += 2)
+        {
+            <code>@Model.RecoveryCodes[row]</code><text>&nbsp;</text><code>@Model.RecoveryCodes[row + 1]</code><br />
+        }
+    </div>
+</div>

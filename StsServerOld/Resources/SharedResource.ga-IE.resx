@@ -1,0 +1,947 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PASSWORD" xml:space="preserve">
+    <value>Pasfhocal</value>
+  </data>
+  <data name="REGISTER" xml:space="preserve">
+    <value>Cláraigh</value>
+  </data>
+  <data name="CONFIRM_PASSWORD" xml:space="preserve">
+    <value>Deimhnigh Pasfhocal</value>
+  </data>
+  <data name="CONFIRM_PASSWORD_NOT_MATCHING" xml:space="preserve">
+    <value>Ní mheaitseálann an focal faire agus an pasfhocal deimhnithe.</value>
+  </data>
+  <data name="CREATE_A_NEW_ACCOUNT" xml:space="preserve">
+    <value>Cruthaigh cuntas nua.</value>
+  </data>
+  <data name="EMAIL" xml:space="preserve">
+    <value>R-Phost</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>Ríomhphost neamhbhailí</value>
+  </data>
+  <data name="EMAIL_REQUIRED" xml:space="preserve">
+    <value>Email required</value>
+  </data>
+  <data name="PASSWORD_REQUIRED" xml:space="preserve">
+    <value>Teastaíonn an pasfhocal</value>
+  </data>
+  <data name="RESET" xml:space="preserve">
+    <value>Athshocraigh</value>
+  </data>
+  <data name="RESET_PASSWORD" xml:space="preserve">
+    <value>Athshocraigh an Pasfhocal</value>
+  </data>
+  <data name="RESET_YOUR_PASSWORD" xml:space="preserve">
+    <value>Athshocraigh do phasfhocal</value>
+  </data>
+  <data name="LOGOUT" xml:space="preserve">
+    <value>Logáil Amach</value>
+  </data>
+  <data name="REMEMBER_ME" xml:space="preserve">
+    <value>Cuimhnigh orm</value>
+  </data>
+  <data name="FORGOT_YOUR_PASSWORD" xml:space="preserve">
+    <value>Ar rinne tú dearmad ar do Phásfhocail?</value>
+  </data>
+  <data name="ACCOUNT_LOGIN" xml:space="preserve">
+    <value>Logáil isteach</value>
+  </data>
+  <data name="REGISTER_AS_NEW_USER" xml:space="preserve">
+    <value>Cláraigh mar úsáideoir nua</value>
+  </data>
+  <data name="ACCESS_DENIED" xml:space="preserve">
+    <value>Rochtain diúltaithe</value>
+  </data>
+  <data name="ACCESS_DENIED_TEXT" xml:space="preserve">
+    <value>Níl rochtain agat ar an acmhainn seo.</value>
+  </data>
+  <data name="ACCOUNT_NO_EXTERNAL_LOGINS" xml:space="preserve">
+    <value>Níl aon seirbhísí fíordheimhnithe seachtracha cumraithe. Féach an t-alt seo https://go.microsoft.com/fwlink/?LinkID=532715 le haghaidh sonraí maidir leis an bhfeidhmchlár ASP.NET seo a chur ar bun chun tacú le logáil isteach trí sheirbhísí seachtracha.</value>
+  </data>
+  <data name="ACCOUNT_USE_ANOTHER_SERVICE_LOG_IN" xml:space="preserve">
+    <value>Bain úsáid as seirbhís eile chun logáil isteach.</value>
+  </data>
+  <data name="ACCOUNT_USE_LOCAL_ACCOUNT_TO_LOG_IN" xml:space="preserve">
+    <value>Bain úsáid as cuntas áitiúil le logáil isteach.</value>
+  </data>
+  <data name="CONFIRM_EMAIL" xml:space="preserve">
+    <value>Deimhnigh Ríomhphost</value>
+  </data>
+  <data name="CONFIRM_EMAIL_TEXT" xml:space="preserve">
+    <value>Go raibh maith agat as do ríomhphost a dhearbhú.</value>
+  </data>
+  <data name="CONFIRM_YOUR_EMAIL" xml:space="preserve">
+    <value>Deimhnigh do ríomhphost</value>
+  </data>
+  <data name="CONFIRM_YOUR_EMAIL_TEXT" xml:space="preserve">
+    <value>Deimhnigh le do thoil do chuntas le &lt;a href='{0}'&gt; cliceáil anseo &lt;/a&gt;.</value>
+  </data>
+  <data name="FORGOT_PASSWORD_CONFIRMATION" xml:space="preserve">
+    <value>Dearbhú pasfhocal dearmadta</value>
+  </data>
+  <data name="FORGOT_PASSWORD_CONFIRMATION_TEXT" xml:space="preserve">
+    <value>Seiceáil do ríomhphost chun do phasfhocal a athshocrú.</value>
+  </data>
+  <data name="FORGOT_YOUR_PASSWORD_ENTER_EMAIL" xml:space="preserve">
+    <value>Cuir isteach do ríomhphost.</value>
+  </data>
+  <data name="INVALID_LOGIN_ATTEMPT" xml:space="preserve">
+    <value>Iarracht logála neamhbhailí.</value>
+  </data>
+  <data name="LOCKED_OUT" xml:space="preserve">
+    <value>Faoi ghlas</value>
+  </data>
+  <data name="LOCKED_OUT_TEXT" xml:space="preserve">
+    <value>Cuireadh an cuntas seo faoi ghlas, bain triail as arís níos déanaí.</value>
+  </data>
+  <data name="RESET_PASSWORD_EMAIL_TEXT" xml:space="preserve">
+    <value>Déan do phasfhocal a athshocrú le &lt;a href='{0}'&gt; Cliceáil anseo &lt;/a&gt;.</value>
+  </data>
+  <data name="SUBMIT" xml:space="preserve">
+    <value>Cuir isteach</value>
+  </data>
+  <data name="EXTERNAL_LOGIN_ASSOCIATE_ACCOUNT" xml:space="preserve">
+    <value>Chomhlachú do {0} cuntas</value>
+  </data>
+  <data name="EXTERNAL_LOGIN_TEXT" xml:space="preserve">
+    <value>Tá tú fíordheimhnithe go rathúil le {0}. Cuir isteach seoladh ríomhphoist don suíomh seo thíos agus cliceáil ar an gcnaipe Clár chun logáil isteach a chríochnú.</value>
+  </data>
+  <data name="EXTERNAL_PROVIDER_ERROR" xml:space="preserve">
+    <value>Earráid ón soláthraí seachtrach: {0}</value>
+  </data>
+  <data name="EXTERNAL_PROVIDER_ERROR_CONFIRMATION" xml:space="preserve">
+    <value>Earráid agus faisnéis logála seachtrach á lódáil le linn an dearbhaithe.</value>
+  </data>
+  <data name="EXTERNAL_PROVIDER_ERROR_INFO" xml:space="preserve">
+    <value>Earráid agus faisnéis sheachtrach logála isteach á lódáil.</value>
+  </data>
+  <data name="ACCOUNT_LOGIN_2FA" xml:space="preserve">
+    <value>Fíordheimhniú dhá fhachtóir</value>
+  </data>
+  <data name="ACCOUNT_LOGIN_2FA_NO_AUTHENTICATOR_DEVICE" xml:space="preserve">
+    <value>Ná bíodh rochtain agat ar do ghléas fíordheimhnithe? Is féidir leat</value>
+  </data>
+  <data name="ACCOUNT_LOGIN_2FA_RECOVERY_CODE_TEXT" xml:space="preserve">
+    <value>logáil isteach le cód aisghabhála</value>
+  </data>
+  <data name="ACCOUNT_LOGIN_2FA_REMEMBER_MC" xml:space="preserve">
+    <value>Cuimhnigh ar an meaisín seo</value>
+  </data>
+  <data name="ACCOUNT_LOGIN_2FA_TEXT" xml:space="preserve">
+    <value>Déantar do logáil isteach a chosaint le app fíoraitheora. Cuir isteach do chód fíordheimhnithe thíos.</value>
+  </data>
+  <data name="ACCOUNT_LOGIN_AUTHENTICATOR_CODE" xml:space="preserve">
+    <value>Cód fíordheimhnithe</value>
+  </data>
+  <data name="ACCOUNT_RECOVERY_CODE" xml:space="preserve">
+    <value>Cód aisghabhála</value>
+  </data>
+  <data name="ACCOUNT_RECOVERY_CODE_REQUIRED" xml:space="preserve">
+    <value>Cód aisghabhála ag teastáil</value>
+  </data>
+  <data name="ACCOUNT_RECOVERY_CODE_VERIFICATION" xml:space="preserve">
+    <value>Fíorú an chóid aisghabhála</value>
+  </data>
+  <data name="ACCOUNT_RECOVERY_CODE_VERIFICATION_TEXT" xml:space="preserve">
+    <value>D'iarr tú ar logáil isteach le cód aisghabhála. Ní chuirfear an logáil seo san áireamh go dtí go soláthróidh tú cód app fíoraitheora ag logáil isteach nó díchumasaigh 2FA agus logáil isteach arís.</value>
+  </data>
+  <data name="INVALID_AUTHENTICATOR_CODE" xml:space="preserve">
+    <value>Cód fíordheimhnithe neamhbhailí.</value>
+  </data>
+  <data name="INVALID_RECOVERY_CODE" xml:space="preserve">
+    <value>Cuireadh cód aisghabhála neamhbhailí isteach.</value>
+  </data>
+  <data name="LOGOUT_TEXT" xml:space="preserve">
+    <value>D'éirigh leat logáil amach as an iarratas.</value>
+  </data>
+  <data name="RESET_PASSWORD_CONFIRMATION" xml:space="preserve">
+    <value>Athshocraigh pasfhocal</value>
+  </data>
+  <data name="RESET_PASSWORD_CONFIRMATION_CLICK_HERE" xml:space="preserve">
+    <value>cliceáil anseo chun logáil isteach</value>
+  </data>
+  <data name="RESET_PASSWORD_CONFIRMATION_TEXT1" xml:space="preserve">
+    <value>Athshocraíodh do phasfhocal. Le do thoil</value>
+  </data>
+  <data name="The {0} must be at least {2} and at max {1} characters long." xml:space="preserve">
+    <value>Caithfidh an {0} a bheith {2} ar a laghad agus ag max {1} carachtar fada.</value>
+  </data>
+  <data name="2FA" xml:space="preserve">
+    <value>Fíordheimhniú dhá fhachtóir</value>
+  </data>
+  <data name="CHANGE_PASSWORD" xml:space="preserve">
+    <value>Athraigh do phasfhocal</value>
+  </data>
+  <data name="CHANGE_PASSWORD_STATUS" xml:space="preserve">
+    <value>Athraíodh do phasfhocal.</value>
+  </data>
+  <data name="CURRENT_PASSWORD" xml:space="preserve">
+    <value>Pasfhocal reatha</value>
+  </data>
+  <data name="CURRENT_PASSWORD_REQUIRED" xml:space="preserve">
+    <value>Teastaíonn an pasfhocal reatha</value>
+  </data>
+  <data name="EXTERNAL_LOGINS" xml:space="preserve">
+    <value>Logáin sheachtracha</value>
+  </data>
+  <data name="MANAGE_CHANGE_ACCOUNT_SETTINGS" xml:space="preserve">
+    <value>Athraigh socruithe do chuntais</value>
+  </data>
+  <data name="MANAGE_YOUR_ACCOUNT" xml:space="preserve">
+    <value>Bainistigh do chuntas</value>
+  </data>
+  <data name="NEW_PASSWORD" xml:space="preserve">
+    <value>Focal Faire Nua</value>
+  </data>
+  <data name="NEW_PASSWORD_REQUIRED" xml:space="preserve">
+    <value>Teastaíonn pasfhocal nua</value>
+  </data>
+  <data name="PERSONAL_DATA" xml:space="preserve">
+    <value>Sonraí pearsanta</value>
+  </data>
+  <data name="PROFILE" xml:space="preserve">
+    <value>Próifíl</value>
+  </data>
+  <data name="TWOFACTORCODE_REQUIRED" xml:space="preserve">
+    <value>Tá gá le cód dhá fhachtóir</value>
+  </data>
+  <data name="UPDATE_PASSWORD" xml:space="preserve">
+    <value>Nuashonraigh an focal faire</value>
+  </data>
+  <data name="VERIFICATION_CODE_REQUIRED" xml:space="preserve">
+    <value>Tá cód fíoraithe ag teastáil</value>
+  </data>
+  <data name="AND" xml:space="preserve">
+    <value>agus</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP" xml:space="preserve">
+    <value>Cum an feidhmchlár fíordheimhnithe</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP_DOWNLOAD_TEXT" xml:space="preserve">
+    <value>Íoslódáil app fíordheimhnithe dhá fhachtóir ar nós Microsoft Authenticator do</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP_GOOGLE_TEXT" xml:space="preserve">
+    <value>Google Authenticator do</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP_SCAN1" xml:space="preserve">
+    <value>Scan an Cód QR nó cuir isteach an eochair seo</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP_SCAN2" xml:space="preserve">
+    <value>isteach i do app fíordheimhnithe dhá fhachtóir. Ní ábhar spáis ná cásáil iad.</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP_SCAN_ALERT" xml:space="preserve">
+    <value>Le go n-éascófar giniúint cóid QR léigh ár n-eolas le do thoil</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP_SCAN_ALERT_DETAILS" xml:space="preserve">
+    <value>Nuair a bheidh an cód QR scanta agat nó nuair a ionchorpraíonn tú an eochair thuas, cuirfidh do app fíordheimhnithe dhá fhachtóir cód uathúil ar fáil duit. Cuir isteach an cód sa bhosca dearbhaithe thíos.</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP_SCAN_ALERT_LINK" xml:space="preserve">
+    <value>doiciméadú</value>
+  </data>
+  <data name="CONFIGURE_AUTHENTICATOR_APP_STEPS" xml:space="preserve">
+    <value>Chun feidhm a bhaint as app fíordheimhnithe téigh trí na céimeanna seo a leanas:</value>
+  </data>
+  <data name="DELETE_PERSONAL_DATA" xml:space="preserve">
+    <value>Scrios Sonraí Pearsanta</value>
+  </data>
+  <data name="DELETE_PERSONAL_DATA_AND_CLOSE" xml:space="preserve">
+    <value>Scrios na sonraí agus dún mo chuntas</value>
+  </data>
+  <data name="DELETE_PERSONAL_DATA_TEXT" xml:space="preserve">
+    <value>Má scriostar na sonraí seo bainfear do chuntas go buan agus ní féidir é seo a aisghabháil.</value>
+  </data>
+  <data name="DISABLE_2FA" xml:space="preserve">
+    <value>Díchumasaigh fíordheimhniú dhá fhachtóir (2FA)</value>
+  </data>
+  <data name="DISABLE_2FA_BUTTON" xml:space="preserve">
+    <value>Díchumasaigh 2FA</value>
+  </data>
+  <data name="DISABLE_2FA_STATUS" xml:space="preserve">
+    <value>Díchumasaíodh 2FA. Is féidir leat 2FA a chumasú nuair a chuireann tú app fíoraitheora ar bun</value>
+  </data>
+  <data name="DISABLE_2FA_TEXT_DETAILS" xml:space="preserve">
+    <value>Ní athraíonn an 2FA na heochracha a úsáidtear in aipeanna fíordheimhnithe. Más mian leat an eochair a athrú i app fíoraitheora ba chóir duit</value>
+  </data>
+  <data name="DISABLE_2FA_TEXT_DETAILS_LINK" xml:space="preserve">
+    <value>do chuid eochracha fíordheimhnithe a athshocrú.</value>
+  </data>
+  <data name="DISABLE_2FA_TEXT_HEADER" xml:space="preserve">
+    <value>Ní dhíchumasaíonn an gníomh seo ach 2FA.</value>
+  </data>
+  <data name="DOWNLOAD_YOUR_DATA" xml:space="preserve">
+    <value>Íoslódáil Do shonraí</value>
+  </data>
+  <data name="INCORRECT_PASSWORD" xml:space="preserve">
+    <value>Níl an focal faire ceart</value>
+  </data>
+  <data name="INVALID_VERFICATION_CODE" xml:space="preserve">
+    <value>Tá an cód fíoraithe neamhbhailí.</value>
+  </data>
+  <data name="OR" xml:space="preserve">
+    <value>nó</value>
+  </data>
+  <data name="USER_NOTFOUND" xml:space="preserve">
+    <value>Ní féidir an t-úsáideoir a luchtú le ID '{0}'.</value>
+  </data>
+  <data name="VERIFICATION_CODE" xml:space="preserve">
+    <value>Cód fíorúcháin</value>
+  </data>
+  <data name="VERIFY" xml:space="preserve">
+    <value>Fíoraigh</value>
+  </data>
+  <data name="2FA_AUTHENTICATION_ADD_AUTHENTICATOR_APP" xml:space="preserve">
+    <value>Cuir app fíoraitheora leis</value>
+  </data>
+  <data name="2FA_AUTHENTICATION_ADD_RESET_APP" xml:space="preserve">
+    <value>Athshocraigh app fíordheimhnithe</value>
+  </data>
+  <data name="2FA_AUTHENTICATION_ADD_SETUP_APP" xml:space="preserve">
+    <value>Aip fíordheimhnithe socraithe</value>
+  </data>
+  <data name="2FA_AUTHENTICATION_TITLE" xml:space="preserve">
+    <value>Fíordheimhniú dhá fhachtóir (2FA)</value>
+  </data>
+  <data name="2FA_NO_CODES_LEFT" xml:space="preserve">
+    <value>Níl aon chód aisghabhála fágtha agat.</value>
+  </data>
+  <data name="2FA_NO_CODES_LEFT_TEXT" xml:space="preserve">
+    <value>Ní mór duit tacar nua cód aisghabhála a ghiniúint sular féidir leat logáil isteach le cód aisghabhála.</value>
+  </data>
+  <data name="2FA_N_CODES_LEFT" xml:space="preserve">
+    <value>Tá {0} cód aisghabhála fágtha agat.</value>
+  </data>
+  <data name="2FA_N_CODES_LEFT_TEXT" xml:space="preserve">
+    <value>Ba chóir duit tacar nua cód aisghabhála a ghiniúint.</value>
+  </data>
+  <data name="2FA_ONE_CODES_LEFT" xml:space="preserve">
+    <value>Tá 1 cód téarnaimh fágtha agat.</value>
+  </data>
+  <data name="2FA_ONE_CODES_LEFT_TEXT" xml:space="preserve">
+    <value>Is féidir leat tacar nua cód aisghabhála a ghiniúint.</value>
+  </data>
+  <data name="2FA_STATUS_BROWSER_FORGET" xml:space="preserve">
+    <value>Rinneadh dearmad ar an mbrabhsálaí reatha. Nuair a logálann tú arís ón mbrabhsálaí seo iarrfar ort do chód 2FA a fháil.</value>
+  </data>
+  <data name="AUTHENTICATOR_APP" xml:space="preserve">
+    <value>Feidhmchlár fíordheimhnithe</value>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Scrios</value>
+  </data>
+  <data name="DOWNLOAD" xml:space="preserve">
+    <value>Íoslódáil</value>
+  </data>
+  <data name="EXTERNAL_LOGINS_REGISTERED_LOGIN" xml:space="preserve">
+    <value>Logáin Cláraithe</value>
+  </data>
+  <data name="EXTERNAL_LOGINS_TITLE" xml:space="preserve">
+    <value>Bainistigh do logáil isteach seachtrach</value>
+  </data>
+  <data name="FORGET_THIS_BROWSER" xml:space="preserve">
+    <value>Déan dearmad ar an mbrabhsálaí seo</value>
+  </data>
+  <data name="GENERATE" xml:space="preserve">
+    <value>Gin</value>
+  </data>
+  <data name="GENERATE_2FA_RECOVERY_CODES" xml:space="preserve">
+    <value>Cruthaigh cóid aisghabhála dhá fhíordheimhniú (2FA)</value>
+  </data>
+  <data name="GENERATE_2FA_RECOVERY_CODES_INFO_LOSE" xml:space="preserve">
+    <value>Má chailleann tú do ghléas agus mura bhfuil na cóid aisghabhála agat caillfidh tú rochtain ar do chuntas.</value>
+  </data>
+  <data name="GENERATE_2FA_RECOVERY_CODES_SAFE_PLACE" xml:space="preserve">
+    <value>Cuir na cóid seo in áit shábháilte.</value>
+  </data>
+  <data name="GENERATE_2FA_RECOVERY_CODES_TEXT" xml:space="preserve">
+    <value>Ní athraíonn giniúint na gcód aisghabhála nua na heochracha a úsáidtear i apps fíordheimhnithe. Más mian leat an eochair a athrú i app fíoraitheora ba chóir duit</value>
+  </data>
+  <data name="GENERATE_2FA_RECOVERY_CODES_TEXT_LINK" xml:space="preserve">
+    <value>do chuid eochracha fíordheimhnithe a athshocrú.</value>
+  </data>
+  <data name="GENERATE_RECOVERY_CODES" xml:space="preserve">
+    <value>Gin Cóid Téarnaimh</value>
+  </data>
+  <data name="PERSONAL_DATA_DELETEINFO" xml:space="preserve">
+    <value>Má scriostar na sonraí seo bainfear do chuntas go buan agus ní féidir é seo a aisghabháil.</value>
+  </data>
+  <data name="PERSONAL_DATA_INFO" xml:space="preserve">
+    <value>Tá sonraí pearsanta a thug tú dúinn i do chuntas. Ligeann an leathanach seo duit na sonraí sin a íoslódáil nó a scriosadh.</value>
+  </data>
+  <data name="PHONE_NUMBER" xml:space="preserve">
+    <value>Uimhir teileafón</value>
+  </data>
+  <data name="REMOVE" xml:space="preserve">
+    <value>Bain amach</value>
+  </data>
+  <data name="RESET_AUTHENTICATOR_INFO" xml:space="preserve">
+    <value>Má athraíonn tú do eochair fíordheimhnithe ní oibreoidh do app fíordheimhnithe go dtí go ndéanfaidh tú é a athchumrú.</value>
+  </data>
+  <data name="RESET_AUTHENTICATOR_KEY" xml:space="preserve">
+    <value>Athshocraigh eochair fíordheimhnithe</value>
+  </data>
+  <data name="RESET_AUTHENTICATOR_STATUS" xml:space="preserve">
+    <value>Athshocraíodh an eochair app do fhíordheimhniú, beidh ort do app fíordheimhnithe a chumrú ag baint úsáide as an eochair nua.</value>
+  </data>
+  <data name="RESET_AUTHENTICATOR_TEXT" xml:space="preserve">
+    <value>Díchumasaíonn an próiseas seo 2FA go dtí go bhfíoraíonn tú do app fíoraitheora. Mura gcomhlánaíonn tú do chumraíocht app fíoraitheora féadfaidh tú rochtain ar do chuntas a chailleadh.</value>
+  </data>
+  <data name="RESET_RECOVERY_CODES" xml:space="preserve">
+    <value>Athshocraigh cóid aisghabhála</value>
+  </data>
+  <data name="SAVE" xml:space="preserve">
+    <value>Sábháil</value>
+  </data>
+  <data name="SEND_VERIFICATION_EMAIL" xml:space="preserve">
+    <value>Seol ríomhphost fíoraithe</value>
+  </data>
+  <data name="SET_PASSWORD" xml:space="preserve">
+    <value>Socraigh focal faire</value>
+  </data>
+  <data name="SET_PASSWORD_STATUS" xml:space="preserve">
+    <value>Tá do phasfhocal socraithe.</value>
+  </data>
+  <data name="SET_PASSWORD_TEXT" xml:space="preserve">
+    <value>Níl ainm úsáideora / focal faire áitiúil agat don suíomh seo. Cuir cuntas áitiúil leis ionas gur féidir leat logáil isteach gan logáil isteach seachtrach.</value>
+  </data>
+  <data name="SET_YOUR_PASSWORD" xml:space="preserve">
+    <value>Socraigh do phasfhocal</value>
+  </data>
+  <data name="STATUS_EXTERNAL_LOGIN_ADDED" xml:space="preserve">
+    <value>Cuireadh an logáil isteach seachtrach leis.</value>
+  </data>
+  <data name="STATUS_EXTERNAL_LOGIN_REMOVED" xml:space="preserve">
+    <value>Baineadh an logáil isteach seachtrach.</value>
+  </data>
+  <data name="STATUS_GENERATE_CODES" xml:space="preserve">
+    <value>Ghin tú cóid nua aisghabhála.</value>
+  </data>
+  <data name="STATUS_PROFILE_UPDATED" xml:space="preserve">
+    <value>Nuashonraíodh do phróifíl</value>
+  </data>
+  <data name="STATUS_UPDATE_PROFILE_EMAIL_SEND" xml:space="preserve">
+    <value>Seoladh r-phost fíoraithe. Seiceáil do ríomhphost.</value>
+  </data>
+  <data name="USERNAME" xml:space="preserve">
+    <value>Ainm Úsáideora</value>
+  </data>
+  <data name="ACCOUNT_CLICK_LOGIN_LINK" xml:space="preserve">
+    <value>Cliceáil an cnaipe logála isteach</value>
+  </data>
+  <data name="ACCOUNT_LOGIN_WITH_AZURE_AD" xml:space="preserve">
+    <value>Logáil isteach le Azure AD</value>
+  </data>
+  <data name="REMEMBER_BROWSER" xml:space="preserve">
+    <value>Cuimhnigh ar an mBrabhsálaí</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>Tá</value>
+  </data>
+  <data name="CONSENT_APPLICATION_ACCESS" xml:space="preserve">
+    <value>Rochtain Iarratais</value>
+  </data>
+  <data name="CONSENT_IS_CHECK_UNREQUIRED" xml:space="preserve">
+    <value>Díthiceáil na ceadanna nach mian leat a dheonú.</value>
+  </data>
+  <data name="CONSENT_IS_REQUESTING_YOUR_PERMISSION" xml:space="preserve">
+    <value>Tá tú ag lorg do chead</value>
+  </data>
+  <data name="CONSENT_NO_NOT_ALLOWED" xml:space="preserve">
+    <value>Níl</value>
+  </data>
+  <data name="CONSENT_PERSONAL_INFORMATION" xml:space="preserve">
+    <value>Eolas pearsanta</value>
+  </data>
+  <data name="CONSENT_REMEMBER_MY_DECISION" xml:space="preserve">
+    <value>Cuimhnigh Mo Chinneadh</value>
+  </data>
+  <data name="CONSENT_REQUIRED" xml:space="preserve">
+    <value>(riachtanach)</value>
+  </data>
+  <data name="CONSENT_YES_ALLOWED" xml:space="preserve">
+    <value>Sea, ceadaigh</value>
+  </data>
+  <data name="LOGOUT_RETURN_TO" xml:space="preserve">
+    <value>Fill ar ais</value>
+  </data>
+  <data name="WOULD_YOU_LIKE_TO_LOGOUT" xml:space="preserve">
+    <value>Ar mhaith leat logáil isteach de IdentityServer?</value>
+  </data>
+  <data name="EXTERNAL_LOGINS_ADD_ANOTHER_SERVICE_TO_LOGIN" xml:space="preserve">
+    <value>Cuir seirbhís eile le logáil isteach.</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Teanga</value>
+  </data>
+  <data name="RESET_PASSWORD_CLICK_HERE_TO_LOGIN" xml:space="preserve">
+    <value>Cliceáil anseo chun logáil isteach</value>
+  </data>
+  <data name="RESET_PASSWORD_YOUR_PASSWORD_HAS_BEEN_RESET" xml:space="preserve">
+    <value>Athshocraíodh do phasfhocal.</value>
+  </data>
+  <data name="SEND_VERIFICATION_CODE" xml:space="preserve">
+    <value>Seol Cód Fíoraithe</value>
+  </data>
+  <data name="SEND_VERIFICATION_CODE_SELECT" xml:space="preserve">
+    <value>Roghnaigh Soláthraí Fíordheimhniúcháin Dhá-Fachtóir:</value>
+  </data>
+  <data name="UNSUCCESSFUL_LOGIN_WITH_SERVICE" xml:space="preserve">
+    <value>Logáil isteach nár éirigh leis le seirbhís.</value>
+  </data>
+  <data name="CODE_REQUIRED" xml:space="preserve">
+    <value>Tá gá le Cód</value>
+  </data>
+  <data name="INVALID_CODE" xml:space="preserve">
+    <value>Cód neamhbhailí.</value>
+  </data>
+  <data name="INVALID_CONSENT_PERMISSION" xml:space="preserve">
+    <value>Ní mór duit cead amháin ar a laghad a roghnú.</value>
+  </data>
+  <data name="INVALID_CONSENT_SELECTION" xml:space="preserve">
+    <value>Roghnú Neamhbhailí</value>
+  </data>
+  <data name="STATUS_MESSAGE_PROFILE_HAS_BEEN_RESET" xml:space="preserve">
+    <value>Nuashonraíodh do phróifíl</value>
+  </data>
+  <data name="ConcurrencyFailure" xml:space="preserve">
+    <value>Tá teip ar chomhréireacht dóchasach, mionathraíodh an réad.</value>
+    <comment>Error when optimistic concurrency fails</comment>
+  </data>
+  <data name="DefaultError" xml:space="preserve">
+    <value>Tharla teip anaithnid.</value>
+    <comment>Default identity result error message</comment>
+  </data>
+  <data name="DuplicateEmail" xml:space="preserve">
+    <value>Tá ríomhphost '{0}' tógtha cheana féin.</value>
+    <comment>Error for duplicate emails</comment>
+  </data>
+  <data name="DuplicateRoleName" xml:space="preserve">
+    <value>Tá ainm an róil '{0}' tógtha cheana féin.</value>
+    <comment>Error for duplicate roles</comment>
+  </data>
+  <data name="DuplicateUserName" xml:space="preserve">
+    <value>Tá an t-ainm úsáideora "{0}" tógtha cheana féin.</value>
+    <comment>Error for duplicate user names</comment>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Tá an ríomhphost '{0}' neamhbhailí.</value>
+    <comment>Invalid email</comment>
+  </data>
+  <data name="InvalidManagerType" xml:space="preserve">
+    <value>Ní mór go bhfaigheadh Cineál {0} ó {1} &lt;{2}&gt;.</value>
+    <comment>Error when the manager type is not derived correctly</comment>
+  </data>
+  <data name="InvalidPasswordHasherCompatibilityMode" xml:space="preserve">
+    <value>Tá an PasswordHasherCompatibilityMode atá ar fáil neamhbhailí.</value>
+    <comment>Error when the password hasher doesn't understand the format it's being asked to produce.</comment>
+  </data>
+  <data name="InvalidPasswordHasherIterationCount" xml:space="preserve">
+    <value>Caithfidh slánuimhir dhearfach a bheith sa chomhaireamh atriallta.</value>
+    <comment>Error when the iteration count is &lt; 1.</comment>
+  </data>
+  <data name="InvalidRoleName" xml:space="preserve">
+    <value>Tá ainm róil '{0}' neamhbhailí.</value>
+    <comment>Error for invalid role names</comment>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Comhartha neamhbhailí.</value>
+    <comment>Error when a token is not recognized</comment>
+  </data>
+  <data name="InvalidUserName" xml:space="preserve">
+    <value>Tá ainm úsáideora '{0}' neamhbhailí, ní féidir ach litreacha nó digití a bheith ann.</value>
+    <comment>User names can only contain letters or digits</comment>
+  </data>
+  <data name="LoginAlreadyAssociated" xml:space="preserve">
+    <value>Tá úsáideoir leis an logáil seo ann cheana féin.</value>
+    <comment>Error when a login already linked</comment>
+  </data>
+  <data name="MustCallAddIdentity" xml:space="preserve">
+    <value>Ní mór an tsuimiúlacht a ghlaoch ar bhailiúchán na seirbhíse.</value>
+    <comment>Error when AddIdentity is not called</comment>
+  </data>
+  <data name="NoPersonalDataProtector" xml:space="preserve">
+    <value>Níor cláraíodh aon seirbhís IPersonalDataProtector, tá sé seo ag teastáil nuair atá ProtectPersonalData = fíor.</value>
+    <comment>Error when there is no IPersonalDataProtector</comment>
+  </data>
+  <data name="NoRoleType" xml:space="preserve">
+    <value>Níor sonraíodh aon RoleType, bain triail as AddRoles &lt;TRole&gt; ().</value>
+    <comment>Error when the IdentityBuilder.RoleType was not specified</comment>
+  </data>
+  <data name="NoTokenProvider" xml:space="preserve">
+    <value>Níl IUserTwoFactorTokenProvider &lt;&lt;0}&gt; ainmnithe '{1}' cláraithe.</value>
+    <comment>Error when there is no IUserTwoFactorTokenProvider</comment>
+  </data>
+  <data name="NullSecurityStamp" xml:space="preserve">
+    <value>Ní féidir le stampa slándála úsáideora a bheith ar neamhní.</value>
+    <comment>Error when a user's security stamp is null.</comment>
+  </data>
+  <data name="PasswordMismatch" xml:space="preserve">
+    <value>Pasfhocal mícheart.</value>
+    <comment>Error when a password doesn't match</comment>
+  </data>
+  <data name="PasswordRequiresDigit" xml:space="preserve">
+    <value>Ní mór go mbeadh digit amháin ar a laghad ag pasfhocail ('0' - '9').</value>
+    <comment>Error when passwords do not have a digit</comment>
+  </data>
+  <data name="PasswordRequiresLower" xml:space="preserve">
+    <value>Ní mór pasfhocail amháin ar a laghad a bheith ag pasfhocail ('a' - 'z').</value>
+    <comment>Error when passwords do not have a lowercase letter</comment>
+  </data>
+  <data name="PasswordRequiresNonAlphanumeric" xml:space="preserve">
+    <value>Passwords must have at least one non alphanumeric character.</value>
+    <comment>Error when password does not have enough non alphanumeric characters</comment>
+  </data>
+  <data name="PasswordRequiresUniqueChars" xml:space="preserve">
+    <value>Ní mór pasfhocail {0} carachtar éagsúil a úsáid.</value>
+    <comment>Error message for passwords that are based on similar characters</comment>
+  </data>
+  <data name="PasswordRequiresUpper" xml:space="preserve">
+    <value>Caithfidh uasteorainn amháin ar a laghad a bheith ag pasfhocail ('A' - 'Z').</value>
+    <comment>Error when passwords do not have an uppercase letter</comment>
+  </data>
+  <data name="PasswordTooShort" xml:space="preserve">
+    <value>Caithfidh pasfhocail {0} carachtar a bheith ar a laghad.</value>
+    <comment>Error message for passwords that are too short</comment>
+  </data>
+  <data name="RecoveryCodeRedemptionFailed" xml:space="preserve">
+    <value>Theip ar fhuascailt an chóid aisghabhála.</value>
+    <comment>Error when a recovery code is not redeemed.</comment>
+  </data>
+  <data name="RoleNotFound" xml:space="preserve">
+    <value>Níl ról {0} ann.</value>
+    <comment>Error when a role does not exist</comment>
+  </data>
+  <data name="StoreNotIProtectedUserStore" xml:space="preserve">
+    <value>Ní chuireann Store i bhfeidhm &lt;TUser&gt; IProtectedUserStore atá ag teastáil nuair atá ProtectPersonalData = fíor.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIQueryableRoleStore" xml:space="preserve">
+    <value>Ní chuireann an siopa ITReryableRoleStore &lt;TRole&gt; i bhfeidhm.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIQueryableUserStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IQueryableUserStore&lt;TRole&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIRoleClaimStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IQueryableUserStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserAuthenticationTokenStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserAuthenticationTokenStore&lt;User&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserAuthenticatorKeyStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserAuthenticatorKeyStore&lt;User&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserClaimStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserClaimStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserConfirmationStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserConfirmationStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserEmailStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserEmailStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserLockoutStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserLockoutStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserLoginStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserLoginStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserPasswordStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserPasswordStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserPhoneNumberStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserPhoneNumberStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserRoleStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserRoleStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserSecurityStampStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserSecurityStampStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserTwoFactorRecoveryCodeStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserTwoFactorRecoveryCodeStore&lt;User&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="StoreNotIUserTwoFactorStore" xml:space="preserve">
+    <value>Ní fheidhmíonn Store IUserTwoFactorStore&lt;TUser&gt;.</value>
+    <comment>Error when the store does not implement this interface</comment>
+  </data>
+  <data name="UserAlreadyHasPassword" xml:space="preserve">
+    <value>Tá tacar focal faire ag an úsáideoir cheana féin.</value>
+    <comment>Error when AddPasswordAsync called when a user already has a password</comment>
+  </data>
+  <data name="UserAlreadyInRole" xml:space="preserve">
+    <value>Úsáideoir cheana féin i ról '{0}'.</value>
+    <comment>Error when a user is already in a role</comment>
+  </data>
+  <data name="UserLockedOut" xml:space="preserve">
+    <value>Tá an t-úsáideoir faoi ghlas.</value>
+    <comment>Error when a user is locked out</comment>
+  </data>
+  <data name="UserLockoutNotEnabled" xml:space="preserve">
+    <value>Ní féidir frithdhúnadh a chumasú don úsáideoir seo.</value>
+    <comment>Error when lockout is not enabled</comment>
+  </data>
+  <data name="UserNameNotFound" xml:space="preserve">
+    <value>Níl Úsáideoir {0} ann.</value>
+    <comment>Error when a user does not exist</comment>
+  </data>
+  <data name="UserNotInRole" xml:space="preserve">
+    <value>Níl an t-úsáideoir '{0}' i ról.</value>
+    <comment>Error when a user is not in the role</comment>
+  </data>
+  <data name="Access to your applications and resources, even when you are offline" xml:space="preserve">
+    <value>Rochtain ar d'iarratais agus acmhainní, fiú nuair atá tú as líne</value>
+  </data>
+  <data name="CONSENT_CONFIRM_AUTH_REQUEST_QUOTES" xml:space="preserve">
+    <value>Deimhnigh, le do thoil, go luaitear an cód leis an iarraidh údaraithe:</value>
+  </data>
+  <data name="DEVICE_ENTER_CODE_DISPLAYED_ON_DEVICE" xml:space="preserve">
+    <value>Cuir isteach an cód a thaispeántar ar do ghléas le do thoil</value>
+  </data>
+  <data name="DEVICE_SUCCESS" xml:space="preserve">
+    <value>Rath</value>
+  </data>
+  <data name="DEVICE_SUCCESS_AUTHORIZE" xml:space="preserve">
+    <value>D'éirigh leat an gléas a údarú</value>
+  </data>
+  <data name="DEVICE_USER_CODE" xml:space="preserve">
+    <value>Cód Úsáideora</value>
+  </data>
+  <data name="Invalid selection" xml:space="preserve">
+    <value>Roghnú neamhbhailí</value>
+  </data>
+  <data name="Offline Access" xml:space="preserve">
+    <value>Rochtain as líne</value>
+  </data>
+  <data name="Recovery codes" xml:space="preserve">
+    <value>Cóid aisghabhála</value>
+  </data>
+  <data name="User profile" xml:space="preserve">
+    <value>Próifíl úsáideora</value>
+  </data>
+  <data name="You must pick at least one permission" xml:space="preserve">
+    <value>Ní mór duit cead amháin ar a laghad a roghnú</value>
+  </data>
+  <data name="Your email address" xml:space="preserve">
+    <value>Do sheoladh ríomhphoist</value>
+  </data>
+  <data name="Your user identifier" xml:space="preserve">
+    <value>Do aitheantóir úsáideora</value>
+  </data>
+  <data name="Your user profile information (first name, last name, etc.)" xml:space="preserve">
+    <value>Do chuid faisnéise faoi phróifíl úsáideora (an chéad ainm, an t-ainm deireanach, etc.)</value>
+  </data>
+  <data name="FIDO2_ADD_A_KEY" xml:space="preserve">
+    <value>Cuir Eochair FIDO2 leis</value>
+  </data>
+  <data name="FIDO2_COULD_NOT_VERIFY_ASSERTION" xml:space="preserve">
+    <value>Níorbh fhéidir dearbhú a fhíorú</value>
+  </data>
+  <data name="FIDO2_LOGIN_WITH_MFA" xml:space="preserve">
+    <value>Logáil isteach le FIDO2 MFA</value>
+  </data>
+  <data name="FIDO2_MULTI_FACTOR_AUTHENTICATION" xml:space="preserve">
+    <value>FIDO2 Fíordheimhniú ilfhachtóra</value>
+  </data>
+  <data name="FIDO2_REGISTRATION_ERROR" xml:space="preserve">
+    <value>Níorbh fhéidir dintiúir a chruthú sa bhrabhsálaí. Is dócha toisc go bhfuil an t-ainm úsáideora cláraithe le do bharántóir cheana féin. Athraigh ainm úsáideora nó fíordheimhnithe.</value>
+  </data>
+  <data name="FIDO2_SUPPORTED_BROWSERS" xml:space="preserve">
+    <value>Brabhsálaithe tacaithe</value>
+  </data>
+  <data name="FIDO2_TAP_YOUR_SECURITY_KEY_TO_FINISH_REGISTRATION" xml:space="preserve">
+    <value>Beartaigh do eochair slándála chun clárú a chríochnú.</value>
+  </data>
+  <data name="FIDO2_TAP_YOUR_SECURITY_KEY_TO_LOGIN" xml:space="preserve">
+    <value>Beartaigh do eochair slándála chun logáil isteach.</value>
+  </data>
+  <data name="FIDO2_UNABLE_TO_LOAD_2FA_AUTHENTICATED_USER" xml:space="preserve">
+    <value>Ní féidir le húsáideoir fíordheimhnithe dhá fhachtóir a luchtú.</value>
+  </data>
+  <data name="FIDO2_UNKNOWN_CREDENTIALS" xml:space="preserve">
+    <value>Dintiúir anaithnid</value>
+  </data>
+  <data name="FIDO2_USERNAME" xml:space="preserve">
+    <value>Ainm Úsáideora</value>
+  </data>
+  <data name="FIDO2_USERNAME_NOT_REGISTERED" xml:space="preserve">
+    <value>Níor cláraíodh ainm úsáideora</value>
+  </data>
+  <data name="FIDO2_USER_NOTFOUND" xml:space="preserve">
+    <value>Ní féidir an t-úsáideoir a luchtú le ID '{0}'.</value>
+  </data>
+  <data name="FIDO2_WEBAUTHN_NOT_SUPPORTED" xml:space="preserve">
+    <value>Tabhair faoi deara: Is cosúil nach dtacaíonn do bhrabhsálaí le WebAuthn go fóill.</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA" xml:space="preserve">
+    <value>Cumasaigh MFA</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA_CLIENT_APP_REQUIRES_MFA" xml:space="preserve">
+    <value>Éilíonn an feidhmchlár cliant go bhfuil tú in ann MFA a chumasú. Cumasaigh é seo agus déan iarracht clárú arís.</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA_ERROR_TITLE" xml:space="preserve">
+    <value>Cumasaigh Earráid MFA</value>
+  </data>
+  <data name="ERROR_ENABLE_MFA_YOU_CAN_ENABLE_HERE" xml:space="preserve">
+    <value>Is féidir leat cur ar chumas MFA logáil isteach anseo:</value>
+  </data>
+  <data name="GRANTS" xml:space="preserve">
+    <value>Deontais</value>
+  </data>
+  <data name="GRANTS_API_GRANTS" xml:space="preserve">
+    <value>API Deontais</value>
+  </data>
+  <data name="GRANTS_CLIENT_APP_ACCESS" xml:space="preserve">
+    <value>Rochtain ar Iarratas Cliant</value>
+  </data>
+  <data name="GRANTS_CREATED" xml:space="preserve">
+    <value>Cruthaithe</value>
+  </data>
+  <data name="GRANTS_EXPIRES" xml:space="preserve">
+    <value>In éag</value>
+  </data>
+  <data name="GRANTS_IDENTITY_GRANTS" xml:space="preserve">
+    <value>Deontais Aitheantais</value>
+  </data>
+  <data name="GRANTS_INFO" xml:space="preserve">
+    <value>Anseo thíos tá liosta na n-iarratas a thug tú rochtain orthu agus ainmneacha na n-acmhainní a bhfuil rochtain acu orthu.</value>
+  </data>
+  <data name="GRANTS_NO_ACCESS" xml:space="preserve">
+    <value>Níor thug tú rochtain ar aon iarratais</value>
+  </data>
+  <data name="GRANTS_REVOKE_ACCESS" xml:space="preserve">
+    <value>Cúlghairm a dhéanamh ar Rochtain</value>
+  </data>
+</root>

@@ -1,0 +1,16 @@
+{
+    "author": "damienbod",
+    "classifications": [
+        "AspNetCore",
+        "IdentityServer4",
+        "Identity"
+    ],
+    "name": "ASP.NET Core IdentityServer4",
+    "identity": "IdentityServer4AspNetCoreIdentityTemplate",
+    "shortName": "sts",
+    "tags": {
+        "language": "C#"
+    },
+    "sourceName": "StsServerIdentity",
+    "preferNameDirectory": "true"
+}
