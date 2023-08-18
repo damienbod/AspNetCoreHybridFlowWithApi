@@ -13,8 +13,8 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost
-    .ConfigureKestrel(serverOptions => { serverOptions.AddServerHeader = false; })
+    builder.WebHost
+        .ConfigureKestrel(serverOptions => { serverOptions.AddServerHeader = false; })
         .ConfigureAppConfiguration((context, configurationBuilder) =>
          {
              var config = configurationBuilder.Build();
