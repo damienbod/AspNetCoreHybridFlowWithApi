@@ -2,6 +2,7 @@ using Duende.IdentityServer.Events;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Duende.IdentityServer.Stores;
+using Fido2Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -27,13 +28,16 @@ namespace StsServerIdentity.Pages.Login
         [BindProperty]
         public InputModel Input { get; set; }
 
+        private readonly Fido2Store _fido2Store;
+
         public Index(
             IIdentityServerInteractionService interaction,
             IAuthenticationSchemeProvider schemeProvider,
             IIdentityProviderStore identityProviderStore,
             IEventService events,
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            Fido2Store fido2Store)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -41,6 +45,7 @@ namespace StsServerIdentity.Pages.Login
             _schemeProvider = schemeProvider;
             _identityProviderStore = identityProviderStore;
             _events = events;
+            _fido2Store = fido2Store;
         }
 
         public async Task<IActionResult> OnGet(string returnUrl)
@@ -132,7 +137,16 @@ namespace StsServerIdentity.Pages.Login
                         throw new Exception("invalid return URL");
                     }
                 }
+                if (result.RequiresTwoFactor)
+                {
+                    var fido2ItemExistsForUser = await _fido2Store.GetCredentialsByUserNameAsync(user.Email);
+                    if (fido2ItemExistsForUser.Count > 0)
+                    {
+                        return RedirectToPage("./LoginFido2Mfa", new { Input.ReturnUrl, Input.RememberLogin });
+                    }
 
+                    return RedirectToPage("./LoginWith2fa", new { Input.ReturnUrl, RememberMe = Input.RememberLogin });
+                }
                 await _events.RaiseAsync(new UserLoginFailureEvent(Input.Username, "invalid credentials", clientId: context?.Client.ClientId));
                 ModelState.AddModelError(string.Empty, LoginOptions.InvalidCredentialsErrorMessage);
             }
