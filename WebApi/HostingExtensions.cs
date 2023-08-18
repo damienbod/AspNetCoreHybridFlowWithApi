@@ -1,4 +1,3 @@
-using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
@@ -25,13 +24,14 @@ internal static class HostingExtensions
         });
 
         var stsServer = configuration["StsServer"];
-        services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-            .AddIdentityServerAuthentication(options =>
+
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             {
                 options.Authority = stsServer;
-                options.ApiName = "ProtectedApi";
-                options.ApiSecret = "api_in_protected_zone_secret";
-                options.RequireHttpsMetadata = true;
+                options.Audience = "ProtectedApi";
+    
+                //options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
             });
 
         services.AddAuthorization(options =>
