@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31808.319
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StsServerIdentity", "StsServer\StsServerIdentity.csproj", "{718607C6-2D56-47F3-BDDE-356522EE286E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{AB31E1B1-F103-4A8B-BE79-1966C57C319A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHybridFlowClient", "WebHybridFlowClient\WebHybridFlowClient.csproj", "{5A1E5B5D-4CE7-439E-938A-DA9937091586}"
@@ -26,16 +24,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityStandaloneUserCheck
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebExtraClaimsCached", "WebExtraClaimsCached\WebExtraClaimsCached.csproj", "{DBC546B7-C2FD-4844-9595-DA8E1FA4FA64}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StsServerIdentity", "StsServerIdentity\StsServerIdentity.csproj", "{25DE3FD4-994C-4293-8E1D-C84CF8065543}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{718607C6-2D56-47F3-BDDE-356522EE286E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{718607C6-2D56-47F3-BDDE-356522EE286E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{718607C6-2D56-47F3-BDDE-356522EE286E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{718607C6-2D56-47F3-BDDE-356522EE286E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB31E1B1-F103-4A8B-BE79-1966C57C319A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB31E1B1-F103-4A8B-BE79-1966C57C319A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB31E1B1-F103-4A8B-BE79-1966C57C319A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -68,6 +64,10 @@ Global
 		{DBC546B7-C2FD-4844-9595-DA8E1FA4FA64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBC546B7-C2FD-4844-9595-DA8E1FA4FA64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBC546B7-C2FD-4844-9595-DA8E1FA4FA64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25DE3FD4-994C-4293-8E1D-C84CF8065543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25DE3FD4-994C-4293-8E1D-C84CF8065543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25DE3FD4-994C-4293-8E1D-C84CF8065543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25DE3FD4-994C-4293-8E1D-C84CF8065543}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

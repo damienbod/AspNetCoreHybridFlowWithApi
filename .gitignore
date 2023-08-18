@@ -18,3 +18,6 @@
 /PkceClientApp.txt
 /WebHybridClient.txt
 /_logs-**
+/StsServerIdentity/AspIdUsers.db-shm
+/StsServerIdentity/AspIdUsers.db-wal
+/StsServerIdentity/node_modules
