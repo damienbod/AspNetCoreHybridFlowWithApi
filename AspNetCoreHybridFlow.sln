@@ -11,7 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebHybridFlowClient", "WebH
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{038CF360-14D7-4AF0-8BA9-5FF422D3CC7E}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -25,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityStandaloneMfa", "Id
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityStandaloneUserCheck", "IdentityStandaloneUserCheck\IdentityStandaloneUserCheck.csproj", "{E513EF8E-424C-4E95-945C-29073C242A8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExtraClaimsCached", "WebExtraClaimsCached\WebExtraClaimsCached.csproj", "{DBC546B7-C2FD-4844-9595-DA8E1FA4FA64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebExtraClaimsCached", "WebExtraClaimsCached\WebExtraClaimsCached.csproj", "{DBC546B7-C2FD-4844-9595-DA8E1FA4FA64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

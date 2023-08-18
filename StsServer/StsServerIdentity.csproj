@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Version>5.1.2</Version>
-    <Description>IdentityServer4 template with ASP.NET Core 3.1 and ASP.NET Core Identity</Description>
+    <Description>IdentityServer4 template with ASP.NET Core 7 and ASP.NET Core Identity</Description>
     <PackageProjectUrl>https://github.com/damienbod/IdentityServer4AspNetCoreIdentityTemplate</PackageProjectUrl>
     <PackageIconUrl>http://www.gravatar.com/avatar/61d005637f57b5c3da8ba662cf04a9d6.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/damienbod/IdentityServer4AspNetCoreIdentityTemplate</RepositoryUrl>

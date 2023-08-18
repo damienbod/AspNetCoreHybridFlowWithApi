@@ -5,11 +5,6 @@ using Microsoft.IdentityModel.Logging;
 using System.IdentityModel.Tokens.Jwt;
 using WebExtraClaimsCached;
 
-IServiceProvider? ApplicationServices = null;
-
-IdentityModelEventSource.ShowPII = true;
-JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<MyClaimsTransformation>();
@@ -41,13 +36,9 @@ builder.Services.Configure<OpenIdConnectOptions>(OpenIdConnectDefaults.Authentic
 {
     options.Events.OnTokenValidated = async context =>
     {
-        if(ApplicationServices != null && context.Principal != null)
-        {
-            using var scope = ApplicationServices.CreateScope();
-            context.Principal = await scope.ServiceProvider
-                .GetRequiredService<MyClaimsTransformation>()
-                .TransformAsync(context.Principal);
-        }
+        await context.HttpContext.RequestServices
+            .GetRequiredService<MyClaimsTransformation>()
+            .TransformAsync(context.Principal!);
     };
 });
 
@@ -55,7 +46,8 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-ApplicationServices = app.Services;
+IdentityModelEventSource.ShowPII = true;
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 if (!app.Environment.IsDevelopment())
 {
