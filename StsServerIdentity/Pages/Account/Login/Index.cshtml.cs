@@ -66,7 +66,7 @@ namespace StsServerIdentity.Pages.Login
             var user = await _userManager.FindByNameAsync(Input.Username);
             if (user != null && !user.TwoFactorEnabled && requires2Fa)
             {
-                return Redirect("~/ErrorEnable2FA");
+                return RedirectToPage("/Home/ErrorEnable2FA/Index");
             }
 
             // the user clicked the "cancel" button
@@ -101,7 +101,7 @@ namespace StsServerIdentity.Pages.Login
                 var result = await _signInManager.PasswordSignInAsync(Input.Username, Input.Password, Input.RememberLogin, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
-                    var user = await _userManager.FindByNameAsync(Input.Username);
+                    //var user = await _userManager.FindByNameAsync(Input.Username);
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId));
 
                     if (context != null)
