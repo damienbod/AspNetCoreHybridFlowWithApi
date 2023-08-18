@@ -3,22 +3,21 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using StsServerIdentity.Models;
 
-namespace StsServerIdentity.Data
+namespace StsServerIdentity.Data;
+
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+    }
 
-        public DbSet<FidoStoredCredential> FidoStoredCredential => Set<FidoStoredCredential>();
+    public DbSet<FidoStoredCredential> FidoStoredCredential => Set<FidoStoredCredential>();
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<FidoStoredCredential>().HasKey(m => m.Id);
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<FidoStoredCredential>().HasKey(m => m.Id);
 
-            base.OnModelCreating(builder);
-        }
+        base.OnModelCreating(builder);
     }
 }
