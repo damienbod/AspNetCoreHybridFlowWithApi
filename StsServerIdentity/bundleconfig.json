@@ -41,7 +41,7 @@
     ],
     "minify": {
       "enabled": false,
-      "renameLocals": true
+      "renameLocals": false
     },
     "sourceMap": false
   },
@@ -56,7 +56,7 @@
     ],
     "minify": {
       "enabled": true,
-      "renameLocals": true
+      "renameLocals": false
     },
     "sourceMap": false
   }
