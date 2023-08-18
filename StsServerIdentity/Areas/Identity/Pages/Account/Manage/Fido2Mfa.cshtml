@@ -11,7 +11,7 @@
 }
 @model AspNetCoreIdentityFido2Mfa.Areas.Identity.Pages.Account.Manage.MfaModel
 @{
-    Layout = "_Layout.cshtml";
+    //Layout = "_Layout.cshtml";
     ViewData["Title"] = "Two-factor authentication (2FA)";
     ViewData["ActivePage"] = ManageNavPages.Fido2Mfa;
 }
@@ -34,7 +34,7 @@
                     <div class="field">
                         <label class="label">Username</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="form-control" type="text" readonly placeholder="email" value="@User.Identity?.Name" name="username" required>
+                            <input class="form-control" type="text" readonly placeholder="email" value="@User.FindFirst("email").Value" name="username" required>
                         </div>
                     </div>
 
