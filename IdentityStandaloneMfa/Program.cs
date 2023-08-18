@@ -6,9 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Logging;
 using System.IdentityModel.Tokens.Jwt;
 
-IdentityModelEventSource.ShowPII = true;
-JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -37,6 +34,9 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+IdentityModelEventSource.ShowPII = true;
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 if (!app.Environment.IsDevelopment())
 {
