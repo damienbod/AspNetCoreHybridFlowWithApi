@@ -53,6 +53,8 @@ internal static class HostingExtensions
         IdentityModelEventSource.ShowPII = true;
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
+        app.UseSerilogRequestLogging();
+
         if (_env!.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -61,8 +63,6 @@ internal static class HostingExtensions
         {
             app.UseExceptionHandler("/Home/Error");
         }
-
-        app.UseSerilogRequestLogging();
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
