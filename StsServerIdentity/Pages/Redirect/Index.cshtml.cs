@@ -13,7 +13,7 @@ namespace StsServerIdentity.Pages.Redirect
         {
             if (!Url.IsLocalUrl(redirectUri))
             {
-                return RedirectToPage("/Home/Error/Index");
+                return RedirectToPage("/Home/ErrorEnable2FA/Index");
             }
 
             RedirectUri = redirectUri;

@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityStandaloneUserCheck
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebExtraClaimsCached", "WebExtraClaimsCached\WebExtraClaimsCached.csproj", "{DBC546B7-C2FD-4844-9595-DA8E1FA4FA64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StsServerIdentity", "StsServerIdentity\StsServerIdentity.csproj", "{25DE3FD4-994C-4293-8E1D-C84CF8065543}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StsServerIdentity", "StsServerIdentity\StsServerIdentity.csproj", "{25DE3FD4-994C-4293-8E1D-C84CF8065543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

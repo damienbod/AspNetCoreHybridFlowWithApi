@@ -61,6 +61,14 @@ namespace StsServerIdentity.Pages.Login
             // check if we are in the context of an authorization request
             var context = await _interaction.GetAuthorizationContextAsync(Input.ReturnUrl);
 
+            var requires2Fa = context?.AcrValues.Count(t => t.Contains("mfa")) >= 1;
+
+            var user = await _userManager.FindByNameAsync(Input.Username);
+            if (user != null && !user.TwoFactorEnabled && requires2Fa)
+            {
+                return Redirect("~/ErrorEnable2FA");
+            }
+
             // the user clicked the "cancel" button
             if (Input.Button != "login")
             {
