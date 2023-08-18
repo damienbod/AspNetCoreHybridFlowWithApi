@@ -139,13 +139,13 @@ namespace StsServerIdentity.Pages.Login
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    var fido2ItemExistsForUser = await _fido2Store.GetCredentialsByUserNameAsync(user.Email);
+                    var fido2ItemExistsForUser = await _fido2Store.GetCredentialsByUserNameAsync(user.UserName);
                     if (fido2ItemExistsForUser.Count > 0)
                     {
-                        return RedirectToPage("./LoginFido2Mfa", new { Input.ReturnUrl, Input.RememberLogin });
+                        return RedirectToPage("/Account/LoginFido2Mfa", new { area = "Identity", Input.ReturnUrl, Input.RememberLogin });
                     }
 
-                    return RedirectToPage("./LoginWith2fa", new { Input.ReturnUrl, RememberMe = Input.RememberLogin });
+                    return RedirectToPage("/Account/LoginWith2fa", new { area = "Identity", Input.ReturnUrl, RememberMe = Input.RememberLogin });
                 }
                 await _events.RaiseAsync(new UserLoginFailureEvent(Input.Username, "invalid credentials", clientId: context?.Client.ClientId));
                 ModelState.AddModelError(string.Empty, LoginOptions.InvalidCredentialsErrorMessage);
