@@ -184,8 +184,6 @@ public class Startup
         var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
         app.UseRequestLocalization(locOptions.Value);
 
-        // https://nblumhardt.com/2019/10/serilog-in-aspnetcore-3/
-        // https://nblumhardt.com/2019/10/serilog-mvc-logging/
         app.UseSerilogRequestLogging();
 
         app.UseStaticFiles();
