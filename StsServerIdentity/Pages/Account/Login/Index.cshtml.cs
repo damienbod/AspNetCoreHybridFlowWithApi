@@ -142,6 +142,8 @@ public class Index : PageModel
                 var fido2ItemExistsForUser = await _fido2Store.GetCredentialsByUserNameAsync(user.UserName);
                 if (fido2ItemExistsForUser.Count > 0)
                 {
+                    // AddDefaultUI() is not added, ASP.NET Core Identity Pages need to be added explicitly.
+                    // The Page path depends on this!
                     return RedirectToPage("/Account/LoginFido2Mfa", new { area = "Identity", Input.ReturnUrl, Input.RememberLogin });
                 }
 

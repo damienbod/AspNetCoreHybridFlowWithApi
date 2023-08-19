@@ -18,7 +18,7 @@ internal static class HostingExtensions
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        // defaultUI is not added, Identity PAges need to be added explicitly.
+        // AddDefaultUI() is not added, ASP.NET Core Identity Pages need to be added explicitly.
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders()
