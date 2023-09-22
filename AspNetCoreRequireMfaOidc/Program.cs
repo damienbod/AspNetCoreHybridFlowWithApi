@@ -26,7 +26,8 @@ builder.Services.AddAuthentication(options =>
     options.RequireHttpsMetadata = true;
     options.ClientId = "AspNetCoreRequireMfaOidc";
     options.ClientSecret = "AspNetCoreRequireMfaOidcSecret";
-    options.ResponseType = "code id_token";
+    options.ResponseType = "code";
+    options.UsePkce = true;
     options.Scope.Add("profile");
     options.Scope.Add("offline_access");
     options.SaveTokens = true;

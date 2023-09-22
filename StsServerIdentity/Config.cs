@@ -8,11 +8,11 @@ public static class Config
     public static IEnumerable<IdentityResource> GetIdentityResources()
     {
         return new List<IdentityResource>
-    {
-        new IdentityResources.OpenId(),
-        new IdentityResources.Profile(),
-        new IdentityResources.Email()
-    };
+        {
+            new IdentityResources.OpenId(),
+            new IdentityResources.Profile(),
+            new IdentityResources.Email()
+        };
     }
 
     public static IEnumerable<ApiScope> GetApiScopes()
@@ -147,9 +147,9 @@ public static class Config
             ClientName = "AspNetCoreRequireMfaOidc",
             ClientId = "AspNetCoreRequireMfaOidc",
             ClientSecrets = {new Secret("AspNetCoreRequireMfaOidcSecret".Sha256()) },
-            AllowedGrantTypes = GrantTypes.Hybrid,
+            AllowedGrantTypes = GrantTypes.Code,
             AllowOfflineAccess = true,
-            RequirePkce = false,
+            RequirePkce = true,
             AlwaysSendClientClaims = true,
             UpdateAccessTokenClaimsOnRefresh = true,
             AlwaysIncludeUserClaimsInIdToken = true,
