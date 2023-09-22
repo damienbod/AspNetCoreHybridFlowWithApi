@@ -24,9 +24,9 @@ Add-Migration InitialCreate -c ApplicationDbContext
 Update-Database
 ```
 
-
 ## History
 
+- 2023-09-22 Updated packages
 - 2023-08-18 Updated packages, updated start up, updated Duende IdentityServer
 - 2023-05-07 Updated packages
 - 2022-12-17 Updated packages to .NET 7
