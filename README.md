@@ -26,6 +26,7 @@ Update-Database
 
 ## History
 
+- 2023-11-03 Updated packages, fix security headers
 - 2023-09-22 Updated packages, switch to code flow with PKCE
 - 2023-08-18 Updated packages, updated start up, updated Duende IdentityServer
 - 2023-05-07 Updated packages
