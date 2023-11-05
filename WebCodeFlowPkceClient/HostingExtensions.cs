@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.IdentityModel.Tokens.Jwt;
 //using System.IdentityModel.Tokens.Jwt;
 
 namespace WebCodeFlowPkceClient;
@@ -42,6 +44,11 @@ internal static class HostingExtensions
             options.ClaimActions.MapUniqueJsonKey("preferred_username", "preferred_username");
             options.ClaimActions.MapUniqueJsonKey("gender", "gender");
             options.MapInboundClaims = false;
+            //options.TokenValidationParameters = new TokenValidationParameters
+            //{
+            //    NameClaimType = "email",
+            //    //RoleClaimType = "Role",   
+            //};
         });
 
         services.AddAuthorization();
@@ -54,7 +61,7 @@ internal static class HostingExtensions
     {
         //IdentityModelEventSource.ShowPII = true;
         //JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear(); // .NET 8
-        //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+        JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // < .NET 8
 
         app.UseSerilogRequestLogging();
 
