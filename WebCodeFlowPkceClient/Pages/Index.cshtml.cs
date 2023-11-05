@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace WebCodeFlowPkceClient.Pages;
 
@@ -13,8 +15,12 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
+    [BindProperty]
+    public IEnumerable<Claim> Claims { get; set; } = Enumerable.Empty<Claim>();
+
     public void OnGet()
     {
-        var claims = User.Claims.ToList();
+        // var claims = User.Claims.ToList();
+        Claims = User.Claims;
     }
 }
