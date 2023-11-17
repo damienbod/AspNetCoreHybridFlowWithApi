@@ -2,11 +2,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
-using Microsoft.IdentityModel.Logging;
-using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using System.IdentityModel.Tokens.Jwt;
-//using System.IdentityModel.Tokens.Jwt;
 
 namespace WebCodeFlowPkceClient;
 
@@ -60,8 +56,7 @@ internal static class HostingExtensions
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         //IdentityModelEventSource.ShowPII = true;
-        //JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear(); // .NET 8
-        JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // < .NET 8
+        JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
         app.UseSerilogRequestLogging();
 
