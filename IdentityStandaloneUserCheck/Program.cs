@@ -2,8 +2,7 @@ using IdentityStandaloneUserCheck.Data;
 using IdentityStandaloneUserCheck.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Logging;
-using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.JsonWebTokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +23,7 @@ builder.Services.AddRazorPages();
 var app = builder.Build();
 
 //IdentityModelEventSource.ShowPII = true;
-//JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 if (!app.Environment.IsDevelopment())
 {
