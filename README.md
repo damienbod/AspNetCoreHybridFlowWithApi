@@ -26,6 +26,7 @@ Update-Database
 
 ## History
 
+- 2024-01-14 Updated packages
 - 2023-11-17 Updated to .NET 8
 - 2023-11-03 Updated packages, fix security headers
 - 2023-09-22 Updated packages, switch to code flow with PKCE
