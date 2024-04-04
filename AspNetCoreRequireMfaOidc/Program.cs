@@ -31,15 +31,20 @@ builder.Services.AddAuthentication(options =>
     options.Scope.Add("profile");
     options.Scope.Add("offline_access");
     options.SaveTokens = true;
-    options.Events = new OpenIdConnectEvents
-    {
-        OnRedirectToIdentityProvider = context =>
-        {
-            context.ProtocolMessage.SetParameter("acr_values", Amr.Mfa);
 
-            return Task.FromResult(0);
-        }
-    };
+    // .NET 9
+    options.AdditionalAuthorizationParameters.Add("acr_values", "mfa");
+
+    // .NET 8
+    //options.Events = new OpenIdConnectEvents
+    //{
+    //    OnRedirectToIdentityProvider = context =>
+    //    {
+    //        context.ProtocolMessage.SetParameter("acr_values", Amr.Mfa);
+
+    //        return Task.FromResult(0);
+    //    }
+    //};
 });
 
 builder.Services.AddAuthorization(options =>
