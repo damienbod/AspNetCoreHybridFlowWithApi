@@ -2,7 +2,7 @@ using AspNetCoreRequireMfaOidc;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
-using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.JsonWebTokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,7 +57,7 @@ var app = builder.Build();
 app.UseCookiePolicy();
 
 //IdentityModelEventSource.ShowPII = true;
-JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 if (!app.Environment.IsDevelopment())
 {
