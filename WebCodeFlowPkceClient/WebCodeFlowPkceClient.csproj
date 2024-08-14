@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <UserSecretsId>4bd68e8b-ec2d-42d4-899f-fa77fcd14af5</UserSecretsId>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.8" />
     <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.22.0" />
     <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="0.22.0" />
