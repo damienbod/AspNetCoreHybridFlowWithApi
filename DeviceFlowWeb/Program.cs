@@ -1,11 +1,19 @@
 ﻿using DeviceFlowWeb;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 var configuration = builder.Configuration;
 var env = builder.Environment;
+
+services.AddSecurityHeaderPolicies()
+  .SetPolicySelector((PolicySelectorContext ctx) =>
+  {
+      return SecurityHeadersDefinitions
+        .GetHeaderPolicyCollection(env.IsDevelopment());
+  });
 
 services.AddScoped<DeviceFlowService>();
 services.AddHttpClient();
@@ -40,8 +48,7 @@ services.AddRazorPages();
 
 var app = builder.Build();
 
-app.UseSecurityHeaders(SecurityHeadersDefinitions
-    .GetHeaderPolicyCollection(env.IsDevelopment()));
+app.UseSecurityHeaders();
 
 if (env.IsDevelopment())
 {

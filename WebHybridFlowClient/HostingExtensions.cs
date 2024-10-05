@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
+using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 using Serilog;
 
 namespace WebHybridClient;
@@ -15,6 +16,13 @@ internal static class HostingExtensions
         var services = builder.Services;
         var configuration = builder.Configuration;
         _env = builder.Environment;
+
+        services.AddSecurityHeaderPolicies()
+            .SetPolicySelector((PolicySelectorContext ctx) =>
+            {
+                return SecurityHeadersDefinitions
+                    .GetHeaderPolicyCollection(_env!.IsDevelopment());
+            });
 
         services.AddTransient<ApiService>();
         services.AddSingleton<ApiTokenInMemoryClient>();
@@ -62,8 +70,7 @@ internal static class HostingExtensions
 
         app.UseSerilogRequestLogging();
 
-        app.UseSecurityHeaders(
-            SecurityHeadersDefinitions.GetHeaderPolicyCollection(_env!.IsDevelopment()));
+        app.UseSecurityHeaders();
 
         if (_env!.IsDevelopment())
         {

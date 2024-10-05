@@ -3,6 +3,7 @@ using Fido2Identity;
 using Fido2NetLib;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 using Serilog;
 using StsServerIdentity.Data;
 using StsServerIdentity.Models;
@@ -13,6 +14,13 @@ internal static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
+        builder.Services.AddSecurityHeaderPolicies()
+            .SetPolicySelector((PolicySelectorContext ctx) =>
+            {
+                return SecurityHeadersDefinitions
+                    .GetHeaderPolicyCollection(builder.Environment.IsDevelopment());
+            });
+
         builder.Services.AddRazorPages();
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
