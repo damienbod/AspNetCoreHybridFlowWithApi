@@ -94,7 +94,7 @@ internal static class HostingExtensions
         app.UseAuthorization();
 
         app.UseSession();
-        
+
         app.MapRazorPages()
             .RequireAuthorization();
 

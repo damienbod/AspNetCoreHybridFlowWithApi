@@ -11,7 +11,7 @@ public class ApiService
     private readonly ApiTokenCacheClient _apiTokenClient;
 
     public ApiService(
-        IOptions<AuthConfigurations> authConfigurations, 
+        IOptions<AuthConfigurations> authConfigurations,
         IHttpClientFactory clientFactory,
         ApiTokenCacheClient apiTokenClient)
     {
@@ -42,7 +42,7 @@ public class ApiService
                 var data = await JsonSerializer.DeserializeAsync<List<string>>(
                 await response.Content.ReadAsStreamAsync());
 
-                if(data != null)
+                if (data != null)
                     return data;
 
                 return new List<string>();

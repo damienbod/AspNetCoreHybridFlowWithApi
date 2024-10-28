@@ -10,7 +10,7 @@ public class MyClaimsTransformation
         var claimType = "myNewClaim";
         if (!principal.HasClaim(claim => claim.Type == claimType))
         {
-               
+
             claimsIdentity.AddClaim(new Claim(claimType, "myClaimValue"));
         }
 

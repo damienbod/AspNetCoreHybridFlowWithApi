@@ -38,7 +38,7 @@ internal static class HostingExtensions
             {
                 options.Authority = stsServer;
                 options.Audience = "ProtectedApi";
-    
+
                 //options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
             });
 
@@ -90,7 +90,7 @@ internal static class HostingExtensions
 
         return builder.Build();
     }
-    
+
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         IdentityModelEventSource.ShowPII = true;

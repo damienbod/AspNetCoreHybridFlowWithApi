@@ -5,9 +5,10 @@ namespace AspNetCoreRequireMfaOidc;
 public class RequireMfaHandler : AuthorizationHandler<RequireMfa>
 {
     protected override Task HandleRequirementAsync(
-        AuthorizationHandlerContext context, 
+        AuthorizationHandlerContext context,
         RequireMfa requirement
-    ){
+    )
+    {
         if (context == null)
             throw new ArgumentNullException(nameof(context));
         if (requirement == null)

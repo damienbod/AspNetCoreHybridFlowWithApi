@@ -7,7 +7,7 @@ namespace IdentityStandaloneUserCheck.Pages;
 public class RequirePasswordVerificationModel : PasswordVerificationBase
 {
     public RequirePasswordVerificationModel(UserManager<ApplicationUser> userManager) : base(userManager)
-    {}
+    { }
 
     public async Task<IActionResult> OnGetAsync()
     {

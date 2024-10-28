@@ -44,7 +44,7 @@ public class DeviceFlowService
 
         while (true)
         {
-            if(!string.IsNullOrWhiteSpace(deviceCode))
+            if (!string.IsNullOrWhiteSpace(deviceCode))
             {
                 var response = await client.RequestDeviceTokenAsync(new DeviceTokenRequest
                 {

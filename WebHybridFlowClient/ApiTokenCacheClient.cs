@@ -52,7 +52,7 @@ public class ApiTokenCacheClient
         _logger.LogDebug("GetApiToken new from STS for {api_name}", api_name);
 
         // add
-        var newAccessToken = await GetInternalApiToken( api_name,  api_scope,  secret);
+        var newAccessToken = await GetInternalApiToken(api_name, api_scope, secret);
         AddToCache(api_name, newAccessToken);
 
         return newAccessToken.AccessToken;
@@ -63,7 +63,7 @@ public class ApiTokenCacheClient
         try
         {
             var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
-                _httpClient, 
+                _httpClient,
                 _authConfigurations.Value.StsServer);
 
             if (disco.IsError)
@@ -91,7 +91,7 @@ public class ApiTokenCacheClient
                 ExpiresIn = DateTime.UtcNow.AddSeconds(tokenResponse.ExpiresIn),
                 AccessToken = tokenResponse.AccessToken!
             };
-                
+
         }
         catch (Exception e)
         {

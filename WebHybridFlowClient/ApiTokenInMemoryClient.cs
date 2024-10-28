@@ -47,7 +47,7 @@ public class ApiTokenInMemoryClient
         _logger.LogDebug("GetApiToken new from STS for {api_name}", api_name);
 
         // add
-        var newAccessToken = await GetInternalApiToken( api_name,  api_scope,  secret);
+        var newAccessToken = await GetInternalApiToken(api_name, api_scope, secret);
         _accessTokens.TryAdd(api_name, newAccessToken);
 
         return newAccessToken.AccessToken;
@@ -58,7 +58,7 @@ public class ApiTokenInMemoryClient
         try
         {
             var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
-                _httpClient, 
+                _httpClient,
                 _authConfigurations.Value.StsServer);
 
             if (disco.IsError)

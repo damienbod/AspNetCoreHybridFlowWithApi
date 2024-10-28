@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace WebHybridClient;
+﻿namespace WebHybridClient;
 
 public static class SecurityHeadersDefinitions
 {

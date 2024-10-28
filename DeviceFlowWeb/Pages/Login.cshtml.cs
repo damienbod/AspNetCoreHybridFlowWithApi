@@ -1,9 +1,9 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace DeviceFlowWeb.Pages;
 
@@ -42,12 +42,12 @@ public class LoginModel : PageModel
         var deviceCode = HttpContext.Session.GetString("DeviceCode");
         var interval = HttpContext.Session.GetInt32("Interval");
 
-        if(interval.GetValueOrDefault() <= 0)
+        if (interval.GetValueOrDefault() <= 0)
         {
             interval = 5;
         }
 
-        if(deviceCode != null && interval != null)
+        if (deviceCode != null && interval != null)
         {
             var tokenresponse = await _deviceFlowService.RequestTokenAsync(deviceCode, interval.Value);
 

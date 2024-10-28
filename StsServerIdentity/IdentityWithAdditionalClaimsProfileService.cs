@@ -1,12 +1,11 @@
-﻿using System.Security.Claims;
-using IdentityModel;
-
-using StsServerIdentity.Models;
-using Microsoft.AspNetCore.Identity;
-using Duende.IdentityServer.Services;
-using Duende.IdentityServer.Models;
+﻿using Duende.IdentityServer;
 using Duende.IdentityServer.Extensions;
-using Duende.IdentityServer;
+using Duende.IdentityServer.Models;
+using Duende.IdentityServer.Services;
+using IdentityModel;
+using Microsoft.AspNetCore.Identity;
+using StsServerIdentity.Models;
+using System.Security.Claims;
 
 namespace StsServerIdentity;
 
@@ -30,7 +29,7 @@ public class IdentityWithAdditionalClaimsProfileService : IProfileService
 
         var claims = principal.Claims.ToList();
 
-            claims.Add(new Claim("gender", "unknown"));
+        claims.Add(new Claim("gender", "unknown"));
 
         if (user.DataEventRecordsRole == "dataEventRecords.admin")
         {

@@ -5,7 +5,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using StsServerIdentity.Models;
 
 namespace StsServerIdentity.Areas.Identity.Pages.Account.Manage

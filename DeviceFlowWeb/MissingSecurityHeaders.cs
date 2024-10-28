@@ -10,7 +10,7 @@ public class MissingSecurityHeaders : ActionFilterAttribute
         var result = context.Result;
         if (result is ViewResult)
         {
-            var featurePolicy ="accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'";
+            var featurePolicy = "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'";
 
             if (!context.HttpContext.Response.Headers.ContainsKey("feature-policy"))
             {

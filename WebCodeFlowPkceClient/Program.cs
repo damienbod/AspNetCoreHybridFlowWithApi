@@ -1,6 +1,6 @@
-using WebCodeFlowPkceClient;
 using Azure.Identity;
 using Serilog;
+using WebCodeFlowPkceClient;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()

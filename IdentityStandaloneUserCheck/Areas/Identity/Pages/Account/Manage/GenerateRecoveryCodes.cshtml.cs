@@ -1,11 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityStandaloneUserCheck.Data;
+﻿using IdentityStandaloneUserCheck.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
 namespace IdentityStandaloneUserCheck.Areas.Identity.Pages.Account.Manage;
 

@@ -52,7 +52,7 @@ internal static class HostingExtensions
 
         return builder.Build();
     }
-    
+
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         //IdentityModelEventSource.ShowPII = true;

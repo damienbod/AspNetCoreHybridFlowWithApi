@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace StsServerIdentity;
+﻿namespace StsServerIdentity;
 
 public static class SecurityHeadersDefinitions
 {

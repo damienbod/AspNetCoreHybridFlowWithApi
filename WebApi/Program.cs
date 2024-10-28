@@ -1,6 +1,6 @@
-﻿using WebApi;
-using Azure.Identity;
+﻿using Azure.Identity;
 using Serilog;
+using WebApi;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -32,16 +32,16 @@ try
              }
          });
 
-builder.Host.UseSerilog((context, loggerConfiguration) => loggerConfiguration
-    .ReadFrom.Configuration(context.Configuration));
+    builder.Host.UseSerilog((context, loggerConfiguration) => loggerConfiguration
+        .ReadFrom.Configuration(context.Configuration));
 
-var app = builder
-    .ConfigureServices()
-    .ConfigurePipeline();
+    var app = builder
+        .ConfigureServices()
+        .ConfigurePipeline();
 
-app.Run();
+    app.Run();
 }
-catch (Exception ex) when(ex.GetType().Name is not "StopTheHostException"
+catch (Exception ex) when (ex.GetType().Name is not "StopTheHostException"
     && ex.GetType().Name is not "HostAbortedException")
 {
     Log.Fatal(ex, "Unhandled exception");

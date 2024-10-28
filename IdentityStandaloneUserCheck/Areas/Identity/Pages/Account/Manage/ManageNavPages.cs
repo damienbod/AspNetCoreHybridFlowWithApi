@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IdentityStandaloneUserCheck.Areas.Identity.Pages.Account.Manage;
 

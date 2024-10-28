@@ -6,10 +6,10 @@ namespace IdentityStandaloneMfa;
 
 public class AdditionalUserClaimsPrincipalFactory : UserClaimsPrincipalFactory<IdentityUser, IdentityRole>
 {
-    public AdditionalUserClaimsPrincipalFactory( 
+    public AdditionalUserClaimsPrincipalFactory(
         UserManager<IdentityUser> userManager,
-        RoleManager<IdentityRole> roleManager, 
-        IOptions<IdentityOptions> optionsAccessor) 
+        RoleManager<IdentityRole> roleManager,
+        IOptions<IdentityOptions> optionsAccessor)
         : base(userManager, roleManager, optionsAccessor)
     {
     }

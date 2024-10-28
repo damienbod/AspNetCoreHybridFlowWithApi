@@ -1,11 +1,11 @@
-﻿using System.Text;
+﻿using Fido2NetLib;
 using Fido2NetLib.Objects;
-using Fido2NetLib;
-using Microsoft.AspNetCore.Mvc;
-using static Fido2NetLib.Fido2;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using StsServerIdentity.Models;
+using System.Text;
+using static Fido2NetLib.Fido2;
 
 namespace Fido2Identity;
 

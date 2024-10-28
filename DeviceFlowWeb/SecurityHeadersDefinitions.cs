@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace DeviceFlowWeb;
+﻿namespace DeviceFlowWeb;
 
 public static class SecurityHeadersDefinitions
 {
