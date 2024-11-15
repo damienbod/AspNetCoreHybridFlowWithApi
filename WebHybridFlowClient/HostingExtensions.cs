@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Logging;
 using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 using Serilog;
 
-namespace WebHybridClient;
+namespace WebHybridFlowClient;
 
 internal static class HostingExtensions
 {

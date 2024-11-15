@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Text.Json;
 
-namespace WebHybridClient;
+namespace WebHybridFlowClient;
 
 public class ApiService
 {

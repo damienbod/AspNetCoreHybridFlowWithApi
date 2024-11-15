@@ -1,4 +1,4 @@
-namespace WebHybridClient.Models;
+namespace WebHybridFlowClient.Models;
 
 public class ErrorViewModel
 {

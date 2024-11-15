@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Collections.Concurrent;
 
-namespace WebHybridClient;
+namespace WebHybridFlowClient;
 
 public class ApiTokenInMemoryClient
 {

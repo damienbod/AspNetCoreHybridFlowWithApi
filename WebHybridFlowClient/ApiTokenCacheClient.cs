@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 
-namespace WebHybridClient;
+namespace WebHybridFlowClient;
 
 public class ApiTokenCacheClient
 {

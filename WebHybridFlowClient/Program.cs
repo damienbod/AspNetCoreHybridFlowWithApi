@@ -1,6 +1,6 @@
 ﻿using Azure.Identity;
 using Serilog;
-using WebHybridClient;
+using WebHybridFlowClient;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()

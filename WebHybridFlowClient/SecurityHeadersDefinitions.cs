@@ -1,10 +1,16 @@
-﻿namespace WebHybridClient;
+﻿namespace WebHybridFlowClient;
 
 public static class SecurityHeadersDefinitions
 {
+    private static HeaderPolicyCollection? policy = null;
+
     public static HeaderPolicyCollection GetHeaderPolicyCollection(bool isDev)
     {
-        var policy = new HeaderPolicyCollection()
+        // Avoid building a new HeaderPolicyCollection on every request for performance reasons.
+        // Where possible, cache and reuse HeaderPolicyCollection instances.
+        if (policy != null) return policy;
+
+        policy = new HeaderPolicyCollection()
             .AddFrameOptionsDeny()
             .AddContentTypeOptionsNoSniff()
             .AddReferrerPolicyStrictOriginWhenCrossOrigin()

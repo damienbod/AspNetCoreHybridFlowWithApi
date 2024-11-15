@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using WebHybridClient.Models;
+using WebHybridFlowClient.Models;
 
-namespace WebHybridClient.Controllers;
+namespace WebHybridFlowClient.Controllers;
 
 [Authorize]
 public class HomeController : Controller

@@ -1,4 +1,4 @@
-﻿namespace WebHybridClient;
+﻿namespace WebHybridFlowClient;
 
 public class AuthConfigurations
 {
