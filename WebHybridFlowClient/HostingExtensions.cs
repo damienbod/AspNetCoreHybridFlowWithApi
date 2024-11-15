@@ -9,19 +9,16 @@ namespace WebHybridFlowClient;
 
 internal static class HostingExtensions
 {
-    private static IWebHostEnvironment? _env;
-
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         var services = builder.Services;
         var configuration = builder.Configuration;
-        _env = builder.Environment;
 
         services.AddSecurityHeaderPolicies()
             .SetPolicySelector((PolicySelectorContext ctx) =>
             {
                 return SecurityHeadersDefinitions
-                    .GetHeaderPolicyCollection(_env!.IsDevelopment());
+                    .GetHeaderPolicyCollection(builder.Environment.IsDevelopment());
             });
 
         services.AddTransient<ApiService>();
@@ -72,7 +69,7 @@ internal static class HostingExtensions
 
         app.UseSecurityHeaders();
 
-        if (_env!.IsDevelopment())
+        if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
         }
