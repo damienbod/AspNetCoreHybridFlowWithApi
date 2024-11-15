@@ -6,13 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 var configuration = builder.Configuration;
-var env = builder.Environment;
 
 services.AddSecurityHeaderPolicies()
   .SetPolicySelector((PolicySelectorContext ctx) =>
   {
       return SecurityHeadersDefinitions
-        .GetHeaderPolicyCollection(env.IsDevelopment());
+        .GetHeaderPolicyCollection(builder.Environment.IsDevelopment());
   });
 
 services.AddScoped<DeviceFlowService>();
@@ -50,7 +49,7 @@ var app = builder.Build();
 
 app.UseSecurityHeaders();
 
-if (env.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
