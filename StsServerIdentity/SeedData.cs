@@ -1,4 +1,4 @@
-﻿using IdentityModel;
+﻿using Duende.IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;

@@ -2,7 +2,7 @@
 using Duende.IdentityServer.Extensions;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
-using IdentityModel;
+using Duende.IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using StsServerIdentity.Models;
 using System.Security.Claims;
