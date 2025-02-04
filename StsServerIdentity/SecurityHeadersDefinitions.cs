@@ -1,4 +1,4 @@
-﻿namespace StsServerIdentity;
+﻿namespace IdentityProvider;
 
 public static class SecurityHeadersDefinitions
 {

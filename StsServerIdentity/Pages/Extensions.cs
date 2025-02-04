@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace StsServerIdentity.Pages;
+namespace IdentityProvider.Pages;
 
 public static class Extensions
 {

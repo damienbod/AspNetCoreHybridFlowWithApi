@@ -1,5 +1,5 @@
 
-namespace StsServerIdentity.Pages.Logout;
+namespace IdentityProvider.Pages.Logout;
 
 public class LogoutOptions
 {

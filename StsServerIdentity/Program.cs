@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using StsServerIdentity;
+using IdentityProvider;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()

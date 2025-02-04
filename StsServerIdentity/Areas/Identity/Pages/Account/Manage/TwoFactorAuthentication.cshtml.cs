@@ -5,9 +5,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using StsServerIdentity.Models;
+using IdentityProvider.Models;
 
-namespace StsServerIdentity.Areas.Identity.Pages.Account.Manage
+namespace IdentityProvider.Areas.Identity.Pages.Account.Manage
 {
     public class TwoFactorAuthenticationModel : PageModel
     {

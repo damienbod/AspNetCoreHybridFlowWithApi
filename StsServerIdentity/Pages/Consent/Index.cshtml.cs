@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace StsServerIdentity.Pages.Consent;
+namespace IdentityProvider.Pages.Consent;
 
 [Authorize]
 [SecurityHeadersAttribute]

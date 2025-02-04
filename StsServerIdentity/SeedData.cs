@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using StsServerIdentity.Data;
-using StsServerIdentity.Models;
+using IdentityProvider.Data;
+using IdentityProvider.Models;
 using System.Security.Claims;
 
-namespace StsServerIdentity;
+namespace IdentityProvider;
 
 public class SeedData
 {

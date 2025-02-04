@@ -1,4 +1,4 @@
-namespace StsServerIdentity.Pages.Grants;
+namespace IdentityProvider.Pages.Grants;
 
 public class ViewModel
 {

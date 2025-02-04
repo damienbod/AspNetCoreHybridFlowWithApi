@@ -4,10 +4,10 @@ using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
 using Duende.IdentityModel;
 using Microsoft.AspNetCore.Identity;
-using StsServerIdentity.Models;
+using IdentityProvider.Models;
 using System.Security.Claims;
 
-namespace StsServerIdentity;
+namespace IdentityProvider;
 
 public class IdentityWithAdditionalClaimsProfileService : IProfileService
 {

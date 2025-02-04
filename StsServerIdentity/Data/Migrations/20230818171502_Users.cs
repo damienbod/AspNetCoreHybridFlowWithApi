@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace StsServerIdentity.Data.Migrations
+namespace IdentityProvider.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Users : Migration

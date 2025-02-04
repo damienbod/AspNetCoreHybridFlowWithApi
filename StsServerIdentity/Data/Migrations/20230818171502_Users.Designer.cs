@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StsServerIdentity.Data;
+using IdentityProvider.Data;
 
 #nullable disable
 
-namespace StsServerIdentity.Data.Migrations
+namespace IdentityProvider.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230818171502_Users")]

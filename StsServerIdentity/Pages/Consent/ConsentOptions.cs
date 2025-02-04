@@ -1,7 +1,7 @@
 // Copyright (c) Duende Software. All rights reserved.
 // See LICENSE in the project root for license information.
 
-namespace StsServerIdentity.Pages.Consent;
+namespace IdentityProvider.Pages.Consent;
 
 public class ConsentOptions
 {

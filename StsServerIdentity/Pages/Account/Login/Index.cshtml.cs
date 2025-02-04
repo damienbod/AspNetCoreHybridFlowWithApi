@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using StsServerIdentity.Models;
+using IdentityProvider.Models;
 
-namespace StsServerIdentity.Pages.Login;
+namespace IdentityProvider.Pages.Login;
 
 [SecurityHeaders]
 [AllowAnonymous]

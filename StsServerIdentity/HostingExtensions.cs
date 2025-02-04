@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 using Serilog;
-using StsServerIdentity.Data;
-using StsServerIdentity.Models;
+using IdentityProvider.Data;
+using IdentityProvider.Models;
 
-namespace StsServerIdentity;
+namespace IdentityProvider;
 
 internal static class HostingExtensions
 {

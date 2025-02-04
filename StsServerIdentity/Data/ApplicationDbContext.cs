@@ -1,9 +1,9 @@
 ﻿using Fido2Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using StsServerIdentity.Models;
+using IdentityProvider.Models;
 
-namespace StsServerIdentity.Data;
+namespace IdentityProvider.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {

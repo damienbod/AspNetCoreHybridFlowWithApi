@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using StsServerIdentity.Models;
+using IdentityProvider.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace StsServerIdentity.Areas.Identity.Pages.Account;
+namespace IdentityProvider.Areas.Identity.Pages.Account;
 
 [AllowAnonymous]
 public class LoginWith2faModel : PageModel

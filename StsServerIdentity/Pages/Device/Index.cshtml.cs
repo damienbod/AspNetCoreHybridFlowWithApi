@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
-using StsServerIdentity.Pages.Consent;
+using IdentityProvider.Pages.Consent;
 
-namespace StsServerIdentity.Pages.Device;
+namespace IdentityProvider.Pages.Device;
 
 [SecurityHeaders]
 [Authorize]

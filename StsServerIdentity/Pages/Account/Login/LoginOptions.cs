@@ -1,4 +1,4 @@
-namespace StsServerIdentity.Pages.Login;
+namespace IdentityProvider.Pages.Login;
 
 public class LoginOptions
 {

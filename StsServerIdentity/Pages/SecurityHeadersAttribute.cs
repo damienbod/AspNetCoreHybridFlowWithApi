@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace StsServerIdentity.Pages;
+namespace IdentityProvider.Pages;
 
 public class SecurityHeadersAttribute : ActionFilterAttribute
 {

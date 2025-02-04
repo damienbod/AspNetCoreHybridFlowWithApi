@@ -3,7 +3,7 @@ using Fido2NetLib.Objects;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using StsServerIdentity.Models;
+using IdentityProvider.Models;
 using System.Text;
 
 namespace Fido2Identity;
