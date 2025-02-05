@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "StsServerIdentity": {
+    "IdentityProvider": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
