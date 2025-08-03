@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.7" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
     <PackageReference Include="IdentityModel" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -24,9 +24,9 @@
     <PackageReference Include="Serilog.Sinks.Async" Version="2.1.0" />
     <PackageReference Include="Serilog.Sinks.ApplicationInsights" Version="4.0.0" />
     
-    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.0.0-preview.3" />
-    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="1.0.0-preview.3" />
-    <PackageReference Include="System.Text.Json" Version="9.0.1" />
+    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.1.0" />
+    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="1.1.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.7" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('node_modules') ">

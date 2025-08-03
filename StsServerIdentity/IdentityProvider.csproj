@@ -11,25 +11,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="7.1.0" />
+    <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="7.2.4" />
     <PackageReference Include="Fido2" Version="3.0.1" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="9.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
 
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.0.0-preview.3" />
-    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="1.0.0-preview.3" />
-    <PackageReference Include="System.Text.Json" Version="9.0.1" />
+    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.1.0" />
+    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders.TagHelpers" Version="1.1.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.7" />
 
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
