@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "WebApi\\WebApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "WebHybridFlowClient\\WebHybridFlowClient.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "StsServerIdentity\\IdentityProvider.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
